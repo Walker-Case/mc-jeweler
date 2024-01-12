@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:gold_ingot"
+  },
+  "result": "jeweler:melted_gold_ingot",
+  "experience": 4,
+  "cookingtime": 1200
+}

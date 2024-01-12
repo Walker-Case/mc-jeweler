@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "entityId": "minecraft:wither",
+      "lootTable": "jeweler:entity/wither_drops"
+    },
+    {
+      "entityId": "minecraft:ender_dragon",
+      "lootTable": "jeweler:entity/ender_dragon_drops"
+    },
+    {
+      "entityId": "minecraft:zombie",
+      "lootTable": "jeweler:entity/zombie_drops"
+    },
+    {
+      "entityId": "minecraft:skeleton",
+      "lootTable": "jeweler:entity/skeleton_drops"
+    },
+    {
+      "entityId": "minecraft:spider",
+      "lootTable": "jeweler:entity/spider_drops"
+    },
+    {
+      "entityId": "minecraft:creeper",
+      "lootTable": "jeweler:entity/creeper_drops"
+    }
+  ]
+}

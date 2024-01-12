@@ -1,0 +1,92 @@
+{
+  "entries": {
+
+    "POSITIVE": [
+      {
+        "id": "jeweler:bloodlust",
+        "maxLevel": 2,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:breserker",
+        "maxLevel": 2,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:bulwark",
+        "maxLevel": 2,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:knockback",
+        "maxLevel": 2,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:reflect",
+        "maxLevel": 1,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:unbreaking",
+        "maxLevel": 1,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:increased_critical",
+        "maxLevel": 2,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:armor_repair",
+        "maxLevel": 2,
+        "chance": 0.1
+      }
+    ],
+
+    "NEUTRAL": [],
+
+    "NEGATIVE": [
+      {
+        "id": "jeweler:frail",
+        "maxLevel": 2,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:health_reduction",
+        "maxLevel": 2,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:inverted_healing",
+        "maxLevel": 2,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:lightened",
+        "maxLevel": 2,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:slowness",
+        "maxLevel": 2,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:weakened",
+        "maxLevel": 2,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:wimpy",
+        "maxLevel": 2,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:reduced_critical",
+        "maxLevel": 2,
+        "chance": 0.2
+      }
+    ]
+  }
+}

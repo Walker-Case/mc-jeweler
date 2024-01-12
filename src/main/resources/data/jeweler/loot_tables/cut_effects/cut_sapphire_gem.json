@@ -1,0 +1,122 @@
+{
+  "entries": {
+
+    "POSITIVE": [
+      {
+        "id": "jeweler:double_crafting",
+        "maxLevel": 3,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:double_fishing",
+        "maxLevel": 3,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:fingers",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:luck",
+        "maxLevel": 5,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:reflect",
+        "maxLevel": 5,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:skeleton_spirit",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:saving",
+        "maxLevel": 1,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:unbreaking",
+        "maxLevel": 5,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:potion_regeneration",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:potion_water_breathing",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:potion_night_vision",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:potion_saturation",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:potion_slow_falling",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:potion_dig_speed",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:potion_absorption",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:xp_gain",
+        "maxLevel": 5,
+        "chance": 0.1
+      }
+    ],
+
+    "NEUTRAL": [],
+
+    "NEGATIVE": [
+      {
+        "id": "jeweler:potion_confusion",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:potion_blindness",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:potion_poison",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:potion_wither",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:potion_unluck",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:xp_reduction",
+        "maxLevel": 7,
+        "chance": 0.4
+      }
+    ]
+  }
+}

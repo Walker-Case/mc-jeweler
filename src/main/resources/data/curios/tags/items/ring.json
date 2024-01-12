@@ -1,0 +1,11 @@
+{
+  "replace": "false",
+  "size": 2,
+  "values": [
+    "jeweler:copper_ring",
+    "jeweler:iron_ring",
+    "jeweler:gold_ring",
+    "jeweler:diamond_ring",
+    "jeweler:netherite_ring"
+  ]
+}

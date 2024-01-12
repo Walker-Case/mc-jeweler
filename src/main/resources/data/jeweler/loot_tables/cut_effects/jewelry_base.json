@@ -1,0 +1,24 @@
+{
+  "entries": {
+    "minecraft:obsidian": {
+      "effect": "jeweler:unbreaking",
+      "value": 1
+    },
+    "minecraft:blaze_rod": {
+      "effect": "jeweler:ignite",
+      "value": 1
+    },
+    "minecraft:emerald": {
+      "effect": "jeweler:luck",
+      "value": 1
+    },
+    "minecraft:golden_apple": {
+      "effect": "jeweler:stamina",
+      "value": 1
+    },
+    "minecraft:white_wool": {
+      "effect": "jeweler:jump_strength",
+      "value": 1
+    }
+  }
+}

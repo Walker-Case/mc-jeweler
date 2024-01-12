@@ -1,0 +1,107 @@
+{
+  "entries": {
+
+    "POSITIVE": [
+      {
+        "id": "jeweler:agile",
+        "maxLevel": 2,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:luck",
+        "maxLevel": 2,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:stamina",
+        "maxLevel": 2,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:unbreaking",
+        "maxLevel": 2,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:xp_gain",
+        "maxLevel": 1,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:increased_critical",
+        "maxLevel": 1,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:woodcutter",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:miner",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:excavation",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:tool_repair",
+        "maxLevel": 2,
+        "chance": 0.1
+      }
+    ],
+
+    "NEUTRAL": [],
+
+    "NEGATIVE": [
+      {
+        "id": "jeweler:feeding",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:frail",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:health_reduction",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:inverted_healing",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:lightened",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:slowness",
+        "maxLevel": 3,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:weakened",
+        "maxLevel": 3,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:wimpy",
+        "maxLevel": 3,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:reduced_woodcutter",
+        "maxLevel": 3,
+        "chance": 0.2
+      }
+    ]
+  }
+}

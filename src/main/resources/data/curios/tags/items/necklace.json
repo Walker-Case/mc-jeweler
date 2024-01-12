@@ -1,0 +1,11 @@
+{
+  "replace": "false",
+  "size": 1,
+  "values": [
+    "jeweler:copper_amulet",
+    "jeweler:iron_amulet",
+    "jeweler:gold_amulet",
+    "jeweler:diamond_amulet",
+    "jeweler:netherite_amulet"
+  ]
+}

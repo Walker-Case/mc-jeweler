@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "blockId": "minecraft:copper_ore",
+      "lootTable": "jeweler:geode/copper_ore_drop_table"
+    },
+    {
+      "blockId": "minecraft:iron_ore",
+      "lootTable": "jeweler:geode/iron_ore_drop_table"
+    },
+    {
+      "blockId": "minecraft:gold_ore",
+      "lootTable": "jeweler:geode/gold_ore_drop_table"
+    },
+    {
+      "blockId": "minecraft:diamond_ore",
+      "lootTable": "jeweler:geode/diamond_ore_drop_table"
+    },
+    {
+      "blockId": "minecraft:stone",
+      "lootTable": "jeweler:geode/stone_drop_table"
+    },
+    {
+      "blockId": "minecraft:deepslate_copper_ore",
+      "lootTable": "jeweler:geode/copper_ore_drop_table"
+    },
+    {
+      "blockId": "minecraft:deepslate_iron_ore",
+      "lootTable": "jeweler:geode/iron_ore_drop_table"
+    },
+    {
+      "blockId": "minecraft:deepslate_gold_ore",
+      "lootTable": "jeweler:geode/gold_ore_drop_table"
+    },
+    {
+      "blockId": "minecraft:deepslate_diamond_ore",
+      "lootTable": "jeweler:geode/diamond_ore_drop_table"
+    },
+    {
+      "blockId": "minecraft:deepslate",
+      "lootTable": "jeweler:geode/stone_drop_table"
+    }
+  ]
+}

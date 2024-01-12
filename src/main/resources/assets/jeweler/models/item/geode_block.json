@@ -1,0 +1,6 @@
+{
+  "parent": "jeweler:block/geode_block",
+  "textures": {
+    "layer0": "jeweler:block/stone"
+  }
+}

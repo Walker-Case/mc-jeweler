@@ -1,0 +1,298 @@
+{
+  "entries": {
+
+    "POSITIVE": [
+      {
+        "id": "jeweler:agile",
+        "maxLevel": 6,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:bloodlust",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:breserker",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:bulwark",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:double_crafting",
+        "maxLevel": 10,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:double_fishing",
+        "maxLevel": 10,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:fingers",
+        "maxLevel": 2,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:knockback",
+        "maxLevel": 6,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:luck",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:reflect",
+        "maxLevel": 10,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:skeleton_spirit",
+        "maxLevel": 10,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:saving",
+        "maxLevel": 10,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:stamina",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:unbreaking",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:potion_regeneration",
+        "maxLevel": 5,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:potion_water_breathing",
+        "maxLevel": 5,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:potion_night_vision",
+        "maxLevel": 5,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:potion_saturation",
+        "maxLevel": 5,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:potion_slow_falling",
+        "maxLevel": 5,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:potion_dig_speed",
+        "maxLevel": 3,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:potion_absorption",
+        "maxLevel": 5,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:xp_gain",
+        "maxLevel": 10,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:increased_critical",
+        "maxLevel": 10,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:woodcutter",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:miner",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:prospecting",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:excavation",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:tool_repair",
+        "maxLevel": 10,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:armor_repair",
+        "maxLevel": 10,
+        "chance": 0.2
+      }
+    ],
+
+    "NEUTRAL": [
+      {
+        "id": "jeweler:undying",
+        "maxLevel": 9,
+        "chance": 0.1
+      },
+      {
+        "id": "jeweler:zombie_resist",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:skeleton_resist",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:skeleton_resist",
+        "maxLevel": 3,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:pillager_resist",
+        "maxLevel": 3,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:vindicator_resist",
+        "maxLevel": 3,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:evoker_resist",
+        "maxLevel": 3,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:vex_resist",
+        "maxLevel": 3,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:blaze_resist",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:ghast_resist",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:phantom_resist",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:silverfish_resist",
+        "maxLevel": 3,
+        "chance": 0.3
+      }
+    ],
+
+    "NEGATIVE": [
+      {
+        "id": "jeweler:feeding",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:frail",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:health_reduction",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:inverted_healing",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:lightened",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:slowness",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:weakened",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:wimpy",
+        "maxLevel": 10,
+        "chance": 0.5
+      },
+      {
+        "id": "jeweler:potion_confusion",
+        "maxLevel": 5,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:potion_blindness",
+        "maxLevel": 5,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:potion_poison",
+        "maxLevel": 5,
+        "chance": 0.4
+      },
+      {
+        "id": "jeweler:potion_wither",
+        "maxLevel": 5,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:potion_unluck",
+        "maxLevel": 5,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:reduced_critical",
+        "maxLevel": 10,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:xp_reduction",
+        "maxLevel": 10,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:reduced_woodcutter",
+        "maxLevel": 10,
+        "chance": 0.5
+      }
+    ]
+  }
+}

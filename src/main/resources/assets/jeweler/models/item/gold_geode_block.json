@@ -1,0 +1,6 @@
+{
+  "parent": "jeweler:block/gold_geode_block_0",
+  "textures": {
+    "layer0": "jeweler:block/gold_ore"
+  }
+}

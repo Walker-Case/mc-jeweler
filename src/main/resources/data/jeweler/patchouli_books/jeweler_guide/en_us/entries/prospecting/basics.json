@@ -1,0 +1,11 @@
+{
+  "name": "Prospecting Basics",
+  "icon": "jeweler:copper_geode",
+  "category": "jeweler:prospecting",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Prospecting really is easy! First find some geodes underground. These can commonly be found in stone and ores."
+    }
+  ]
+}

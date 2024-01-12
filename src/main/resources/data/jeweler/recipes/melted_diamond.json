@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:diamond"
+  },
+  "result": "jeweler:melted_diamond",
+  "experience": 8,
+  "cookingtime": 2400
+}

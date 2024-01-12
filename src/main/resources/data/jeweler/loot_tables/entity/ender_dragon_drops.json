@@ -1,0 +1,25 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jeweler:netherite_ring",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.2
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"Dragons\\'s Pinky Ring\",\"italic\":false,\"color\":\"red\"}]'},jeweler:{effects:{\"jeweler:undying\":6,\"jeweler:unbreaking\":6,\"jeweler:ender_dragon_resist\":1,\"jeweler:agile\":3,\"jeweler:luck\":4,\"jeweler:stamina\":5}}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

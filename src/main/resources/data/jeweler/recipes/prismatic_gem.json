@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "jeweler:emerald_gem"
+    },
+    "b": {
+      "item": "jeweler:ruby_gem"
+    },
+    "c": {
+      "item": "jeweler:sapphire_gem"
+    },
+    "d": {
+      "item": "jeweler:amethyst_gem"
+    }
+  },
+  "pattern": [
+    "aaa",
+    "cdc",
+    "bbb"
+  ],
+  "result": {
+    "item": "jeweler:prismatic_gem"
+  },
+  "show_notification": true
+}

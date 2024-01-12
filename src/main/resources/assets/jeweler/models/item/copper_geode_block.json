@@ -1,0 +1,6 @@
+{
+  "parent": "jeweler:block/copper_geode_block_0",
+  "textures": {
+    "layer0": "jeweler:block/copper_ore"
+  }
+}

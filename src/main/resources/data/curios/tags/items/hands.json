@@ -1,0 +1,11 @@
+{
+  "replace": "false",
+  "size": 1,
+  "values": [
+    "jeweler:copper_bracers",
+    "jeweler:iron_bracers",
+    "jeweler:gold_bracers",
+    "jeweler:diamond_bracers",
+    "jeweler:netherite_bracers"
+  ]
+}

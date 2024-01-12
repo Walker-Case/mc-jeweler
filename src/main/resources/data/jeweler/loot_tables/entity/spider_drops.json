@@ -1,0 +1,40 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jeweler:copper_ring",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.1
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"Spider Ring\",\"italic\":false,\"color\":\"gray\"}]'},jeweler:{effects:{\"jeweler:spider_resist\":1}}}"
+            }
+          ]
+        },{
+          "type": "minecraft:item",
+          "name": "jeweler:iron_ring",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.05
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"Spider Ring\",\"italic\":false,\"color\":\"yellow\"}]'},jeweler:{effects:{\"jeweler:spider_resist\":2}}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

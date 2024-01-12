@@ -1,0 +1,6 @@
+{
+  "parent": "jeweler:block/iron_geode_block_0",
+  "textures": {
+    "layer0": "jeweler:block/iron_ore"
+  }
+}

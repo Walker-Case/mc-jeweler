@@ -1,0 +1,8 @@
+{
+  "credit": "Made by Walker with Blockbench",
+  "parent": "jeweler:block/iron_geode_block_0",
+  "textures": {
+    "0": "minecraft:block/iron_ore",
+    "particle": "minecraft:block/iron_ore"
+  }
+}
