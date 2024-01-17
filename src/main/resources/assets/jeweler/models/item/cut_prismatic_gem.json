@@ -1,0 +1,6 @@
+{
+  "parent": "jeweler:item/prismatic_gem",
+  "textures": {
+    "0": "jeweler:item/cut_prismatic_gem"
+  }
+}

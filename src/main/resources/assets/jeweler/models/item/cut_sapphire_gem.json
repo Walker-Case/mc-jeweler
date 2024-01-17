@@ -1,0 +1,6 @@
+{
+  "parent": "jeweler:item/sapphire_gem",
+  "textures": {
+    "0": "jeweler:item/cut_sapphire_gem"
+  }
+}

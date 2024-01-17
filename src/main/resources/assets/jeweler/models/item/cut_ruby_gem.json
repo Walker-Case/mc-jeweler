@@ -1,0 +1,6 @@
+{
+  "parent": "jeweler:item/ruby_gem",
+  "textures": {
+    "0": "jeweler:item/cut_ruby_gem"
+  }
+}

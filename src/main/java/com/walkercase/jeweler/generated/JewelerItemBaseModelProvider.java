@@ -26,17 +26,27 @@ public class JewelerItemBaseModelProvider extends ItemModelProvider {
         JewelerItems.ITEMS.getEntries().stream().filter(e -> e.get() instanceof JewelerItemBase).forEach(e -> {
             if (e.get() instanceof JewelerItemBase item) {
                 ResourceLocation location = e.getKey().location();
-                ItemModelBuilder builder = this.basicItem(location);
+
+                JewelerMain.LOGGER.info("Generating item model for: " + location);
+
+                ItemModelBuilder jeweleryBuilder =
+                        getBuilder(new ResourceLocation(location.getNamespace(), location.getPath()).toString())
+                                .parent(new ModelFile.UncheckedModelFile(item.parentModel));
+                jeweleryBuilder.texture("0", new ResourceLocation(JewelerMain.MODID, "item/" + location.getPath()));
 
                 JewelerItems.ITEMS.getEntries().stream().filter(g -> g.get() instanceof GemItemBase).forEach(g -> {
                     GemItemBase gem = (GemItemBase) g.get();
+                    ResourceLocation gemModelFile = new ResourceLocation(location.getNamespace(), location.getPath() + "_" + g.getKey().location().getPath());
+                    ResourceLocation gemParentModel = new ResourceLocation(item.parentModel.getNamespace(), item.parentModel.getPath() + "_" + g.getKey().location().getPath());
+
+                    JewelerMain.LOGGER.info("Generating gem model for: " + gemModelFile);
 
                     ItemModelBuilder builderEmerald =
-                            getBuilder(new ResourceLocation(location.getNamespace(), location.getPath() + "_" + g.getKey().location().getPath()).toString())
-                                    .parent(new ModelFile.UncheckedModelFile("item/generated"));
-                    builderEmerald.texture("layer0", new ResourceLocation(JewelerMain.MODID, "item/" + location.getPath()));
-                    builderEmerald.texture("layer1", new ResourceLocation(JewelerMain.MODID, "item/" + g.getId().getPath() + "_" + item.texturePosition.id));
-                    builder.override().model(builderEmerald).predicate(new ResourceLocation(JewelerMain.MODID, "index"), gem.index);
+                            getBuilder(gemModelFile.toString())
+                                    .parent(new ModelFile.UncheckedModelFile(gemParentModel));
+                    builderEmerald.texture("0", new ResourceLocation(JewelerMain.MODID, "item/" + location.getPath()));
+                    builderEmerald.texture("1", gemParentModel);
+                    jeweleryBuilder.override().model(builderEmerald).predicate(new ResourceLocation(JewelerMain.MODID, "index"), gem.index);
                 });
 
 

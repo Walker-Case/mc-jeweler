@@ -4,6 +4,7 @@ import com.google.common.collect.Multimap;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -25,23 +26,9 @@ import java.util.UUID;
 public class JewelerItemBase extends Item implements ICurioItem {
 
     /**
-     * The gem texture position to use for this item.
+     * The jewelery parent model file.
      */
-    public TexturePosition texturePosition;
-
-    public enum TexturePosition {
-        NORTH("north"),
-        EAST("east"),
-        SOUTH("south"),
-        WEST("west"),
-        CENTER("center");
-
-        public String id;
-
-        TexturePosition(String id) {
-            this.id = id;
-        }
-    }
+    public ResourceLocation parentModel;
 
     /**
      * The item used to repair this jewelry.
@@ -53,11 +40,11 @@ public class JewelerItemBase extends Item implements ICurioItem {
      * @param rarity The item rarity.
      * @param repairItem The item used to repair this jewelry.
      * @param durability The max durability of this jewelry.
-     * @param texturePosition The gem texture position to use.
+     * @param parentModel The jewelry parent model resource.
      */
-    public JewelerItemBase(Rarity rarity, Item repairItem, int durability, TexturePosition texturePosition) {
+    public JewelerItemBase(Rarity rarity, Item repairItem, int durability, ResourceLocation parentModel) {
         super(new Item.Properties().rarity(rarity).stacksTo(1).defaultDurability(durability));
-        this.texturePosition = texturePosition;
+        this.parentModel = parentModel;
         this.repairItem = repairItem;
     }
 

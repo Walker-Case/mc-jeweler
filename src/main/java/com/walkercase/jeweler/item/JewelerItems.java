@@ -115,15 +115,15 @@ public class JewelerItems {
             new BrushMould(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).durability(4), Items.NETHERITE_INGOT, Items.NETHER_STAR, NETHERITE_BRUSH.get()));
 
     public static final RegistryObject<JewelerRing> COPPER_RING = ITEMS.register("copper_ring", () ->
-            new JewelerRing(Rarity.COMMON, MELTED_COPPER_INGOT.get(), 5000, JewelerItemBase.TexturePosition.NORTH));
+            new JewelerRing(Rarity.COMMON, MELTED_COPPER_INGOT.get(), 5000));
     public static final RegistryObject<JewelerRing> IRON_RING = ITEMS.register("iron_ring", () ->
-            new JewelerRing(Rarity.UNCOMMON, MELTED_IRON_INGOT.get(), 6000, JewelerItemBase.TexturePosition.NORTH));
+            new JewelerRing(Rarity.UNCOMMON, MELTED_IRON_INGOT.get(), 6000));
     public static final RegistryObject<JewelerRing> GOLD_RING = ITEMS.register("gold_ring", () ->
-            new JewelerRing(Rarity.UNCOMMON, MELTED_GOLD_INGOT.get(), 4000, JewelerItemBase.TexturePosition.NORTH));
+            new JewelerRing(Rarity.UNCOMMON, MELTED_GOLD_INGOT.get(), 4000));
     public static final RegistryObject<JewelerRing> DIAMOND_RING = ITEMS.register("diamond_ring", () ->
-            new JewelerRing(Rarity.RARE, MELTED_DIAMOND.get(), 32000, JewelerItemBase.TexturePosition.NORTH));
+            new JewelerRing(Rarity.RARE, MELTED_DIAMOND.get(), 32000));
     public static final RegistryObject<JewelerRing> NETHERITE_RING = ITEMS.register("netherite_ring", () ->
-            new JewelerRing(Rarity.EPIC, Items.NETHER_STAR, 64000, JewelerItemBase.TexturePosition.NORTH));
+            new JewelerRing(Rarity.EPIC, Items.NETHER_STAR, 64000));
 
     public static final RegistryObject<RingMould> COPPER_RING_MOULD = ITEMS.register("copper_ring_mould", () ->
             new RingMould(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).durability(1), Items.COPPER_INGOT, MELTED_COPPER_INGOT.get(), COPPER_RING.get()));
@@ -138,15 +138,15 @@ public class JewelerItems {
 
 
     public static final RegistryObject<JewelerAmulet> COPPER_AMULET = ITEMS.register("copper_amulet",
-            () -> new JewelerAmulet(Rarity.COMMON, MELTED_COPPER_INGOT.get(), 10000, JewelerItemBase.TexturePosition.SOUTH));
+            () -> new JewelerAmulet(Rarity.COMMON, MELTED_COPPER_INGOT.get(), 10000));
     public static final RegistryObject<JewelerAmulet> IRON_AMULET = ITEMS.register("iron_amulet",
-            () -> new JewelerAmulet(Rarity.UNCOMMON, MELTED_IRON_INGOT.get(), 20000, JewelerItemBase.TexturePosition.SOUTH));
+            () -> new JewelerAmulet(Rarity.UNCOMMON, MELTED_IRON_INGOT.get(), 20000));
     public static final RegistryObject<JewelerAmulet> GOLD_AMULET = ITEMS.register("gold_amulet",
-            () -> new JewelerAmulet(Rarity.UNCOMMON, MELTED_GOLD_INGOT.get(), 6000, JewelerItemBase.TexturePosition.SOUTH));
+            () -> new JewelerAmulet(Rarity.UNCOMMON, MELTED_GOLD_INGOT.get(), 6000));
     public static final RegistryObject<JewelerAmulet> DIAMOND_AMULET = ITEMS.register("diamond_amulet",
-            () -> new JewelerAmulet(Rarity.RARE, MELTED_DIAMOND.get(), 60000, JewelerItemBase.TexturePosition.SOUTH));
+            () -> new JewelerAmulet(Rarity.RARE, MELTED_DIAMOND.get(), 60000));
     public static final RegistryObject<JewelerAmulet> NETHERITE_AMULET = ITEMS.register("netherite_amulet",
-            () -> new JewelerAmulet(Rarity.EPIC, Items.NETHER_STAR, 120000, JewelerItemBase.TexturePosition.SOUTH));
+            () -> new JewelerAmulet(Rarity.EPIC, Items.NETHER_STAR, 120000));
 
     public static final RegistryObject<AmuletMould> COPPER_AMULET_MOULD = ITEMS.register("copper_amulet_mould", () ->
             new AmuletMould(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).durability(1), Items.COPPER_INGOT, MELTED_COPPER_INGOT.get(), COPPER_AMULET.get()));
@@ -161,15 +161,15 @@ public class JewelerItems {
 
 
     public static final RegistryObject<JewelerBracers> COPPER_BRACERS = ITEMS.register("copper_bracers",
-            () -> new JewelerBracers(Rarity.COMMON, MELTED_COPPER_INGOT.get(), 8000, JewelerItemBase.TexturePosition.CENTER));
+            () -> new JewelerBracers(Rarity.COMMON, MELTED_COPPER_INGOT.get(), 8000));
     public static final RegistryObject<JewelerBracers> IRON_BRACERS = ITEMS.register("iron_bracers",
-            () -> new JewelerBracers(Rarity.UNCOMMON, MELTED_IRON_INGOT.get(), 12000, JewelerItemBase.TexturePosition.CENTER));
+            () -> new JewelerBracers(Rarity.UNCOMMON, MELTED_IRON_INGOT.get(), 12000));
     public static final RegistryObject<JewelerBracers> GOLD_BRACERS = ITEMS.register("gold_bracers",
-            () -> new JewelerBracers(Rarity.UNCOMMON, MELTED_GOLD_INGOT.get(), 5000, JewelerItemBase.TexturePosition.CENTER));
+            () -> new JewelerBracers(Rarity.UNCOMMON, MELTED_GOLD_INGOT.get(), 5000));
     public static final RegistryObject<JewelerBracers> DIAMOND_BRACERS = ITEMS.register("diamond_bracers",
-            () -> new JewelerBracers(Rarity.RARE, MELTED_DIAMOND.get(), 40000, JewelerItemBase.TexturePosition.CENTER));
+            () -> new JewelerBracers(Rarity.RARE, MELTED_DIAMOND.get(), 40000));
     public static final RegistryObject<JewelerBracers> NETHERITE_BRACERS = ITEMS.register("netherite_bracers",
-            () -> new JewelerBracers(Rarity.EPIC, Items.NETHER_STAR, 800000, JewelerItemBase.TexturePosition.CENTER));
+            () -> new JewelerBracers(Rarity.EPIC, Items.NETHER_STAR, 800000));
 
     public static final RegistryObject<BracersMould> COPPER_BRACERS_MOULD = ITEMS.register("copper_bracers_mould", () ->
             new BracersMould(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).durability(1), Items.COPPER_INGOT, MELTED_COPPER_INGOT.get(), COPPER_BRACERS.get()));
@@ -332,18 +332,6 @@ public class JewelerItems {
 
 
     public static void registerSimpleItemModels(JewelerItemBaseModelProvider provider) {
-        provider.basicItem(EMERALD_GEM.get());
-        provider.basicItem(RUBY_GEM.get());
-        provider.basicItem(SAPPHIRE_GEM.get());
-        provider.basicItem(AMETHYST_GEM.get());
-        provider.basicItem(PRISMATIC_GEM.get());
-
-        provider.basicItem(CUT_EMERALD_GEM.get());
-        provider.basicItem(CUT_RUBY_GEM.get());
-        provider.basicItem(CUT_SAPPHIRE_GEM.get());
-        provider.basicItem(CUT_AMETHYST_GEM.get());
-        provider.basicItem(CUT_PRISMATIC_GEM.get());
-
         provider.basicItem(COPPER_RING_MOULD.get());
         provider.basicItem(IRON_RING_MOULD.get());
         provider.basicItem(GOLD_RING_MOULD.get());
