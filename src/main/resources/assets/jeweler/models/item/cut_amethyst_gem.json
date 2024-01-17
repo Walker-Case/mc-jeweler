@@ -1,0 +1,6 @@
+{
+  "parent": "jeweler:item/amethyst_gem",
+  "textures": {
+    "0": "jeweler:item/cut_amethyst_gem"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "jeweler:item/emerald_gem",
+  "textures": {
+    "1": "jeweler:item/cut_emerald_gem"
+  }
+}

@@ -1,0 +1,60 @@
+{
+	"credit": "Made by Walker with Blockbench",
+	"textures": {
+		"0": "jeweler:item/ruby_gem",
+		"particle": "jeweler:item/ruby_gem"
+	},
+	"elements": [
+		{
+			"from": [5.5, 10.5, 6.5],
+			"to": [10.5, 11, 7.5],
+			"faces": {
+				"north": {"uv": [5, 4, 10, 4.5], "texture": "#0"},
+				"east": {"uv": [4, 7, 5, 7.5], "texture": "#0"},
+				"south": {"uv": [5, 5, 10, 5.5], "texture": "#0"},
+				"west": {"uv": [5, 7, 6, 7.5], "texture": "#0"},
+				"up": {"uv": [5, 5, 0, 4], "texture": "#0"},
+				"down": {"uv": [5, 5, 0, 6], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5.5, 9, 6.5],
+			"to": [10.5, 9.5, 7.5],
+			"faces": {
+				"north": {"uv": [0, 6, 5, 6.5], "texture": "#0"},
+				"east": {"uv": [6, 7, 7, 7.5], "texture": "#0"},
+				"south": {"uv": [5, 6, 10, 6.5], "texture": "#0"},
+				"west": {"uv": [7, 7, 8, 7.5], "texture": "#0"},
+				"up": {"uv": [10, 1, 5, 0], "texture": "#0"},
+				"down": {"uv": [10, 1, 5, 2], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5.5, 9.5, 6],
+			"to": [10.5, 10.5, 8],
+			"faces": {
+				"north": {"uv": [5, 2, 10, 3], "texture": "#0"},
+				"east": {"uv": [0, 7, 2, 8], "texture": "#0"},
+				"south": {"uv": [5, 3, 10, 4], "texture": "#0"},
+				"west": {"uv": [2, 7, 4, 8], "texture": "#0"},
+				"up": {"uv": [5, 2, 0, 0], "texture": "#0"},
+				"down": {"uv": [5, 2, 0, 4], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"ground": {
+			"translation": [0, -5, 2],
+			"scale": [2, 2, 2]
+		},
+		"gui": {
+			"rotation": [13, 62, 0],
+			"translation": [3.5, -8, 0],
+			"scale": [4, 4, 4]
+		},
+		"fixed": {
+			"translation": [0, -7, 0],
+			"scale": [4, 4, 4]
+		}
+	}
+}
