@@ -1,0 +1,28 @@
+{
+  "name": "Moulds - How to Use",
+  "icon": "jeweler:copper_ring_mould",
+  "category": "jeweler:jewelry",
+  "advancement": "jeweler:root",
+  "pages": [
+    {
+      "type": "patchouli:smelting",
+      "recipe": "jeweler:melted_copper_ingot",
+      "text": "Before I can make any jewelery I need to first create some malleable metal. I believe copper, iron, gold, and diamond can all be heated!"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:copper_ring_mould",
+      "text": "Now we create a mould that will be used to create our final product! I personally prefer rings but there is a variety of varying jewelery we can create."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:forge_item_copper_ring",
+      "text": "When the fire is hot and the liquid metal, it's time to pour!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "jeweler:copper_ring",
+      "text": "Now we take it to the anvil and remove any imperfections!"
+    }
+  ]
+}

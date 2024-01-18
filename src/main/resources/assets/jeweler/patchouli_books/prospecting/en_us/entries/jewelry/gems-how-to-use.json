@@ -1,0 +1,18 @@
+{
+  "name": "Gems - How to Use",
+  "icon": "jeweler:emerald_gem",
+  "category": "jeweler:jewelry",
+  "advancement": "jeweler:pickup_gem_advancement",
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:cut_emerald_gem_copper_chisel",
+      "text": "First thing we need to do is clean up and expose it's properties by cutting it with a chisel."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "jeweler:gold_amulet",
+      "text": "Next we add the cut gem to our jewelry of choice in the crafting table and reap the benefits!"
+    }
+  ]
+}

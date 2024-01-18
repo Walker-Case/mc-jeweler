@@ -9,7 +9,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
- * Allows for very fast entity damage resist effects.
+ * Allows for very fast entity damage resist effects.json.
  */
 public interface INeutralResistEffect extends IJewelryEffect {
 

@@ -76,7 +76,7 @@ public interface IJewelryEffect {
     default void curioBreak(Player player, ItemStack stack){}
 
     /**
-     * Returns this effects value for the given ItemStack.
+     * Returns this effects.json value for the given ItemStack.
      *
      * @param is ItemStack
      * @return int value
@@ -98,7 +98,7 @@ public interface IJewelryEffect {
     }
 
     /**
-     * This effects type. Used mostly for text formatting.
+     * This effects.json type. Used mostly for text formatting.
      */
     enum EffectType {
         POSITIVE,
@@ -107,37 +107,39 @@ public interface IJewelryEffect {
     }
 
     /**
-     * This is the effects rarity.
+     * This is the effects.json rarity.
      */
     enum EffectRarity{
-        COMMON(0, ChatFormatting.GRAY),
-        UNCOMMON(1, ChatFormatting.YELLOW),
-        RARE(2, ChatFormatting.AQUA),
-        SUPER_RARE(3, ChatFormatting.LIGHT_PURPLE),
-        UNIQUE(4, ChatFormatting.GOLD);
+        COMMON(0, ChatFormatting.GRAY, "jeweler:cut_emerald_gem"),
+        UNCOMMON(1, ChatFormatting.YELLOW, "jeweler:cut_ruby_gem"),
+        RARE(2, ChatFormatting.AQUA, "jeweler:cut_sapphire_gem"),
+        SUPER_RARE(3, ChatFormatting.LIGHT_PURPLE, "jeweler:cut_amethyst_gem"),
+        UNIQUE(4, ChatFormatting.GOLD, "jeweler:cut_prismatic_gem");
 
         public final int index;
         public final ChatFormatting chatFormatting;
-        EffectRarity(int i, ChatFormatting chatFormatting) {
+        public final String icon;
+        EffectRarity(int i, ChatFormatting chatFormatting, String icon) {
             this.index = i;
             this.chatFormatting = chatFormatting;
+            this.icon = icon;
         }
     }
 
     /**
-     * Return this effects EffectType
+     * Return this effects.json EffectType
      * @return EffectType
      */
     EffectType getEffectType();
 
     /**
-     * Return this effects ID.
+     * Return this effects.json ID.
      * @return
      */
     ResourceLocation effectID();
 
     /**
-     * Returns this effects rarity. Mostly used for text formatting.
+     * Returns this effects.json rarity. Mostly used for text formatting.
      * @return
      */
     default EffectRarity getEffectRarity(){

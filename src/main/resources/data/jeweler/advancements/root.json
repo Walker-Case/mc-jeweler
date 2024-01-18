@@ -1,0 +1,37 @@
+{
+  "criteria": {
+    "geode_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jeweler:geode_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.jeweler.root.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jeweler:geode_block"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.jeweler.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "geode_block"
+    ]
+  ]
+}

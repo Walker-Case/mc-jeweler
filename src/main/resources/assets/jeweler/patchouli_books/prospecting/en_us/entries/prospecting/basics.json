@@ -1,0 +1,14 @@
+{
+  "name": "Finding Prospects!",
+  "icon": "jeweler:copper_geode_block",
+  "category": "jeweler:prospecting",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "jeweler:copper_geode_block"
+      },
+      "text": "Prospecting really is easy! First find some geodes underground. These can commonly be found inside of stone and ore blocks."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "Moulds - List",
+  "icon": "jeweler:gold_ring_mould",
+  "category": "jeweler:jewelry",
+  "advancement": "jeweler:root",
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:copper_ring_mould",
+      "recipe2": "jeweler:iron_ring_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:gold_ring_mould",
+      "recipe2": "jeweler:diamond_ring_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:netherite_ring_mould",
+      "recipe2": "jeweler:copper_amulet_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:iron_amulet_mould",
+      "recipe2": "jeweler:gold_amulet_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:diamond_amulet_mould",
+      "recipe2": "jeweler:netherite_amulet_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:copper_bracers_mould",
+      "recipe2": "jeweler:iron_bracers_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:gold_bracers_mould",
+      "recipe2": "jeweler:diamond_bracers_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:netherite_bracers_mould",
+      "recipe2": "jeweler:copper_chisel_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:iron_chisel_mould",
+      "recipe2": "jeweler:gold_chisel_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:diamond_chisel_mould",
+      "recipe2": "jeweler:netherite_chisel_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:copper_brush_mould",
+      "recipe2": "jeweler:iron_brush_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:gold_brush_mould",
+      "recipe2": "jeweler:diamond_brush_mould"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jeweler:netherite_brush_mould"
+    }
+  ]
+}

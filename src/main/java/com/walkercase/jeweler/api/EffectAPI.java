@@ -38,7 +38,7 @@ import static com.walkercase.jeweler.effect.IJewelryEffect.EffectType.NEUTRAL;
 public class EffectAPI {
 
     /**
-     * Contains a list of all registered effects.
+     * Contains a list of all registered effects.json.
      */
     public static final ArrayList<IJewelryEffect> EFFECTS = new ArrayList<IJewelryEffect>();
 
@@ -292,7 +292,7 @@ public class EffectAPI {
      * @return
      */
     public static boolean effectsNBTExists(ItemStack is) {
-        return ItemStackHelper.getModNBT(is).contains("effects");
+        return ItemStackHelper.getModNBT(is).contains("effects.json");
     }
 
     /**
@@ -310,19 +310,19 @@ public class EffectAPI {
     }
 
     /**
-     * Returns the effects NBT for the given ItemStack.
+     * Returns the effects.json NBT for the given ItemStack.
      * @param is
      * @return
      */
     public static CompoundTag getEffectsNBT(ItemStack is) {
         CompoundTag tag = ItemStackHelper.getModNBT(is);
-        if (!tag.contains("effects")) {
-            tag.put("effects", new CompoundTag());
+        if (!tag.contains("effects.json")) {
+            tag.put("effects.json", new CompoundTag());
         }
 
-        tag.getCompound("effects").getAllKeys().stream().filter(key -> tag.getCompound("effects").getInt(key) <= 0).forEach(tag::remove);
+        tag.getCompound("effects.json").getAllKeys().stream().filter(key -> tag.getCompound("effects.json").getInt(key) <= 0).forEach(tag::remove);
 
-        return tag.getCompound("effects");
+        return tag.getCompound("effects.json");
     }
 
     /**
@@ -338,7 +338,7 @@ public class EffectAPI {
     }
 
     /**
-     * Add all effects from is1 to is2 and add to levels.
+     * Add all effects.json from is1 to is2 and add to levels.
      *
      * @param is1
      * @param is2
@@ -366,7 +366,7 @@ public class EffectAPI {
     }
 
     /**
-     * Copy effects from is1 to is2 exactly.
+     * Copy effects.json from is1 to is2 exactly.
      *
      * @param is1
      * @param is2
@@ -378,7 +378,7 @@ public class EffectAPI {
     }
 
     /**
-     * Removes all effects from the provided item.
+     * Removes all effects.json from the provided item.
      *
      * @param is1
      */
@@ -389,7 +389,7 @@ public class EffectAPI {
     }
 
     /**
-     * Adds the effects tooltip to the given itemstack.
+     * Adds the effects.json tooltip to the given itemstack.
      *
      * @param is
      * @param list
@@ -444,7 +444,6 @@ public class EffectAPI {
 
             MutableComponent lore1 = JewelerMain.PLATFORM_UTIL.getTranslatedComponent("effect.lore." + location.getNamespace() + "." + location.getPath() + ".1");
             lore1.withStyle(ChatFormatting.LIGHT_PURPLE);
-            lore1.withStyle(loreFormat);
 
             mutablecomponent.append(lore1);
         }

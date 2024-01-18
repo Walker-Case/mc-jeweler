@@ -222,7 +222,18 @@
   "effect.lore.jeweler.tool_repair": "It repairs my held tools!",
   "effect.jeweler.armor_repair": "Armor Repair",
   "effect.lore.jeweler.armor_repair": "It repairs my equipped armor!",
+  "effect.jeweler.increased_critical": "Super Crits",
+  "effect.lore.jeweler.increased_critical": "It increased my critical damage!!",
   "rolls.positive": "Positive Rolls",
   "rolls.neutral": "Neural Rolls",
-  "rolls.negative": "Negative Rolls"
+  "rolls.negative": "Negative Rolls",
+  "advancements.jeweler.root.title": "Prospecting!",
+  "advancements.jeweler.root.description": "Welcome to prospecting!",
+  "advancements.jeweler.pickup_gem.title": "Gems!",
+  "advancements.jeweler.pickup_gem.description": "I think I can make this prettier! If only there was some way.",
+  "advancements.jeweler.cut_gem.title": "Ooh, shiny!",
+  "advancements.jeweler.cut_gem.description": "I need to find a way to keep this on me.",
+  "book.jeweler.title.effects.positive": "Positive Effects",
+  "book.jeweler.title.effects.neutral": "Neutral Effects",
+  "book.jeweler.title.effects.negative": "Negative Effects"
 }
