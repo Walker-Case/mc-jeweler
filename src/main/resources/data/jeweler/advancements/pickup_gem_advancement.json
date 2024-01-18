@@ -1,0 +1,37 @@
+{
+  "parent": "jeweler:root",
+  "criteria": {
+    "emerald_gem": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jeweler:emerald_gem"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.jeweler.pickup_gem.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jeweler:emerald_gem"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.jeweler.pickup_gem.title"
+    }
+  },
+  "requirements": [
+    [
+      "emerald_gem"
+    ]
+  ]
+}

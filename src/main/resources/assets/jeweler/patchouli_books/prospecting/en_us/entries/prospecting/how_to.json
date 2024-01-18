@@ -1,0 +1,43 @@
+{
+  "name": "Prospecting - How To",
+  "icon": "jeweler:copper_geode_block",
+  "category": "jeweler:prospecting",
+  "advancement": "jeweler:root",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "jeweler:copper_geode_block"
+      },
+      "text": "Now I remember being told somewhere that geodes could only be harvested in a certain fashion."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "minecraft:stone_pickaxe"
+      },
+      "text": "First the large, difficult to manipulate chunks of stone need to be broken off with a pickaxe."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "minecraft:stone_shovel"
+      },
+      "text": "Next we remove the excess dirt left behind with a shovel."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "jeweler:copper_chisel"
+      },
+      "text": "Next I need to use my chisel to remove the smaller pieces of hard rock still left behind."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "jeweler:copper_brush"
+      },
+      "text": "Lastly we brush away any remaining dust and debris with a metal brush."
+    }
+  ]
+}

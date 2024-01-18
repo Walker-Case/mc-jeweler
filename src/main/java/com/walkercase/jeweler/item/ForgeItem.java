@@ -125,7 +125,7 @@ public class ForgeItem extends Item {
     }
 
     /**
-     * Adds the effects for the given 'reagent'(right) to the output stack.
+     * Adds the effects.json for the given 'reagent'(right) to the output stack.
      *
      * @param right
      * @param output
