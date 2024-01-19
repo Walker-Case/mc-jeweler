@@ -3,6 +3,7 @@ package com.walkercase.jeweler.event;
 import com.google.gson.JsonArray;
 import com.walkercase.jeweler.api.LootAPI;
 import com.walkercase.jeweler.block.GeodeBlock;
+import com.walkercase.jeweler.effect.IJewelryEffect;
 import com.walkercase.jeweler.item.tool.BrushItemBase;
 import com.walkercase.jeweler.item.tool.ChiselItemBase;
 import net.minecraft.resources.ResourceLocation;
@@ -59,19 +60,19 @@ public class BlockHelper {
                         if (mainHand.getItem() instanceof PickaxeItem) {
                             e.getLevel().setBlock(e.getPos(), geode.defaultBlockState().setValue(GeodeBlock.TEXTURE_INDEX, currentValue + 1), 3);
                             drop(e.getPlayer(), e.getPos(), e.getState(), new ResourceLocation(blockKey.getNamespace(), "geode/" + blockKey.getPath() + "_0"));
-                            mainHand.setDamageValue(mainHand.getDamageValue() + 10);
+                            IJewelryEffect.damageStack(e.getPlayer(), mainHand, IJewelryEffect.RANDOM, 1);
                             e.setCanceled(true);
                         }
                     } else if (currentValue == 1) {
                         if (mainHand.getItem() instanceof ShovelItem) {
-                            mainHand.setDamageValue(mainHand.getDamageValue() + 10);
+                            IJewelryEffect.damageStack(e.getPlayer(), mainHand, IJewelryEffect.RANDOM, 1);
                             drop(e.getPlayer(), e.getPos(), e.getState(), new ResourceLocation(blockKey.getNamespace(), "geode/" + blockKey.getPath() + "_1"));
                             e.getLevel().setBlock(e.getPos(), geode.defaultBlockState().setValue(GeodeBlock.TEXTURE_INDEX, currentValue + 1), 3);
                             e.setCanceled(true);
                         }
                     } else if (currentValue == 2) {
                         if (mainHand.getItem() instanceof ChiselItemBase) {
-                            mainHand.setDamageValue(mainHand.getDamageValue() + 10);
+                            IJewelryEffect.damageStack(e.getPlayer(), mainHand, IJewelryEffect.RANDOM, 1);
                             drop(e.getPlayer(), e.getPos(), e.getState(), new ResourceLocation(blockKey.getNamespace(), "geode/" + blockKey.getPath() + "_2"));
                             e.getLevel().setBlock(e.getPos(), geode.defaultBlockState().setValue(GeodeBlock.TEXTURE_INDEX, currentValue + 1), 3);
                             e.setCanceled(true);
@@ -80,7 +81,7 @@ public class BlockHelper {
                         if (mainHand.getItem() instanceof BrushItemBase) {
                             e.setExpToDrop(e.getExpToDrop() + 5);
                             drop(e.getPlayer(), e.getPos(), e.getState(), new ResourceLocation(blockKey.getNamespace(), "geode/" + blockKey.getPath() + "_3"));
-                            mainHand.setDamageValue(mainHand.getDamageValue() + 10);
+                            IJewelryEffect.damageStack(e.getPlayer(), mainHand, IJewelryEffect.RANDOM, 1);
                         }
                     }
 
