@@ -29,6 +29,11 @@
       "translate": "advancements.jeweler.root.title"
     }
   },
+  "rewards": {
+    "loot": [
+      "jeweler:give_guide_book"
+    ]
+  },
   "requirements": [
     [
       "geode_block"
