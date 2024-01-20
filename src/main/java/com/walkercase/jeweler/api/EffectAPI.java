@@ -316,13 +316,13 @@ public class EffectAPI {
      */
     public static CompoundTag getEffectsNBT(ItemStack is) {
         CompoundTag tag = ItemStackHelper.getModNBT(is);
-        if (!tag.contains("effects.json")) {
-            tag.put("effects.json", new CompoundTag());
+        if (!tag.contains("effects")) {
+            tag.put("effects", new CompoundTag());
         }
 
-        tag.getCompound("effects.json").getAllKeys().stream().filter(key -> tag.getCompound("effects.json").getInt(key) <= 0).forEach(tag::remove);
+        tag.getCompound("effects").getAllKeys().stream().filter(key -> tag.getCompound("effects").getInt(key) <= 0).forEach(tag::remove);
 
-        return tag.getCompound("effects.json");
+        return tag.getCompound("effects");
     }
 
     /**
