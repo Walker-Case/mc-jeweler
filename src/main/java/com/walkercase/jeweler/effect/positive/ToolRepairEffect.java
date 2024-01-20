@@ -5,11 +5,8 @@ import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.TieredItem;
 import top.theillusivec4.curios.api.SlotContext;
 

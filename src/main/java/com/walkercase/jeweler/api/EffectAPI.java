@@ -29,7 +29,6 @@ import org.jetbrains.annotations.ApiStatus;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 
-import javax.tools.Tool;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -40,7 +39,7 @@ public class EffectAPI {
     /**
      * Contains a list of all registered effects.json.
      */
-    public static final ArrayList<IJewelryEffect> EFFECTS = new ArrayList<IJewelryEffect>();
+    public static final ArrayList<IJewelryEffect> EFFECTS = new ArrayList<>();
 
     /**
      * After how many ticks to do ItemStack damage.
@@ -203,7 +202,7 @@ public class EffectAPI {
 
     /**
      * Returns an effect that matches the given ResourceLocation.
-     * @param rl
+     * @param rl Resoure
      * @return
      */
     public static Optional<IJewelryEffect> getEffect(ResourceLocation rl) {
@@ -490,9 +489,8 @@ public class EffectAPI {
                             ItemStack is = item.getStackInSlot(i);
 
                             if (is.getItem() instanceof JewelerItemBase base) {
-                                Arrays.stream(getEffects(is)).filter(eff -> EffectAPI.getEffectValue(eff, is) > 0).forEach(eff -> {
-                                    eff.onHurtEvent(e, is, base);
-                                });
+                                Arrays.stream(getEffects(is)).filter(eff
+                                        -> EffectAPI.getEffectValue(eff, is) > 0).forEach(eff -> eff.onHurtEvent(e, is, base));
                             }
                         }
                     });
@@ -503,9 +501,8 @@ public class EffectAPI {
                                 ItemStack is = item.getStackInSlot(i);
 
                                 if (is.getItem() instanceof JewelerItemBase base) {
-                                    Arrays.stream(getEffects(is)).filter(eff -> EffectAPI.getEffectValue(eff, is) > 0).forEach(eff -> {
-                                        eff.onHurtEntityEvent(e, is, base);
-                                    });
+                                    Arrays.stream(getEffects(is)).filter(eff
+                                            -> EffectAPI.getEffectValue(eff, is) > 0).forEach(eff -> eff.onHurtEntityEvent(e, is, base));
                                 }
                             }
                         });
@@ -519,10 +516,8 @@ public class EffectAPI {
          * @param stack
          */
         public static void curioBreak(Player player, ItemStack stack) {
-            if (stack.getItem() instanceof JewelerItemBase item) {
-                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff -> {
-                    eff.curioBreak(player, stack);
-                });
+            if (stack.getItem() instanceof JewelerItemBase) {
+                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff -> eff.curioBreak(player, stack));
             }
         }
 
@@ -546,9 +541,8 @@ public class EffectAPI {
                     });
                 }
 
-                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff -> {
-                    eff.curioTick(slotContext, stack, item);
-                });
+                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
+                        eff.curioTick(slotContext, stack, item));
             }
             return b.get();
         }
@@ -561,9 +555,8 @@ public class EffectAPI {
          */
         public static void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
             if (stack.getItem() instanceof JewelerItemBase item) {
-                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff -> {
-                    eff.onEquip(slotContext, prevStack, stack, item);
-                });
+                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
+                        eff.onEquip(slotContext, prevStack, stack, item));
             }
         }
 
@@ -575,9 +568,8 @@ public class EffectAPI {
          */
         public static void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
             if (stack.getItem() instanceof JewelerItemBase item) {
-                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff -> {
-                    eff.onUnequip(slotContext, newStack, stack, item);
-                });
+                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
+                        eff.onUnequip(slotContext, newStack, stack, item));
             }
         }
     }

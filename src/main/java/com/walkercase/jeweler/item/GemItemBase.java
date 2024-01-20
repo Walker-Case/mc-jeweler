@@ -2,7 +2,6 @@ package com.walkercase.jeweler.item;
 
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
-import com.walkercase.jeweler.platform.PlatformAPI;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

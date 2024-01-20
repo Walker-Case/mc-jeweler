@@ -12,7 +12,6 @@ import com.walkercase.jeweler.generated.SimpleItemModelProvider;
 import com.walkercase.jeweler.item.JewelerItems;
 import com.walkercase.jeweler.platform.MC19;
 import com.walkercase.jeweler.platform.PlatformAPI;
-import net.minecraft.data.tags.PaintingVariantTagsProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
