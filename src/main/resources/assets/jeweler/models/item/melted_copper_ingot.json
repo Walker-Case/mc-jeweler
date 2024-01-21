@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "jeweler:item/melted_ingot"
+    "layer0": "jeweler:item/molten_copper"
   }
 }
