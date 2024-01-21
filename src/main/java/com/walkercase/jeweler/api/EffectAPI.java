@@ -37,7 +37,7 @@ import static com.walkercase.jeweler.effect.IJewelryEffect.EffectType.NEUTRAL;
 public class EffectAPI {
 
     /**
-     * Contains a list of all registered effects.json.
+     * Contains a list of all registered effects.
      */
     public static final ArrayList<IJewelryEffect> EFFECTS = new ArrayList<>();
 
@@ -291,7 +291,7 @@ public class EffectAPI {
      * @return
      */
     public static boolean effectsNBTExists(ItemStack is) {
-        return ItemStackHelper.getModNBT(is).contains("effects.json");
+        return ItemStackHelper.getModNBT(is).contains("effects");
     }
 
     /**
@@ -309,7 +309,7 @@ public class EffectAPI {
     }
 
     /**
-     * Returns the effects.json NBT for the given ItemStack.
+     * Returns the effects NBT for the given ItemStack.
      * @param is
      * @return
      */
@@ -325,6 +325,24 @@ public class EffectAPI {
     }
 
     /**
+     * Returns true if the given ItemStack is foil or has the "enchanted" visual.
+     * @param is
+     * @return
+     */
+    public static boolean isFoil(ItemStack is){
+        return getEffectsNBT(is).getBoolean("foil");
+    }
+
+    /**
+     * Sets the given ItemStack to foil or to show the "enchanted" visual.
+     * Only works on items extending JewelerItemBase or GemItemBase.
+     * @param is
+     */
+    public static void setFoil(ItemStack is, boolean b){
+        getEffectsNBT(is).putBoolean("foil", b);
+    }
+
+    /**
      * Add an effect and add to level.
      *
      * @param is
@@ -337,7 +355,7 @@ public class EffectAPI {
     }
 
     /**
-     * Add all effects.json from is1 to is2 and add to levels.
+     * Add all effects from is1 to is2 and add to levels.
      *
      * @param is1
      * @param is2
@@ -365,7 +383,7 @@ public class EffectAPI {
     }
 
     /**
-     * Copy effects.json from is1 to is2 exactly.
+     * Copy effects from is1 to is2 exactly.
      *
      * @param is1
      * @param is2
@@ -377,7 +395,7 @@ public class EffectAPI {
     }
 
     /**
-     * Removes all effects.json from the provided item.
+     * Removes all effects from the provided item.
      *
      * @param is1
      */
@@ -388,7 +406,7 @@ public class EffectAPI {
     }
 
     /**
-     * Adds the effects.json tooltip to the given itemstack.
+     * Adds the effects tooltip to the given itemstack.
      *
      * @param is
      * @param list

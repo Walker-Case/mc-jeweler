@@ -49,6 +49,11 @@ public class JewelerItemBase extends Item implements ICurioItem {
     }
 
     @Override
+    public boolean isFoil(ItemStack itemStack) {
+        return EffectAPI.isFoil(itemStack);
+    }
+
+    @Override
     public void appendHoverText(ItemStack is, @Nullable Level p_41422_, List<Component> list, TooltipFlag p_41424_) {
         if (EffectAPI.effectsNBTExists(is)) {
             EffectAPI.addEffectTooltip(is, list);

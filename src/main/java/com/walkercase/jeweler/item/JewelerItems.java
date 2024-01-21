@@ -22,10 +22,14 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.player.AnvilRepairEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -203,133 +207,6 @@ public class JewelerItems {
             () -> new GemItemBase(4, Rarity.RARE, AMETHYST_GEM, 4, 4, 2));
     public static final RegistryObject<GemItemBase> CUT_PRISMATIC_GEM = ITEMS.register("cut_prismatic_gem",
             () -> new GemItemBase(5, Rarity.EPIC, PRISMATIC_GEM, 8, 3, 2));
-
-    public static ArrayList<ItemStack> UNIQUE_DROPS;
-
-    public static synchronized void generateUniqueDrops(){
-        UNIQUE_DROPS = new ArrayList<>(){{
-            {
-                ItemStack is = new ItemStack(JewelerItems.COPPER_RING.get());
-                MutableComponent isName = Component.literal("Zombie Ring");
-                isName.withStyle(ChatFormatting.GRAY);
-
-                EffectAPI.addEffect(is, EffectAPI.ZOMBIE_RESIST_EFFECT, 1);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-            {
-                ItemStack is = new ItemStack(JewelerItems.IRON_RING.get());
-                MutableComponent isName = Component.literal("Zombie Ring");
-                isName.withStyle(ChatFormatting.YELLOW);
-
-                EffectAPI.addEffect(is, EffectAPI.ZOMBIE_RESIST_EFFECT, 2);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-            {
-                ItemStack is = new ItemStack(JewelerItems.COPPER_RING.get());
-                MutableComponent isName = Component.literal("Skeleton Ring");
-                isName.withStyle(ChatFormatting.GRAY);
-
-                EffectAPI.addEffect(is, EffectAPI.SKELETON_RESIST_EFFECT, 1);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-            {
-                ItemStack is = new ItemStack(JewelerItems.IRON_RING.get());
-                MutableComponent isName = Component.literal("Skeleton Ring");
-                isName.withStyle(ChatFormatting.YELLOW);
-
-                EffectAPI.addEffect(is, EffectAPI.SKELETON_RESIST_EFFECT, 2);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-            {
-                ItemStack is = new ItemStack(JewelerItems.COPPER_RING.get());
-                MutableComponent isName = Component.literal("Spider Ring");
-                isName.withStyle(ChatFormatting.GRAY);
-
-                EffectAPI.addEffect(is, EffectAPI.SPIDER_RESIST_EFFECT, 1);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-            {
-                ItemStack is = new ItemStack(JewelerItems.IRON_RING.get());
-                MutableComponent isName = Component.literal("Spider Ring");
-                isName.withStyle(ChatFormatting.YELLOW);
-
-                EffectAPI.addEffect(is, EffectAPI.SPIDER_RESIST_EFFECT, 2);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-            {
-                ItemStack is = new ItemStack(JewelerItems.COPPER_RING.get());
-                MutableComponent isName = Component.literal("Creeper Ring");
-                isName.withStyle(ChatFormatting.GRAY);
-
-                EffectAPI.addEffect(is, EffectAPI.CREEPER_RESIST_EFFECT, 1);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-            {
-                ItemStack is = new ItemStack(JewelerItems.IRON_RING.get());
-                MutableComponent isName = Component.literal("Creeper Ring");
-                isName.withStyle(ChatFormatting.YELLOW);
-
-                EffectAPI.addEffect(is, EffectAPI.CREEPER_RESIST_EFFECT, 2);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-            {
-                ItemStack is = new ItemStack(JewelerItems.NETHERITE_RING.get());
-                MutableComponent isName = Component.literal("Dragon's Pinky Ring");
-                isName.withStyle(ChatFormatting.ITALIC);
-                isName.withStyle(ChatFormatting.RED);
-
-                EffectAPI.addEffect(is, EffectAPI.UNDYING_JEWELRY_EFFECT, 6);
-                EffectAPI.addEffect(is, EffectAPI.UNBREAKING_JEWELRY_EFFECT, 6);
-                EffectAPI.addEffect(is, EffectAPI.ENDER_DRAGON_RESIST_EFFECT, 1);
-                EffectAPI.addEffect(is, EffectAPI.AGILE_JEWELRY_EFFECT, 3);
-                EffectAPI.addEffect(is, EffectAPI.LUCK_JEWELERY_EFFECT, 4);
-                EffectAPI.addEffect(is, EffectAPI.STAMINA_JEWELRY_EFFECT, 5);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-            {
-                ItemStack is = new ItemStack(JewelerItems.DIAMOND_RING.get());
-                MutableComponent isName = Component.literal("Wither's Lost Diamond Ring");
-                isName.withStyle(ChatFormatting.GOLD);
-
-                EffectAPI.addEffect(is, EffectAPI.UNDYING_JEWELRY_EFFECT, 4);
-                EffectAPI.addEffect(is, EffectAPI.UNBREAKING_JEWELRY_EFFECT, 2);
-                EffectAPI.addEffect(is, EffectAPI.SAVING_JEWELRY_EFFECT, 1);
-                EffectAPI.addEffect(is, EffectAPI.WITHER_RESIST_EFFECT, 2);
-
-                is.setHoverName(isName);
-
-                add(is);
-            }
-        }};
-    }
-
 
     public static void registerSimpleItemModels(JewelerItemBaseModelProvider provider) {
         provider.basicItem(COPPER_RING_MOULD.get());

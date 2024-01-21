@@ -2,13 +2,10 @@ package com.walkercase.jeweler;
 
 import com.mojang.logging.LogUtils;
 import com.walkercase.jeweler.api.EffectAPI;
+import com.walkercase.jeweler.api.unique.UniqueDropsAPI;
 import com.walkercase.jeweler.block.JewelerBlocks;
 import com.walkercase.jeweler.event.BlockHelper;
-import com.walkercase.jeweler.event.EntityHelper;
-import com.walkercase.jeweler.generated.JewelerItemBaseModelProvider;
-import com.walkercase.jeweler.generated.JewelerItemRecipeProvider;
-import com.walkercase.jeweler.generated.PatchouliGenerator;
-import com.walkercase.jeweler.generated.SimpleItemModelProvider;
+import com.walkercase.jeweler.generated.*;
 import com.walkercase.jeweler.item.JewelerItems;
 import com.walkercase.jeweler.platform.MC19;
 import com.walkercase.jeweler.platform.PlatformAPI;
@@ -59,7 +56,6 @@ public class JewelerMain {
         MinecraftForge.EVENT_BUS.addListener(EffectAPI.Events::onLivingHurtEvent);
         MinecraftForge.EVENT_BUS.addListener(BlockHelper.GeodeHelper::blockBreakEvent);
         MinecraftForge.EVENT_BUS.addListener(BlockHelper.LootHelper::blockBreakEvent);
-        MinecraftForge.EVENT_BUS.addListener(EntityHelper::entityDied);
         MinecraftForge.EVENT_BUS.addListener(JewelerItems::itemCrafted);
         MinecraftForge.EVENT_BUS.addListener(JewelerItems::anvilUpdate);
         MinecraftForge.EVENT_BUS.addListener(JewelerItems::anvilRepair);
@@ -74,6 +70,7 @@ public class JewelerMain {
     private void gatherDataEvent(GatherDataEvent event) {
         PLATFORM_UTIL.addProvider(event.getGenerator(), new SimpleItemModelProvider(event.getGenerator(), JewelerMain.MODID + ".simplejeweleritem", event.getExistingFileHelper()));
         PLATFORM_UTIL.addProvider(event.getGenerator(), new JewelerItemRecipeProvider(event.getGenerator()));
+        PLATFORM_UTIL.addProvider(event.getGenerator(), new UniqueLanguageProvider(event.getGenerator().getPackOutput(), JewelerMain.MODID, "en_us"));
         PLATFORM_UTIL.addProvider(event.getGenerator(), new PatchouliGenerator(MODID, "en_us", event.getGenerator().getPackOutput(), event.getExistingFileHelper()));
         PLATFORM_UTIL.addProvider(event.getGenerator(), new JewelerItemBaseModelProvider(event.getGenerator(), JewelerMain.MODID + ".jeweleritem", event.getExistingFileHelper()));
     }
@@ -81,7 +78,8 @@ public class JewelerMain {
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             JewelerItems.setup();
-            JewelerItems.generateUniqueDrops();
+            UniqueDropsAPI.generateUniqueDrops();
+            UniqueDropsAPI.registerUniqueDropEvents(FMLJavaModLoadingContext.get().getModEventBus(), MinecraftForge.EVENT_BUS);
         });
 
     }

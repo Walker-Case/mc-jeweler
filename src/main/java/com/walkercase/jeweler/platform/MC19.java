@@ -1,6 +1,7 @@
 package com.walkercase.jeweler.platform;
 
 import com.walkercase.jeweler.JewelerMain;
+import com.walkercase.jeweler.api.unique.UniqueDropsAPI;
 import com.walkercase.jeweler.item.JewelerItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -30,7 +31,7 @@ public class MC19 implements PlatformAPI {
                         output.accept(i.get());
                     });
 
-                    JewelerItems.UNIQUE_DROPS.forEach(output::accept);
+                    UniqueDropsAPI.getDisplayDrops().forEach(output::accept);
                 })
         );
     }
