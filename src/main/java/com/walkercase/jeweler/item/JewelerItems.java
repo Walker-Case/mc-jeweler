@@ -396,7 +396,7 @@ public class JewelerItems {
         if(entries.has(array)){
             JsonArray arr = entries.get(array).getAsJsonArray();
 
-            if(arr.size() > 0){
+            if(!arr.isEmpty()){
                 for(int i=0;i<rolls;i++){
                     JsonObject entry = arr.get(RANDOM.nextInt(arr.size())).getAsJsonObject();
 

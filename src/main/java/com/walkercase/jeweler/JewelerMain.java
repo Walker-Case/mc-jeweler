@@ -9,9 +9,11 @@ import com.walkercase.jeweler.generated.*;
 import com.walkercase.jeweler.item.JewelerItems;
 import com.walkercase.jeweler.platform.MC19;
 import com.walkercase.jeweler.platform.PlatformAPI;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -52,7 +54,7 @@ public class JewelerMain {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::enqueue);
         modEventBus.addListener(this::gatherDataEvent);
-
+        
         MinecraftForge.EVENT_BUS.addListener(EffectAPI.Events::onLivingHurtEvent);
         MinecraftForge.EVENT_BUS.addListener(BlockHelper.GeodeHelper::blockBreakEvent);
         MinecraftForge.EVENT_BUS.addListener(BlockHelper.LootHelper::blockBreakEvent);

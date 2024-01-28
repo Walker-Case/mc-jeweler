@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -116,11 +117,7 @@ public class ForgeItem extends Item {
      * @return
      */
     public static JsonObject getForgeItemData(ItemStack is) {
-        String path =
-                (is.getItem() == JewelerItems.FORGE_ITEM.get()) ?
-                        Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(ForgeItem.getResult(is).getItem())).getPath()
-                        : (is.getItem() instanceof JewelerItemBase) ?
-                        Objects.requireNonNull(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(is.getItem()).getPath())) : "";
+        String path = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(ForgeItem.getResult(is).getItem())).getPath();
         return AssetAPI.readForgeItem(new ResourceLocation(JewelerMain.MODID, path)).getAsJsonObject();
     }
 

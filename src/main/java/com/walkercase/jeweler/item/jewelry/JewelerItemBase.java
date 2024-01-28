@@ -40,6 +40,17 @@ public class JewelerItemBase extends Item implements ICurioItem {
      * @param rarity The item rarity.
      * @param repairItem The item used to repair this jewelry.
      * @param durability The max durability of this jewelry.
+     */
+    public JewelerItemBase(Rarity rarity, Item repairItem, int durability) {
+        super(new Item.Properties().rarity(rarity).stacksTo(1).defaultDurability(durability));
+        this.repairItem = repairItem;
+    }
+
+    /**
+     * Create new jewelry!
+     * @param rarity The item rarity.
+     * @param repairItem The item used to repair this jewelry.
+     * @param durability The max durability of this jewelry.
      * @param parentModel The jewelry parent model resource.
      */
     public JewelerItemBase(Rarity rarity, Item repairItem, int durability, ResourceLocation parentModel) {
