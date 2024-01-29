@@ -158,6 +158,13 @@ public class UniqueDropsAPI {
                 .addEffect(EffectAPI.VINDICATOR_RESIST_EFFECT, 2),
                 "minecraft:vindicator", 0.02f));
 
+        registerUniqueDrop(new EntityDrop(new ItemStackBuilder(JewelerItems.JUNGLE_GEM.get())
+                .displayText("item.jeweler.jungle_gem", ChatFormatting.AQUA),
+                "minecraft:ocelot", 0.25f));
+        registerUniqueDrop(new EntityDrop(new ItemStackBuilder(JewelerItems.JUNGLE_GEM.get())
+                .displayText("item.jeweler.jungle_gem", ChatFormatting.AQUA),
+                "minecraft:parrot", 0.25f));
+
         registerUniqueDrop(new EntityDrop(new ItemStackBuilder(JewelerItems.DIAMOND_RING.get())
                 .displayText("jeweler.unique.wither_lost_diamond_ring", ChatFormatting.GOLD)
                 .setGem(JewelerItems.CUT_AMETHYST_GEM.get())
