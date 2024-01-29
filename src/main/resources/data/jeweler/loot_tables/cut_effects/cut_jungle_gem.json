@@ -1,0 +1,52 @@
+{
+  "entries": {
+
+    "POSITIVE": [
+      {
+        "id": "jeweler:wolf_summon",
+        "maxLevel": 7,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:cat_summon",
+        "maxLevel": 7,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:spectral_skeleton_summon",
+        "maxLevel": 7,
+        "chance": 0.2
+      },
+      {
+        "id": "jeweler:unbreaking",
+        "maxLevel": 5,
+        "chance": 0.4
+      }
+    ],
+
+    "NEUTRAL": [],
+
+    "NEGATIVE": [
+      {
+        "id": "jeweler:xp_reduction",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:health_reduction",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:weakened",
+        "maxLevel": 3,
+        "chance": 0.3
+      },
+      {
+        "id": "jeweler:wimpy",
+        "maxLevel": 3,
+        "chance": 0.3
+      }
+    ]
+  }
+}

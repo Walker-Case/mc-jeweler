@@ -15,21 +15,15 @@ import com.walkercase.jeweler.item.jewelry.JewelerRing;
 import com.walkercase.jeweler.item.tool.BrushItemBase;
 import com.walkercase.jeweler.item.tool.ChiselItemBase;
 import com.walkercase.jeweler.item.tool.mould.*;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.player.AnvilRepairEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -41,8 +35,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class JewelerItems {
 
-    public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, JewelerMain.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, JewelerMain.MODID);
 
     public static final RegistryObject<ForgeItem> FORGE_ITEM = ITEMS.register("forge_item", ForgeItem::new);
 
@@ -188,25 +181,33 @@ public class JewelerItems {
 
     public static final RegistryObject<Item> EMERALD_GEM = ITEMS.register("emerald_gem",
             () -> new Item(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).rarity(Rarity.COMMON)));
+    public static final RegistryObject<GemItemBase> CUT_EMERALD_GEM = ITEMS.register("cut_emerald_gem",
+            () -> new GemItemBase(Rarity.COMMON, EMERALD_GEM, 1, 0, 1));
+
     public static final RegistryObject<Item> RUBY_GEM = ITEMS.register("ruby_gem",
             () -> new Item(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<GemItemBase> CUT_RUBY_GEM = ITEMS.register("cut_ruby_gem",
+            () -> new GemItemBase(Rarity.UNCOMMON, RUBY_GEM, 2, 1, 2));
+
     public static final RegistryObject<Item> SAPPHIRE_GEM = ITEMS.register("sapphire_gem",
             () -> new Item(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<GemItemBase> CUT_SAPPHIRE_GEM = ITEMS.register("cut_sapphire_gem",
+            () -> new GemItemBase(Rarity.RARE, SAPPHIRE_GEM, 3, 2, 3));
+
     public static final RegistryObject<Item> AMETHYST_GEM = ITEMS.register("amethyst_gem",
             () -> new Item(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<GemItemBase> CUT_AMETHYST_GEM = ITEMS.register("cut_amethyst_gem",
+            () -> new GemItemBase(Rarity.RARE, AMETHYST_GEM, 4, 4, 2));
+
     public static final RegistryObject<Item> PRISMATIC_GEM = ITEMS.register("prismatic_gem",
             () -> new Item(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).rarity(Rarity.EPIC)));
-
-    public static final RegistryObject<GemItemBase> CUT_EMERALD_GEM = ITEMS.register("cut_emerald_gem",
-            () -> new GemItemBase(1, Rarity.COMMON, EMERALD_GEM, 1, 0, 1));
-    public static final RegistryObject<GemItemBase> CUT_RUBY_GEM = ITEMS.register("cut_ruby_gem",
-            () -> new GemItemBase(2, Rarity.UNCOMMON, RUBY_GEM, 2, 1, 2));
-    public static final RegistryObject<GemItemBase> CUT_SAPPHIRE_GEM = ITEMS.register("cut_sapphire_gem",
-            () -> new GemItemBase(3, Rarity.RARE, SAPPHIRE_GEM, 3, 2, 3));
-    public static final RegistryObject<GemItemBase> CUT_AMETHYST_GEM = ITEMS.register("cut_amethyst_gem",
-            () -> new GemItemBase(4, Rarity.RARE, AMETHYST_GEM, 4, 4, 2));
     public static final RegistryObject<GemItemBase> CUT_PRISMATIC_GEM = ITEMS.register("cut_prismatic_gem",
-            () -> new GemItemBase(5, Rarity.EPIC, PRISMATIC_GEM, 8, 3, 2));
+            () -> new GemItemBase(Rarity.EPIC, PRISMATIC_GEM, 8, 3, 2));
+
+    public static final RegistryObject<Item> JUNGLE_GEM = ITEMS.register("jungle_gem",
+            () -> new Item(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<GemItemBase> CUT_JUNGLE_GEM = ITEMS.register("cut_jungle_gem",
+            () -> new GemItemBase(Rarity.RARE, JUNGLE_GEM, 2, 0, 2));
 
     public static void registerSimpleItemModels(JewelerItemBaseModelProvider provider) {
         provider.basicItem(COPPER_RING_MOULD.get());

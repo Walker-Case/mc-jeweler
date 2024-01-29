@@ -11,6 +11,9 @@ import com.walkercase.jeweler.effect.neutral.UndyingJewelryEffect;
 import com.walkercase.jeweler.effect.neutral.resist.*;
 import com.walkercase.jeweler.effect.positive.*;
 import com.walkercase.jeweler.effect.positive.potion.*;
+import com.walkercase.jeweler.effect.positive.summon.CatSummonEffect;
+import com.walkercase.jeweler.effect.positive.summon.SpectralSkeletonSummonEffect;
+import com.walkercase.jeweler.effect.positive.summon.WolfSummonEffect;
 import com.walkercase.jeweler.item.ItemStackHelper;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.ChatFormatting;
@@ -23,9 +26,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.CraftingMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.CraftingTableBlock;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import org.jetbrains.annotations.ApiStatus;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -63,7 +64,6 @@ public class EffectAPI {
     public static final KnockbackResistJewelryEffect KNOCKBACK_RESIST_JEWELRY_EFFECT = new KnockbackResistJewelryEffect();
     public static final JumpStrengthEffect JUMP_STRENGTH_EFFECT = new JumpStrengthEffect();
     public static final IgniteJewelryEffect IGNITE_JEWELRY_EFFECT = new IgniteJewelryEffect();
-    public static final SkeletonSpritJewelryEffect SKELETON_SPIRIT_JEWELRY_EFFECT = new SkeletonSpritJewelryEffect();
     public static final SavingJewelryEffect SAVING_JEWELRY_EFFECT = new SavingJewelryEffect();
     public static final RegenerationJeweleryEffect REGENERATION_JEWELERY_EFFECT = new RegenerationJeweleryEffect();
     public static final WaterBreathingJeweleryEffect WATER_BREATHING_JEWELERY_EFFECT = new WaterBreathingJeweleryEffect();
@@ -82,6 +82,9 @@ public class EffectAPI {
     public static final ExcavationEffect EXCAVATION_EFFECT = new ExcavationEffect();
     public static final ToolRepairEffect TOOL_REPAIR_EFFECT = new ToolRepairEffect();
     public static final ArmorRepairEffect ARMOR_REPAIR_EFFECT = new ArmorRepairEffect();
+    public static final WolfSummonEffect WOLF_SUMMON_EFFECT = new WolfSummonEffect();
+    public static final CatSummonEffect CAT_SUMMON_EFFECT = new CatSummonEffect();
+    public static final SpectralSkeletonSummonEffect SPECTRAL_SKELETON_SUMMON_EFFECT = new SpectralSkeletonSummonEffect();
 
     /*
      * NEUTRAL
@@ -140,7 +143,6 @@ public class EffectAPI {
         register(KNOCKBACK_RESIST_JEWELRY_EFFECT);
         register(JUMP_STRENGTH_EFFECT);
         register(IGNITE_JEWELRY_EFFECT);
-        register(SKELETON_SPIRIT_JEWELRY_EFFECT);
         register(DOUBLE_CRAFTING_EFFECT);
         register(SAVING_JEWELRY_EFFECT);
         register(REGENERATION_JEWELERY_EFFECT);
@@ -160,6 +162,9 @@ public class EffectAPI {
         register(EXCAVATION_EFFECT);
         register(TOOL_REPAIR_EFFECT);
         register(ARMOR_REPAIR_EFFECT);
+        register(WOLF_SUMMON_EFFECT);
+        register(CAT_SUMMON_EFFECT);
+        register(SPECTRAL_SKELETON_SUMMON_EFFECT);
 
         /*
          * NEUTRAL

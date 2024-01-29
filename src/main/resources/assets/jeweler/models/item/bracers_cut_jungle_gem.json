@@ -1,0 +1,8 @@
+{
+  "parent": "jeweler:item/bracers_cut_emerald_gem",
+  "textures": {
+    "0": "jeweler:item/copper_bracers",
+    "1": "jeweler:item/amulet_cut_jungle_gem",
+    "particle": "jeweler:item/amulet_cut_jungle_gem"
+  }
+}

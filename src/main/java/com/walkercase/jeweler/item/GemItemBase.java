@@ -23,6 +23,12 @@ public class GemItemBase extends Item {
      */
     public final int index;
 
+    private static int lastIndex = 1;
+
+    private static synchronized int getNextIndex(){
+        return lastIndex ++;
+    }
+
     /**
      * The uncut gem used to make this gem.
      */
@@ -33,13 +39,12 @@ public class GemItemBase extends Item {
 
     /**
      * Create a new gem!
-     * @param index The texture index to use for jewelry.
      * @param rarity The item rarity.
      * @param rawGem The uncut gem that can be used to make this.
      */
-    public GemItemBase(int index, Rarity rarity, RegistryObject<Item> rawGem, int positiveRolls, int neutralRolls, int negativeRolls) {
+    public GemItemBase(Rarity rarity, RegistryObject<Item> rawGem, int positiveRolls, int neutralRolls, int negativeRolls) {
         super(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().rarity(rarity).stacksTo(1));
-        this.index = index;
+        this.index = getNextIndex();
         this.rawGem = rawGem;
         this.positiveRolls = positiveRolls;
         this.neutralRolls = neutralRolls;

@@ -5,7 +5,6 @@ import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.AssetAPI;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
-import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -15,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;

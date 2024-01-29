@@ -6,29 +6,13 @@ import com.walkercase.jeweler.api.unique.drops.EntityDrop;
 import com.walkercase.jeweler.api.unique.drops.StruckByLightningDrop;
 import com.walkercase.jeweler.api.unique.drops.UniqueDrop;
 import com.walkercase.jeweler.effect.IJewelryEffect;
-import com.walkercase.jeweler.item.GemItemBase;
-import com.walkercase.jeweler.item.ItemStackHelper;
 import com.walkercase.jeweler.item.JewelerItems;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Random;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class UniqueDropsAPI {
 

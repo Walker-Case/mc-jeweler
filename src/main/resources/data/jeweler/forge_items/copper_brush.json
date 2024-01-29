@@ -1,3 +1,9 @@
 {
-  "max_damage": 2
+  "max_damage": 2,
+  "entries": {
+    "minecraft:obsidian": {
+      "effect": "jeweler:unbreaking",
+      "value": 1
+    }
+  }
 }
