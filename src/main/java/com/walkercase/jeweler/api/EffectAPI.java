@@ -541,6 +541,28 @@ public class EffectAPI {
             }
         }
 
+        static class TickDelay{
+            int current;
+            long lastTime;
+
+            public TickDelay(int current, long lastTime){
+                this.current = current;
+                this.lastTime = lastTime;
+            }
+        }
+        private static final HashMap<UUID, TickDelay> curioTickDelay = new HashMap<UUID, TickDelay>();
+        private static long lastCleanup = 0;
+
+        private static synchronized void cleanupTimers(){
+            lastCleanup = System.currentTimeMillis();
+            ArrayList<UUID> clean = new ArrayList<>();
+            curioTickDelay.entrySet().stream().filter(entry-> entry.getValue().lastTime + 50000 < System.currentTimeMillis()).forEach(e->{
+                clean.add(e.getKey());
+            });
+
+            clean.forEach(curioTickDelay::remove);
+        }
+
         /**
          * Called to execute the IJewelryEffect::damageCurioTick and IJeweleryEffect::curioTick events.
          * @param slotContext
@@ -549,11 +571,19 @@ public class EffectAPI {
         public static boolean onCurioTick(SlotContext slotContext, ItemStack stack) {
             AtomicBoolean b = new AtomicBoolean(true);
             if (stack.getItem() instanceof JewelerItemBase item) {
-
                 CompoundTag tag = ItemStackHelper.getModNBT(stack);
+                UUID uuid = ItemStackHelper.getUUID(stack);
 
-                if(doAfterXCalls(tag, "jewelerTickDamageDelay", JEWELERY_DAMAGE_TICK_DELAY)){
+                if(!curioTickDelay.containsKey(uuid))
+                    curioTickDelay.put(uuid, new TickDelay(0, System.currentTimeMillis()));
+
+                curioTickDelay.get(uuid).current ++;
+
+                if(curioTickDelay.get(uuid).current >= JEWELERY_DAMAGE_TICK_DELAY){
                     b.set(false);
+
+                    curioTickDelay.get(uuid).current = 0;
+                    curioTickDelay.get(uuid).lastTime = System.currentTimeMillis();
 
                     Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff -> {
                         if (eff.damageCurioTick(slotContext, stack, item))
@@ -564,6 +594,9 @@ public class EffectAPI {
                 Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
                         eff.curioTick(slotContext, stack, item));
             }
+
+            if(lastCleanup + 25000 < System.currentTimeMillis())
+                cleanupTimers();
             return b.get();
         }
 
@@ -575,8 +608,10 @@ public class EffectAPI {
          */
         public static void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
             if (stack.getItem() instanceof JewelerItemBase item) {
-                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
-                        eff.onEquip(slotContext, prevStack, stack, item));
+                if(!ItemStackHelper.equalsIgnoreDamage(prevStack, stack)){
+                    Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
+                            eff.onEquip(slotContext, prevStack, stack, item));
+                }
             }
         }
 
@@ -588,8 +623,10 @@ public class EffectAPI {
          */
         public static void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
             if (stack.getItem() instanceof JewelerItemBase item) {
-                Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
-                        eff.onUnequip(slotContext, newStack, stack, item));
+                if(!ItemStackHelper.equalsIgnoreDamage(newStack, stack)){
+                    Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
+                            eff.onUnequip(slotContext, newStack, stack, item));
+                }
             }
         }
     }
