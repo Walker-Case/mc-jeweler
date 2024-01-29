@@ -38,19 +38,9 @@ import java.util.Arrays;
 @Mod(JewelerMain.MODID)
 @Mod.EventBusSubscriber
 public class JewelerMain {
-    // Define mod id in a common place for everything to reference
     public static final String MODID = "jeweler";
-    // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
-
     public static final PlatformAPI PLATFORM_UTIL = new MC19();
-
-    // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
-    //public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-
-    // Creates a new Block with the id "examplemod:example_block", combining the namespace and path
-    // public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
-    // Creates a new BlockItem with the id "examplemod:example_block", combining the namespace and path
 
 
     public JewelerMain() {

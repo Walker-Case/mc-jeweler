@@ -194,6 +194,7 @@ public class SpectralSkeleton extends TamableAnimal implements NeutralMob, Range
         this.entityData.set(DATA_REMAINING_ANGER_TIME, p_21673_);
     }
 
+    //Disable drops.
     @Override
     public java.util.Collection<ItemEntity> captureDrops() {
         return null;
@@ -202,7 +203,7 @@ public class SpectralSkeleton extends TamableAnimal implements NeutralMob, Range
     @Nullable
     @Override
     public UUID getPersistentAngerTarget() {
-        return null;
+        return this.persistentAngerTarget;
     }
 
     @Override

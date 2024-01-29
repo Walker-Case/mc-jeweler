@@ -58,15 +58,27 @@ public class SpectralSkeletonSummonEffect implements ISummonEffect {
     @Override
     public void doPostEntitySpawn(Level level, LivingEntity entity, ItemStack stack) {
         int effLevel = EffectAPI.getEffectValue(this, stack);
-        ItemStack bow = new ItemStack(Items.BOW);
-        if(effLevel >= 2)
-            bow.enchant(Enchantments.POWER_ARROWS, 1);
-        if(effLevel >= 5)
-            bow.enchant(Enchantments.FLAMING_ARROWS, 1);
-        if(effLevel >= 7)
-            bow.enchant(Enchantments.PUNCH_ARROWS, 1);
+        ItemStack itemStack;
+        if(RANDOM.nextBoolean()){
+            itemStack = new ItemStack(Items.BOW);
+            if(effLevel >= 2)
+                itemStack.enchant(Enchantments.POWER_ARROWS, 1);
+            if(effLevel >= 5)
+                itemStack.enchant(Enchantments.FLAMING_ARROWS, 1);
+            if(effLevel >= 7)
+                itemStack.enchant(Enchantments.PUNCH_ARROWS, 1);
 
-        entity.setItemSlot(EquipmentSlot.MAINHAND, bow);
+        }else{
+            itemStack = new ItemStack(effLevel > 5 ? Items.DIAMOND_SWORD : Items.IRON_SWORD);
+            if(effLevel >= 2)
+                itemStack.enchant(Enchantments.SHARPNESS, 1);
+            if(effLevel >= 5)
+                itemStack.enchant(Enchantments.FIRE_ASPECT, 1);
+            if(effLevel >= 7)
+                itemStack.enchant(Enchantments.KNOCKBACK, 1);
+        }
+
+        entity.setItemSlot(EquipmentSlot.MAINHAND, itemStack);
     }
 
     @Override
