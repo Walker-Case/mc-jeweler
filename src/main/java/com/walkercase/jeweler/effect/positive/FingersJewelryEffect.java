@@ -5,10 +5,13 @@ import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 
@@ -28,6 +31,12 @@ public class FingersJewelryEffect implements IJewelryEffect {
     @Override
     public ResourceLocation effectID() {
         return new ResourceLocation(JewelerMain.MODID, "fingers");
+    }
+
+    public static final DustParticleOptions PARTICLE = new DustParticleOptions(Vec3.fromRGB24(0x616919).toVector3f(), 1.0F);
+
+    public ParticleOptions getEquipParticle(){
+        return PARTICLE;
     }
 
     @Override

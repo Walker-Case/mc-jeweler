@@ -15,7 +15,6 @@ public class SpectralSkeletonRenderer extends HumanoidMobRenderer<SpectralSkelet
 
     public SpectralSkeletonRenderer(EntityRendererProvider.Context p_174452_) {
         super(p_174452_, new SkeletonModel<>(p_174452_.bakeLayer(ModelLayers.SKELETON)), 0.5F);
-
     }
 
     @Override

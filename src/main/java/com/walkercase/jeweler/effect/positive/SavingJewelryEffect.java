@@ -3,6 +3,9 @@ package com.walkercase.jeweler.effect.positive;
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -21,6 +24,10 @@ public class SavingJewelryEffect implements IJewelryEffect {
     @Override
     public ResourceLocation effectID() {
         return new ResourceLocation(JewelerMain.MODID, "saving");
+    }
+
+    public ParticleOptions getEquipParticle(){
+        return DustParticleOptions.REDSTONE;
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -31,6 +32,10 @@ public class BreserkerJewelryEffect implements IJewelryEffect {
     @Override
     public ResourceLocation effectID() {
         return new ResourceLocation(JewelerMain.MODID, "breserker");
+    }
+
+    public ParticleOptions getEquipParticle(){
+        return BloodlustJeweleryEffect.PARTICLE;
     }
 
     @Override

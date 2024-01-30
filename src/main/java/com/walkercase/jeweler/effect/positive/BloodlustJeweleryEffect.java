@@ -4,10 +4,14 @@ import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import org.joml.Vector3f;
 
 public class BloodlustJeweleryEffect implements IJewelryEffect {
 
@@ -23,6 +27,12 @@ public class BloodlustJeweleryEffect implements IJewelryEffect {
     @Override
     public ResourceLocation effectID() {
         return new ResourceLocation(JewelerMain.MODID, "bloodlust");
+    }
+
+    public static final DustParticleOptions PARTICLE = new DustParticleOptions(Vec3.fromRGB24(0xE844C7).toVector3f(), 1.0F);
+
+    public ParticleOptions getEquipParticle(){
+        return PARTICLE;
     }
 
     @Override

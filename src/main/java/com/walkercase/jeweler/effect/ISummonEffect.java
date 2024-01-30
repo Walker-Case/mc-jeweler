@@ -78,7 +78,7 @@ public interface ISummonEffect extends IJewelryEffect {
 
 
                 LivingEntity livingEntity = createEntity(level, player, stack);
-                summonParticleEffect(level, livingEntity);
+                this.playParticles(level, livingEntity, ParticleTypes.PORTAL, 50, 0.5d);
                 EffectAPI.getEffectsDataNBT(stack, this).putInt("pet", livingEntity.getId());
                 livingEntity.getPersistentData().putBoolean("jewelerSummon", true);
 
@@ -105,20 +105,6 @@ public interface ISummonEffect extends IJewelryEffect {
     void playSummonSounds(LivingEntity entity);
 
     /**
-     * Called to do the summon particle effects.
-     * @param level
-     * @param entity
-     */
-    default void summonParticleEffect(Level level, LivingEntity entity){
-        for(int i = 0; i < 50; ++i) {
-            double d0 = RANDOM.nextGaussian() * 0.5D;
-            double d1 = RANDOM.nextGaussian() * 0.5D;
-            double d2 = RANDOM.nextGaussian() * 0.5D;
-            ((ServerLevel)level).sendParticles(ParticleTypes.PORTAL, entity.getRandomX(1.0d), entity.getY(), entity.getRandomZ(1.0d), 0, 5, d0, d1, d2);
-        }
-    }
-
-    /**
      * Called when the entity is going to be created.
      * @return
      */
@@ -136,6 +122,11 @@ public interface ISummonEffect extends IJewelryEffect {
         }
     }
 
+    /**
+     * Called to kill this effects summon.
+     * @param player
+     * @param stack
+     */
     default void killPet(Player player, ItemStack stack){
         Level level = player.level;
         if (!level.isClientSide) {
@@ -145,12 +136,7 @@ public interface ISummonEffect extends IJewelryEffect {
                 if (ent instanceof LivingEntity living) {
                     if (!living.isDeadOrDying()) {
                         living.playSound(SoundEvents.PORTAL_TRIGGER);
-                        for(int i = 0; i < 20; ++i) {
-                            double d0 = RANDOM.nextGaussian() * 0.5D;
-                            double d1 = RANDOM.nextGaussian() * 0.5D;
-                            double d2 = RANDOM.nextGaussian() * 0.5D;
-                            ((ServerLevel)level).sendParticles(ParticleTypes.SMOKE, living.getRandomX(1.0d), living.getY(), living.getRandomZ(1.0d), 0, 5, d0, d1, d2);
-                        }
+                        this.playParticles(level, living, ParticleTypes.SMOKE, 20, 0.5d);
                         living.setHealth(0);
                     }
                 }

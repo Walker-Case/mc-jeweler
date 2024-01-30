@@ -2,6 +2,7 @@ package com.walkercase.jeweler.effect;
 
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
+import net.minecraft.core.particles.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -24,6 +25,10 @@ public interface INeutralResistEffect extends IJewelryEffect {
      * @return
      */
     ResourceLocation getLessResistEntity();
+
+    default ParticleOptions getEquipParticle(){
+        return ParticleTypes.SMOKE;
+    }
 
     @Override
     default void onHurtEvent(LivingHurtEvent e, ItemStack is, JewelerItemBase base){

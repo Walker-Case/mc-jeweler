@@ -385,5 +385,14 @@
   "jeweler.unique.xp_gain_1": "Bountiful Focus",
   "jeweler.unique.xp_gain_2": "Strong Bountiful Focus",
   "jeweler.unique.xp_reduction": "Deficient Focus",
-  "jeweler.unique.peace_ring": "Ring of Kinship"
+  "jeweler.unique.peace_ring": "Ring of Kinship",
+  "jeweler.unique.cat_summon_0": "Weak Summon Cat Focus",
+  "jeweler.unique.cat_summon_1": "Summon Cat Focus",
+  "jeweler.unique.cat_summon_2": "Strong Summon Cat Focus",
+  "jeweler.unique.spectral_skeleton_summon_0": "Weak Summon Skeleton Focus",
+  "jeweler.unique.spectral_skeleton_summon_1": "Summon Skeleton Focus",
+  "jeweler.unique.spectral_skeleton_summon_2": "Strong Summon Skeleton Focus",
+  "jeweler.unique.wolf_summon_0": "Weak Summon Wolf Focus",
+  "jeweler.unique.wolf_summon_1": "Summon Wolf Focus",
+  "jeweler.unique.wolf_summon_2": "Strong Summon Wolf Focus"
 }

@@ -4,12 +4,16 @@ import com.google.common.collect.Multimap;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -26,6 +30,9 @@ import java.util.stream.Stream;
  */
 public interface IJewelryEffect {
 
+    /**
+     * Singleton random instance.
+     */
     Random RANDOM = new Random();
 
     /**
@@ -161,8 +168,51 @@ public interface IJewelryEffect {
      * @param stack
      * @param item
      */
-    default void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack, JewelerItemBase item){}
+    default void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack, JewelerItemBase item){
+        LivingEntity living = slotContext.entity();
+        Level level = living.level;
+        ParticleOptions particleType = getEquipParticle();
 
+        playParticles(level, living, particleType, 20, 0.5d);
+    }
+
+    /**
+     * Called to make a "poof" of the given particles.
+     * @param level
+     * @param living
+     * @param particle
+     * @param count
+     * @param random
+     */
+    default <T extends ParticleOptions> void playParticles(Level level, LivingEntity living, T particle, int count, double random){
+        if(particle != null){
+            if(!level.isClientSide){
+                for(int i = 0; i < count; ++i) {
+                    double d0 = RANDOM.nextGaussian() * random;
+                    double d1 = RANDOM.nextGaussian() * random;
+                    double d2 = RANDOM.nextGaussian() * random;
+                    ((ServerLevel)level).sendParticles(particle, living.getRandomX(1.0d), living.getRandomY(), living.getRandomZ(1.0d), 0, 5, d0, d1, d2);
+                }
+            }
+        }
+    }
+
+    /**
+     * Returns the particles to play when jewelery with this effect is equipped.
+     *
+     * @return
+     */
+    default ParticleOptions getEquipParticle(){
+        return null;
+    }
+
+    /**
+     * Called when this item is unequipped.
+     * @param slotContext
+     * @param newStack
+     * @param stack
+     * @param item
+     */
     default void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack, JewelerItemBase item){}
 
     /**
@@ -192,6 +242,7 @@ public interface IJewelryEffect {
         //For some reason this won't fire properly until after we damage the item.
         if(is.getDamageValue() + newAmount >= is.getMaxDamage()) {
             EffectAPI.Events.curioBreak(player, is);
+            player.playSound(SoundEvents.ITEM_BREAK);
             is.setCount(0);
         }
     }
