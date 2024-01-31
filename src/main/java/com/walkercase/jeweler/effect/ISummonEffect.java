@@ -101,8 +101,8 @@ public interface ISummonEffect extends IJewelryEffect {
                 });
 
                 int lastSummon = nbt.getInt("lastSummon");
-                if(pets.size() < getMaxSummons(stack) && lastSummon > 60){
-                    nbt.putInt("lastSummon", 0);
+                if(pets.size() < getMaxSummons(stack) && lastSummon <= 0){
+                    nbt.putInt("lastSummon", 120);
                     LivingEntity livingEntity = createEntity(level, player, stack);
                     this.playParticles(level, livingEntity, ParticleTypes.PORTAL, 50, 0.5d);
                     livingEntity.setHealth(livingEntity.getMaxHealth());
@@ -122,8 +122,8 @@ public interface ISummonEffect extends IJewelryEffect {
 
                     IJewelryEffect.damageStack(player, stack, RANDOM, getSummonDamage(stack));
                 }
-                if(lastSummon <= 61){
-                    nbt.putInt("lastSummon", lastSummon + 1);
+                if(lastSummon >= 0){
+                    nbt.putInt("lastSummon", lastSummon - 1);
                 }
 
                 if(dirty.get()){

@@ -33,6 +33,11 @@
         "chance": 0.2
       },
       {
+        "id": "jeweler:spectral_blaze_summon",
+        "maxLevel": 10,
+        "chance": 0.02
+      },
+      {
         "id": "jeweler:unbreaking",
         "maxLevel": 5,
         "chance": 0.4

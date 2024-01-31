@@ -88,6 +88,12 @@ public class SpectralSkeletonSummonEffect implements ISummonEffect {
     }
 
     @Override
+    public int getMaxSummons(ItemStack is){
+        int effLevel = EffectAPI.getEffectValue(this, is);
+        return effLevel >= 5 ? 2 : 1;
+    }
+
+    @Override
     public LivingEntity createEntity(Level level, Player player, ItemStack stack) {
         int effLevel = EffectAPI.getEffectValue(this, stack);
 
