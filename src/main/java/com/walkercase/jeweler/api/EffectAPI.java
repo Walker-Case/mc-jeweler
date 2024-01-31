@@ -2,6 +2,7 @@ package com.walkercase.jeweler.api;
 
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import com.google.gson.JsonObject;
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.exception.DuplicateEntryException;
 import com.walkercase.jeweler.effect.IJewelryEffect;
@@ -15,7 +16,6 @@ import com.walkercase.jeweler.effect.positive.summon.*;
 import com.walkercase.jeweler.item.ItemStackHelper;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -442,6 +442,7 @@ public class EffectAPI {
      */
     private static MutableComponent getEffectComponent(IJewelryEffect effect, int level) {
         ResourceLocation location = effect.effectID();
+        JsonObject i18n = AssetAPI.readLang(JewelerMain.MODID, "en_us");
 
         ChatFormatting effectFormat = effect.getEffectType() ==
                 IJewelryEffect.EffectType.POSITIVE ? ChatFormatting.GREEN
@@ -469,7 +470,7 @@ public class EffectAPI {
 
             mutablecomponent.append(lore0);
 
-            MutableComponent but = JewelerMain.PLATFORM_UTIL.getTranslatedComponent(I18n.get("literal.but"));
+            MutableComponent but = JewelerMain.PLATFORM_UTIL.getTranslatedComponent(i18n.has("literal.but") ? i18n.get("literal.but").getAsString() : " BUT ");
             but.withStyle(ChatFormatting.RED);
 
             mutablecomponent.append(but);

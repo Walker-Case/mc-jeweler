@@ -1,7 +1,9 @@
 package com.walkercase.jeweler.api;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.walkercase.jeweler.JewelerMain;
 import net.minecraft.resources.ResourceLocation;
 
 import java.io.BufferedReader;
@@ -84,6 +86,10 @@ public class AssetAPI {
      */
     public static JsonElement readData(ResourceLocation location) {
         return read("data/" + location.getNamespace() + "/" + location.getPath() + ".json");
+    }
+
+    public static JsonObject readLang(String modid, String lang){
+        return AssetAPI.readAsset(new ResourceLocation(modid, "lang/" + lang)).getAsJsonObject();
     }
 
     /**

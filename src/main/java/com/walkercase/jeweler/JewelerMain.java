@@ -84,7 +84,7 @@ public class JewelerMain {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            JewelerItems.setup();
+            DistExecutor.safeRunWhenOn(Dist.CLIENT, ()->JewelerItems::setup);
             UniqueDropsAPI.generateUniqueDrops();
             UniqueDropsAPI.registerUniqueDropEvents(FMLJavaModLoadingContext.get().getModEventBus(), MinecraftForge.EVENT_BUS);
         });

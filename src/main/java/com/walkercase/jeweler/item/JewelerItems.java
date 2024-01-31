@@ -16,7 +16,6 @@ import com.walkercase.jeweler.item.tool.BrushItemBase;
 import com.walkercase.jeweler.item.tool.ChiselItemBase;
 import com.walkercase.jeweler.item.tool.mould.*;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -274,9 +273,11 @@ public class JewelerItems {
                         String I18nPrefix = "effect." + eff.effectID().getNamespace() + "." + eff.effectID().getPath() + ".displayPrefix";
                         String I18nSuffix = "effect." + eff.effectID().getNamespace() + "." + eff.effectID().getPath() + ".displaySuffix";
 
-                        MutableComponent mutablecomponent = JewelerMain.PLATFORM_UTIL.getTranslatedComponent(I18n.exists(I18nPrefix) ? I18nPrefix : "");
+                        JsonObject i18n = AssetAPI.readLang(JewelerMain.MODID, "en_us");
+
+                        MutableComponent mutablecomponent = JewelerMain.PLATFORM_UTIL.getTranslatedComponent(i18n.has(I18nPrefix) ? i18n.get(I18nPrefix).getAsString() : "");
                         mutablecomponent.append(JewelerMain.PLATFORM_UTIL.getTranslatedComponent(result.getDisplayName().plainCopy().getString().replace("[", "").replace("]", "")));
-                        mutablecomponent.append(JewelerMain.PLATFORM_UTIL.getTranslatedComponent(I18n.exists(I18nSuffix) ? I18nSuffix : ""));
+                        mutablecomponent.append(JewelerMain.PLATFORM_UTIL.getTranslatedComponent(i18n.has(I18nSuffix) ? i18n.get(I18nSuffix).getAsString() : ""));
                         mutablecomponent.withStyle(eff.getEffectRarity().chatFormatting);
 
                         result.setHoverName(mutablecomponent);
