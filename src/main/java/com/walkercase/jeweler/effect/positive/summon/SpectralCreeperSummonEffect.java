@@ -50,8 +50,8 @@ public class SpectralCreeperSummonEffect implements ISummonEffect {
 
     @Override
     public void playSummonSounds(LivingEntity entity) {
-        entity.playSound(SoundEvents.CREEPER_PRIMED);
-        entity.playSound(SoundEvents.PORTAL_TRAVEL);
+        entity.playSound(SoundEvents.CREEPER_PRIMED, 1, 1);
+        entity.playSound(SoundEvents.PORTAL_TRAVEL, 1, 1);
     }
 
     public int getSummonDamage(ItemStack is){

@@ -3,7 +3,6 @@ package com.walkercase.jeweler.item.tool.mould;
 import com.walkercase.jeweler.JewelerMain;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -18,7 +17,7 @@ public class AmuletMould extends MouldItemBase {
 
     @Override
     public void createRecipe(Consumer<FinishedRecipe> writer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, this)
+        ShapedRecipeBuilder.shaped(this)
                 .pattern("b b")
                 .pattern("b b")
                 .pattern("bbb")

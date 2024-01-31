@@ -242,7 +242,7 @@ public interface IJewelryEffect {
         //For some reason this won't fire properly until after we damage the item.
         if(is.getDamageValue() + newAmount >= is.getMaxDamage()) {
             EffectAPI.Events.curioBreak(player, is);
-            player.playSound(SoundEvents.ITEM_BREAK);
+            player.playSound(SoundEvents.ITEM_BREAK, 1, 1);
             is.setCount(0);
         }
     }

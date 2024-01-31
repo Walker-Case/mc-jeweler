@@ -71,8 +71,8 @@ public class SpectralZombieSummonEffect implements ISummonEffect {
 
     @Override
     public void playSummonSounds(LivingEntity entity) {
-        entity.playSound(SoundEvents.ZOMBIE_INFECT);
-        entity.playSound(SoundEvents.PORTAL_TRAVEL);
+        entity.playSound(SoundEvents.ZOMBIE_INFECT, 1, 1);
+        entity.playSound(SoundEvents.PORTAL_TRAVEL, 1, 1);
     }
 
     @Override

@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ShovelItem;
-import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -25,7 +25,7 @@ public class BlockHelper {
      */
     public static class LootHelper{
         public static void blockBreakEvent(BlockEvent.BreakEvent event){
-            if(!event.getLevel().isClientSide()){
+            if(!event.getWorld().isClientSide()){
                 LootAPI.Block.BLOCK_LOOT_MODIIFERS.forEach(elm->{
                     JsonArray entries = elm.getAsJsonObject().getAsJsonArray("entries");
                     entries.forEach(entry->{
@@ -49,7 +49,7 @@ public class BlockHelper {
 
         @SubscribeEvent
         public static void blockBreakEvent(BlockEvent.BreakEvent e) {
-            if (!e.getLevel().isClientSide()) {
+            if (!e.getWorld().isClientSide()) {
                 if (e.getState().getBlock() instanceof GeodeBlock geode) {
                     ResourceLocation blockKey = ForgeRegistries.BLOCKS.getKey(e.getState().getBlock());
 
@@ -58,7 +58,7 @@ public class BlockHelper {
 
                     if (currentValue == 0) {
                         if (mainHand.getItem() instanceof PickaxeItem) {
-                            e.getLevel().setBlock(e.getPos(), geode.defaultBlockState().setValue(GeodeBlock.TEXTURE_INDEX, currentValue + 1), 3);
+                            e.getWorld().setBlock(e.getPos(), geode.defaultBlockState().setValue(GeodeBlock.TEXTURE_INDEX, currentValue + 1), 3);
                             drop(e.getPlayer(), e.getPos(), e.getState(), new ResourceLocation(blockKey.getNamespace(), "geode/" + blockKey.getPath() + "_0"));
                             IJewelryEffect.damageStack(e.getPlayer(), mainHand, IJewelryEffect.RANDOM, 1);
                             e.setCanceled(true);
@@ -67,14 +67,14 @@ public class BlockHelper {
                         if (mainHand.getItem() instanceof ShovelItem) {
                             IJewelryEffect.damageStack(e.getPlayer(), mainHand, IJewelryEffect.RANDOM, 1);
                             drop(e.getPlayer(), e.getPos(), e.getState(), new ResourceLocation(blockKey.getNamespace(), "geode/" + blockKey.getPath() + "_1"));
-                            e.getLevel().setBlock(e.getPos(), geode.defaultBlockState().setValue(GeodeBlock.TEXTURE_INDEX, currentValue + 1), 3);
+                            e.getWorld().setBlock(e.getPos(), geode.defaultBlockState().setValue(GeodeBlock.TEXTURE_INDEX, currentValue + 1), 3);
                             e.setCanceled(true);
                         }
                     } else if (currentValue == 2) {
                         if (mainHand.getItem() instanceof ChiselItemBase) {
                             IJewelryEffect.damageStack(e.getPlayer(), mainHand, IJewelryEffect.RANDOM, 1);
                             drop(e.getPlayer(), e.getPos(), e.getState(), new ResourceLocation(blockKey.getNamespace(), "geode/" + blockKey.getPath() + "_2"));
-                            e.getLevel().setBlock(e.getPos(), geode.defaultBlockState().setValue(GeodeBlock.TEXTURE_INDEX, currentValue + 1), 3);
+                            e.getWorld().setBlock(e.getPos(), geode.defaultBlockState().setValue(GeodeBlock.TEXTURE_INDEX, currentValue + 1), 3);
                             e.setCanceled(true);
                         }
                     } else if (currentValue == 3) {

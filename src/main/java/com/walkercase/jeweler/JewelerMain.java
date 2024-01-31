@@ -6,13 +6,11 @@ import com.walkercase.jeweler.api.unique.UniqueDropsAPI;
 import com.walkercase.jeweler.block.JewelerBlocks;
 import com.walkercase.jeweler.entity.JewelerEntities;
 import com.walkercase.jeweler.event.BlockHelper;
-import com.walkercase.jeweler.generated.*;
 import com.walkercase.jeweler.item.JewelerItems;
-import com.walkercase.jeweler.platform.MC19;
+import com.walkercase.jeweler.platform.MC18;
 import com.walkercase.jeweler.platform.PlatformAPI;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -23,6 +21,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.slf4j.Logger;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 import top.theillusivec4.curios.api.SlotTypePreset;
@@ -33,7 +32,7 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 public class JewelerMain {
     public static final String MODID = "jeweler";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public static final PlatformAPI PLATFORM_UTIL = new MC19();
+    public static final PlatformAPI PLATFORM_UTIL = new MC18();
 
 
     public JewelerMain() {
@@ -65,11 +64,6 @@ public class JewelerMain {
     }
 
     private void gatherDataEvent(GatherDataEvent event) {
-        PLATFORM_UTIL.addProvider(event.getGenerator(), new SimpleItemModelProvider(event.getGenerator(), JewelerMain.MODID + ".simplejeweleritem", event.getExistingFileHelper()));
-        PLATFORM_UTIL.addProvider(event.getGenerator(), new JewelerItemRecipeProvider(event.getGenerator()));
-        PLATFORM_UTIL.addProvider(event.getGenerator(), new UniqueLanguageProvider(event.getGenerator().getPackOutput(), JewelerMain.MODID, "en_us"));
-        PLATFORM_UTIL.addProvider(event.getGenerator(), new PatchouliGenerator(MODID, "en_us", event.getGenerator().getPackOutput(), event.getExistingFileHelper()));
-        PLATFORM_UTIL.addProvider(event.getGenerator(), new JewelerItemBaseModelProvider(event.getGenerator(), JewelerMain.MODID + ".jeweleritem", event.getExistingFileHelper()));
     }
 
     public static void serverShutdownEvent(ServerStoppingEvent event){

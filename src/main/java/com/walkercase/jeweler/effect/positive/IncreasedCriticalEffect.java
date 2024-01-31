@@ -34,7 +34,7 @@ public class IncreasedCriticalEffect implements IJewelryEffect {
     }
 
     public void onCritical(CriticalHitEvent e) {
-        this.getEquippedCuriosWithEffect(e.getEntity()).forEach(is->{
+        this.getEquippedCuriosWithEffect(e.getPlayer()).forEach(is->{
             int level = EffectAPI.getEffectValue(this, is);
             if(level > 0){
                 e.setDamageModifier((int)(e.getDamageModifier() * (1 + ((float)Math.max(level, 10) / 10))));

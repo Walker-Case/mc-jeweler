@@ -7,6 +7,7 @@ import com.walkercase.jeweler.item.ItemStackHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -78,7 +79,7 @@ public class ItemStackBuilder{
      * @return
      */
     public ItemStackBuilder displayText(String i18n, ChatFormatting... formatting){
-        MutableComponent isName = Component.translatable(i18n);
+        MutableComponent isName = new TranslatableComponent(i18n);
         isName.withStyle(ChatFormatting.ITALIC);
         isName.withStyle(ChatFormatting.GOLD);
         this.itemStack.setHoverName(isName);

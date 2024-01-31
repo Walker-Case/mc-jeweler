@@ -15,6 +15,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.SmallFireball;
@@ -98,7 +99,7 @@ public class SpectralBlaze extends SpectralEntity {
         --this.nextHeightOffsetChangeTick;
         if (this.nextHeightOffsetChangeTick <= 0) {
             this.nextHeightOffsetChangeTick = 100;
-            this.allowedHeightOffset = (float)this.random.triangle(0.5D, 6.891D);
+            this.allowedHeightOffset = 0.5F + (float)this.random.nextGaussian() * 3.0F;
         }
 
         LivingEntity livingentity = this.getTarget();
@@ -205,7 +206,7 @@ public class SpectralBlaze extends SpectralEntity {
                                 this.blaze.level.levelEvent((Player) null, 1018, this.blaze.blockPosition(), 0);
                             }
 
-                            SmallFireball smallfireball = new SmallFireball(this.blaze.level, this.blaze, this.blaze.getRandom().triangle(d1, 2.297D * d4), d2, this.blaze.getRandom().triangle(d3, 2.297D * d4));
+                            SmallFireball smallfireball = new SmallFireball(this.blaze.level, this.blaze, d1 + this.blaze.getRandom().nextGaussian() * d4, d2, d3 + this.blaze.getRandom().nextGaussian() * d4);
                             smallfireball.setPos(smallfireball.getX(), this.blaze.getY(0.5D) + 0.5D, smallfireball.getZ());
                             this.blaze.level.addFreshEntity(smallfireball);
                         }

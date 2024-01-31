@@ -28,7 +28,7 @@ public class XpReductionJeweleryEffect implements IJewelryEffect {
     }
 
     public void xpGained(PlayerXpEvent.XpChange e) {
-        this.getEquippedCuriosWithEffect(e.getEntity()).forEach(is->{
+        this.getEquippedCuriosWithEffect(e.getPlayer()).forEach(is->{
             int level = EffectAPI.getEffectValue(this, is);
             if(level > 0){
                 e.setAmount((int)(e.getAmount() * ((float)Math.max(level, 10) / 10)));

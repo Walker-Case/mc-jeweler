@@ -26,7 +26,7 @@ public class EntityDrop extends UniqueDrop{
     }
     public void entityDied(LivingDeathEvent livingDeathEvent){
         if(!livingDeathEvent.getEntity().level.isClientSide()){
-            String entityKey = Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(livingDeathEvent.getEntity().getType())).toString();
+            String entityKey = Objects.requireNonNull(ForgeRegistries.ENTITIES.getKey(livingDeathEvent.getEntity().getType())).toString();
             if(entityKey.equals(this.entityKey) && this.rollCheck()){
                 Level level = livingDeathEvent.getEntity().getLevel();
                 dropItem(level, livingDeathEvent.getEntity().getX(), livingDeathEvent.getEntity().getY(), livingDeathEvent.getEntity().getZ());

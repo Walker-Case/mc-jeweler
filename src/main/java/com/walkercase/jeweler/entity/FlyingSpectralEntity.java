@@ -2,6 +2,7 @@ package com.walkercase.jeweler.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.FlyingMob;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,7 +27,7 @@ public abstract class FlyingSpectralEntity extends SpectralEntity {
                 this.move(MoverType.SELF, this.getDeltaMovement());
                 this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
             } else {
-                BlockPos ground = BlockPos.containing(this.getX(), this.getY() - 1.0D, this.getZ());
+                BlockPos ground = new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ());
                 float f = 0.91F;
                 if (this.onGround) {
                     f = this.level.getBlockState(ground).getFriction(this.level, ground, this) * 0.91F;
@@ -44,7 +45,7 @@ public abstract class FlyingSpectralEntity extends SpectralEntity {
             }
         }
 
-        this.calculateEntityAnimation(false);
+        this.calculateEntityAnimation(this, false);
     }
 
     public boolean onClimbable() {

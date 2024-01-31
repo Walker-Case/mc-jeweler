@@ -2,7 +2,7 @@ package com.walkercase.jeweler.api.unique.drops;
 
 import com.walkercase.jeweler.api.unique.ItemStackBuilder;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 /**
@@ -28,7 +28,7 @@ public class BlockDrop extends UniqueDrop {
     }
 
     public void blockBreakEvent(BlockEvent.BreakEvent event){
-        if(!event.getLevel().isClientSide()){
+        if(!event.getWorld().isClientSide()){
             if(event.getState().getBlock() == block && this.rollCheck()){
                 dropItem(event.getPlayer().getLevel(), event.getPlayer().getX(), event.getPlayer().getY(), event.getPlayer().getZ());
             }

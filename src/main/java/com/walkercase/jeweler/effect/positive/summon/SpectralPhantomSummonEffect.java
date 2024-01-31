@@ -52,8 +52,8 @@ public class SpectralPhantomSummonEffect implements ISummonEffect {
 
     @Override
     public void playSummonSounds(LivingEntity entity) {
-        entity.playSound(SoundEvents.PHANTOM_FLAP);
-        entity.playSound(SoundEvents.PORTAL_TRAVEL);
+        entity.playSound(SoundEvents.PHANTOM_FLAP, 1, 1);
+        entity.playSound(SoundEvents.PORTAL_TRAVEL, 1, 1);
     }
 
     @Override

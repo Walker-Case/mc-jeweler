@@ -1,6 +1,7 @@
 package com.walkercase.jeweler.effect;
 
 import com.walkercase.jeweler.api.EffectAPI;
+import com.walkercase.jeweler.item.ForgeItem;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -37,7 +38,7 @@ public interface INeutralResistEffect extends IJewelryEffect {
             int level = EffectAPI.getEffectValue(this, is);
 
             if(e.getSource().getEntity() != null){
-                ResourceLocation entKey = ForgeRegistries.ENTITY_TYPES.getKey(e.getSource().getEntity().getType());
+                ResourceLocation entKey = ForgeRegistries.ENTITIES.getKey(e.getSource().getEntity().getType());
 
                 if(entKey != null){
                     if(entKey.toString().equals(this.getResistEntity().toString())){

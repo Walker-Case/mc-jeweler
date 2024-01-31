@@ -1,11 +1,13 @@
 package com.walkercase.jeweler.entity.spectral_phantom;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import com.walkercase.jeweler.JewelerMain;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.PhantomRenderer;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraftforge.api.distmarker.Dist;
@@ -33,6 +35,6 @@ public class SpectralPhantomRenderer extends MobRenderer<SpectralPhantom, Spectr
 
     protected void setupRotations(SpectralPhantom p_115685_, PoseStack p_115686_, float p_115687_, float p_115688_, float p_115689_) {
         super.setupRotations(p_115685_, p_115686_, p_115687_, p_115688_, p_115689_);
-        p_115686_.mulPose(Axis.XP.rotationDegrees(p_115685_.getXRot()));
+        p_115686_.mulPose(Vector3f.XP.rotationDegrees(p_115685_.getXRot()));
     }
 }

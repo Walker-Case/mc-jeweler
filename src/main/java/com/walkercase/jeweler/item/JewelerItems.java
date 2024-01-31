@@ -7,7 +7,6 @@ import com.walkercase.jeweler.api.AssetAPI;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.block.JewelerBlocks;
 import com.walkercase.jeweler.effect.IJewelryEffect;
-import com.walkercase.jeweler.generated.JewelerItemBaseModelProvider;
 import com.walkercase.jeweler.item.jewelry.JewelerAmulet;
 import com.walkercase.jeweler.item.jewelry.JewelerBracers;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
@@ -211,40 +210,6 @@ public class JewelerItems {
     public static final RegistryObject<GemItemBase> CUT_JUNGLE_GEM = ITEMS.register("cut_jungle_gem",
             () -> new GemItemBase(Rarity.RARE, JUNGLE_GEM, 2, 0, 2));
 
-    public static void registerSimpleItemModels(JewelerItemBaseModelProvider provider) {
-        provider.basicItem(COPPER_RING_MOULD.get());
-        provider.basicItem(IRON_RING_MOULD.get());
-        provider.basicItem(GOLD_RING_MOULD.get());
-        provider.basicItem(DIAMOND_RING_MOULD.get());
-        provider.basicItem(NETHERITE_RING_MOULD.get());
-
-        provider.basicItem(COPPER_AMULET_MOULD.get());
-        provider.basicItem(IRON_AMULET_MOULD.get());
-        provider.basicItem(GOLD_AMULET_MOULD.get());
-        provider.basicItem(DIAMOND_AMULET_MOULD.get());
-        provider.basicItem(NETHERITE_AMULET_MOULD.get());
-
-        provider.basicItem(COPPER_BRACERS_MOULD.get());
-        provider.basicItem(IRON_BRACERS_MOULD.get());
-        provider.basicItem(GOLD_BRACERS_MOULD.get());
-        provider.basicItem(DIAMOND_BRACERS_MOULD.get());
-        provider.basicItem(NETHERITE_BRACERS_MOULD.get());
-
-        provider.basicItem(COPPER_BRUSH_MOULD.get());
-        provider.basicItem(IRON_BRUSH_MOULD.get());
-        provider.basicItem(GOLD_BRUSH_MOULD.get());
-        provider.basicItem(DIAMOND_BRUSH_MOULD.get());
-        provider.basicItem(NETHERITE_BRUSH_MOULD.get());
-
-        provider.basicItem(COPPER_CHISEL_MOULD.get());
-        provider.basicItem(IRON_CHISEL_MOULD.get());
-        provider.basicItem(GOLD_CHISEL_MOULD.get());
-        provider.basicItem(DIAMOND_CHISEL_MOULD.get());
-        provider.basicItem(NETHERITE_CHISEL_MOULD.get());
-
-        provider.basicItem(FORGE_ITEM.get());
-    }
-
     public static void setup() {
         ForgeRegistries.ITEMS.getEntries().stream().filter(x -> x.getValue() instanceof JewelerItemBase).forEach(obj -> {
             ItemProperties.register(obj.getValue(),
@@ -361,7 +326,7 @@ public class JewelerItems {
                         setForgeItemTags(event.getCrafting(), mould);
 
                         //Quick-craft fix
-                        Inventory inv = event.getEntity().getInventory();
+                        Inventory inv = event.getPlayer().getInventory();
                         for(int x=0;x<inv.getContainerSize();x++){
                             ItemStack gg = inv.getItem(x);
                             if(gg.getItem() instanceof ForgeItem){
@@ -379,7 +344,7 @@ public class JewelerItems {
                     ItemStack is = event.getInventory().getItem(i);
 
                     if (is.getItem() instanceof ChiselItemBase chisel) {
-                        IJewelryEffect.damageStack(event.getEntity(), is, RANDOM, 1);
+                        IJewelryEffect.damageStack(event.getPlayer(), is, RANDOM, 1);
                     }
                 }
 
@@ -388,7 +353,7 @@ public class JewelerItems {
                 doCutGem(event.getCrafting(), gem);
 
                 //Quick-craft fix
-                Inventory inv = event.getEntity().getInventory();
+                Inventory inv = event.getPlayer().getInventory();
                 for(int x=0;x<inv.getContainerSize();x++){
                     ItemStack gg = inv.getItem(x);
                     if(getUUID(gg).equals(getUUID(old))){

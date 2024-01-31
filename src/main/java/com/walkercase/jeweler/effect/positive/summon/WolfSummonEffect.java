@@ -51,8 +51,8 @@ public class WolfSummonEffect implements ISummonEffect {
 
     @Override
     public void playSummonSounds(LivingEntity entity) {
-        entity.playSound(SoundEvents.WOLF_GROWL);
-        entity.playSound(SoundEvents.PORTAL_TRAVEL);
+        playSound(entity, SoundEvents.WOLF_GROWL);
+        playSound(entity, SoundEvents.PORTAL_TRAVEL);
     }
 
     @Override

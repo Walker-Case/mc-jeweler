@@ -30,7 +30,7 @@ public interface IBreakSpeedEffect extends IJewelryEffect {
     }
 
     default void breakSpeed(PlayerEvent.BreakSpeed e) {
-        this.getEquippedCuriosWithEffect(e.getEntity()).forEach(is->{
+        this.getEquippedCuriosWithEffect(e.getPlayer()).forEach(is->{
             float value = EffectAPI.getEffectValue(this, is);
 
             if(value > 0 && isTarget(e.getState())){

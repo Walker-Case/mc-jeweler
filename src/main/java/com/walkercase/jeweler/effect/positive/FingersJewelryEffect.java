@@ -1,6 +1,7 @@
 package com.walkercase.jeweler.effect.positive;
 
 import com.google.common.collect.Multimap;
+import com.mojang.math.Vector3f;
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
@@ -33,7 +34,7 @@ public class FingersJewelryEffect implements IJewelryEffect {
         return new ResourceLocation(JewelerMain.MODID, "fingers");
     }
 
-    public static final DustParticleOptions PARTICLE = new DustParticleOptions(Vec3.fromRGB24(0x616919).toVector3f(), 1.0F);
+    public static final DustParticleOptions PARTICLE = new DustParticleOptions(new Vector3f(Vec3.fromRGB24(0x616919)), 1.0F);
 
     public ParticleOptions getEquipParticle(){
         return PARTICLE;

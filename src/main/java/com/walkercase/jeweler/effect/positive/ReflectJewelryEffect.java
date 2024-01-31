@@ -6,6 +6,7 @@ import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -37,7 +38,7 @@ public class ReflectJewelryEffect implements IJewelryEffect {
         IJewelryEffect.damageStack((Player)event.getEntity(), stack, RANDOM, (int) (value * 100));
 
         if (event.getSource().getEntity() instanceof LivingEntity living) {
-            living.hurt(event.getEntity().damageSources().indirectMagic(event.getEntity(), event.getEntity()), value);
+            living.hurt(DamageSource.indirectMagic(event.getEntity(), event.getEntity()), value);
         }
     }
 

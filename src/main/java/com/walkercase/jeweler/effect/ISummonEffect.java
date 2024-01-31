@@ -7,6 +7,7 @@ import com.walkercase.jeweler.item.ItemStackHelper;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -63,6 +64,15 @@ public interface ISummonEffect extends IJewelryEffect {
     default int getMaxSummons(ItemStack is){
         return 1;
     };
+
+    /**
+     * Called to play a sound at default volume.
+     * @param entity
+     * @param sound
+     */
+    default void playSound(LivingEntity entity, SoundEvent sound){
+        entity.playSound(sound, 1, 1);
+    }
 
     @Override
     default void curioTick(SlotContext slotContext, ItemStack stack, JewelerItemBase item){
@@ -193,7 +203,7 @@ public interface ISummonEffect extends IJewelryEffect {
                     Entity ent = level.getEntity(id);
                     if (ent instanceof LivingEntity living) {
                         if (!living.isDeadOrDying()) {
-                            living.playSound(SoundEvents.PORTAL_TRIGGER);
+                            playSound(living, SoundEvents.PORTAL_TRIGGER);
                             this.playParticles(level, living, ParticleTypes.SMOKE, 20, 0.5d);
                             living.setHealth(0);
                         }

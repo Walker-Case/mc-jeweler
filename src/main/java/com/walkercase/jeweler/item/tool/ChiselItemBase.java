@@ -6,4 +6,6 @@ public class ChiselItemBase extends JewelryTool {
         super(p_41383_);
     }
 
+
+
 }

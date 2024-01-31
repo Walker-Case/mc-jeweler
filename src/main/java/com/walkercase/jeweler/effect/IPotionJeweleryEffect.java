@@ -1,5 +1,6 @@
 package com.walkercase.jeweler.effect;
 
+import com.mojang.math.Vector3f;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -25,7 +26,7 @@ public interface IPotionJeweleryEffect extends IJewelryEffect {
     MobEffect getPotionEffect();
 
     default ParticleOptions getEquipParticle(){
-        return new DustParticleOptions(Vec3.fromRGB24(getPotionEffect().getColor()).toVector3f(), 1.0F);
+        return new DustParticleOptions(new Vector3f(Vec3.fromRGB24(getPotionEffect().getColor())), 1.0F);
     }
 
     @Override
@@ -38,7 +39,7 @@ public interface IPotionJeweleryEffect extends IJewelryEffect {
         if(effectInstance == null || effectInstance.getDuration() < 300){
             slotContext.entity().addEffect(new MobEffectInstance(effect, duration, level-1));
 
-            slotContext.entity().playSound(SoundEvents.BUBBLE_COLUMN_BUBBLE_POP);
+            slotContext.entity().playSound(SoundEvents.BUBBLE_COLUMN_BUBBLE_POP, 1, 1);
             this.playParticles(slotContext.entity().level, slotContext.entity(), getEquipParticle(), 20, 0.5d);
 
             IJewelryEffect.damageStack((Player)slotContext.entity(), stack, RANDOM, level * 3);

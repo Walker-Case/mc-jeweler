@@ -4,20 +4,16 @@ package com.walkercase.jeweler.effect.positive.summon;
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.ISummonEffect;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Cat;
-import net.minecraft.world.entity.animal.CatVariant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-
-import java.util.Objects;
 
 public class CatSummonEffect implements ISummonEffect {
     @Override
@@ -56,8 +52,8 @@ public class CatSummonEffect implements ISummonEffect {
 
     @Override
     public void playSummonSounds(LivingEntity entity) {
-        entity.playSound(SoundEvents.CAT_HISS);
-        entity.playSound(SoundEvents.PORTAL_TRAVEL);
+        playSound(entity, SoundEvents.CAT_HISS);
+        playSound(entity, SoundEvents.PORTAL_TRAVEL);
     }
 
     @Override
@@ -68,16 +64,16 @@ public class CatSummonEffect implements ISummonEffect {
         cat.setPos(player.getX(), player.getY() + 1.5d, player.getZ());
 
         if(effLevel >= 7){
-            cat.setVariant(Objects.requireNonNull(BuiltInRegistries.CAT_VARIANT.get(CatVariant.RED)));
+            cat.setCatType(Cat.TYPE_RED);
             cat.setCollarColor(DyeColor.RED);
         }else if(effLevel >= 5){
-            cat.setVariant(Objects.requireNonNull(BuiltInRegistries.CAT_VARIANT.get(CatVariant.PERSIAN)));
+            cat.setCatType(Cat.TYPE_PERSIAN);
             cat.setCollarColor(DyeColor.BLUE);
         }else if(effLevel >= 2){
-            cat.setVariant(Objects.requireNonNull(BuiltInRegistries.CAT_VARIANT.get(CatVariant.BRITISH_SHORTHAIR)));
+            cat.setCatType(Cat.TYPE_BRITISH);
             cat.setCollarColor(DyeColor.GREEN);
         }else{
-            cat.setVariant(Objects.requireNonNull(BuiltInRegistries.CAT_VARIANT.get(CatVariant.CALICO)));
+            cat.setCatType(Cat.TYPE_CALICO);
             cat.setCollarColor(DyeColor.BROWN);
         }
 

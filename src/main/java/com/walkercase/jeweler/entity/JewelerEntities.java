@@ -24,7 +24,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class JewelerEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, JewelerMain.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, JewelerMain.MODID);
 
     public static final RegistryObject<EntityType<SpectralSkeleton>> SPECTRAL_SKELETON = register("spectral_skeleton",
             EntityType.Builder.of(SpectralSkeleton::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8));

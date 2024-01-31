@@ -1,5 +1,6 @@
 package com.walkercase.jeweler.effect.positive;
 
+import com.mojang.math.Vector3f;
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
@@ -33,7 +34,7 @@ public class IgniteJewelryEffect implements IJewelryEffect {
         return new ResourceLocation(JewelerMain.MODID, "ignite");
     }
 
-    public static final DustParticleOptions PARTICLE = new DustParticleOptions(Vec3.fromRGB24(0xBD2626).toVector3f(), 1.0F);
+    public static final DustParticleOptions PARTICLE = new DustParticleOptions(new Vector3f(Vec3.fromRGB24(0xBD2626)), 1.0F);
 
     public ParticleOptions getEquipParticle(){
         return PARTICLE;
@@ -50,6 +51,6 @@ public class IgniteJewelryEffect implements IJewelryEffect {
         Level level = event.getEntity().level;
         if(event.getSource().getEntity() instanceof LivingEntity entity)
             this.playParticles(level, entity, ParticleTypes.SMOKE, 20, 0.5d);
-        event.getEntity().playSound(SoundEvents.FIRE_AMBIENT);
+        event.getEntity().playSound(SoundEvents.FIRE_AMBIENT, 1, 1);
     }
 }

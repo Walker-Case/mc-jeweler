@@ -4,7 +4,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.walkercase.jeweler.JewelerConfig;
-import com.walkercase.jeweler.JewelerMain;
 import net.minecraft.resources.ResourceLocation;
 
 import java.io.BufferedReader;
