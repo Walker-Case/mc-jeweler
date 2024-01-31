@@ -32,7 +32,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Consumer;
 
 import static com.walkercase.jeweler.item.ItemStackHelper.getUUID;
 
