@@ -11,9 +11,7 @@ import com.walkercase.jeweler.effect.neutral.UndyingJewelryEffect;
 import com.walkercase.jeweler.effect.neutral.resist.*;
 import com.walkercase.jeweler.effect.positive.*;
 import com.walkercase.jeweler.effect.positive.potion.*;
-import com.walkercase.jeweler.effect.positive.summon.CatSummonEffect;
-import com.walkercase.jeweler.effect.positive.summon.SpectralSkeletonSummonEffect;
-import com.walkercase.jeweler.effect.positive.summon.WolfSummonEffect;
+import com.walkercase.jeweler.effect.positive.summon.*;
 import com.walkercase.jeweler.item.ItemStackHelper;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.ChatFormatting;
@@ -85,6 +83,10 @@ public class EffectAPI {
     public static final WolfSummonEffect WOLF_SUMMON_EFFECT = new WolfSummonEffect();
     public static final CatSummonEffect CAT_SUMMON_EFFECT = new CatSummonEffect();
     public static final SpectralSkeletonSummonEffect SPECTRAL_SKELETON_SUMMON_EFFECT = new SpectralSkeletonSummonEffect();
+    public static final SpectralZombieSummonEffect SPECTRAL_ZOMBIE_SUMMON_EFFECT = new SpectralZombieSummonEffect();
+    public static final SpectralSpiderSummonEffect SPECTRAL_SPIDER_SUMMON_EFFECT = new SpectralSpiderSummonEffect();
+    public static final SpectralCreeperSummonEffect SPECTRAL_CREEPER_SUMMON_EFFECT = new SpectralCreeperSummonEffect();
+    public static final SpectralPhantomSummonEffect SPECTRAL_PHANTOM_SUMMON_EFFECT = new SpectralPhantomSummonEffect();
 
     /*
      * NEUTRAL
@@ -165,6 +167,10 @@ public class EffectAPI {
         register(WOLF_SUMMON_EFFECT);
         register(CAT_SUMMON_EFFECT);
         register(SPECTRAL_SKELETON_SUMMON_EFFECT);
+        register(SPECTRAL_ZOMBIE_SUMMON_EFFECT);
+        register(SPECTRAL_SPIDER_SUMMON_EFFECT);
+        register(SPECTRAL_CREEPER_SUMMON_EFFECT);
+        register(SPECTRAL_PHANTOM_SUMMON_EFFECT);
 
         /*
          * NEUTRAL
@@ -308,7 +314,7 @@ public class EffectAPI {
      * @return
      */
     public static CompoundTag getEffectsDataNBT(ItemStack is, IJewelryEffect effect) {
-        CompoundTag tag = getEffectsNBT(is);
+        CompoundTag tag = ItemStackHelper.getTransientNBT(is);
         ResourceLocation location = effect.effectID();
         if (!tag.contains("effect.data." + location.getNamespace() + "." + location.getPath()))
             tag.put("effect.data." + location.getNamespace() + "." + location.getPath(), new CompoundTag());
@@ -613,7 +619,7 @@ public class EffectAPI {
          */
         public static void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
             if (stack.getItem() instanceof JewelerItemBase item) {
-                if(!ItemStackHelper.equalsIgnoreDamage(prevStack, stack)){
+                if(!ItemStackHelper.equalsIgnoreTransient(prevStack, stack)){
                     Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
                             eff.onEquip(slotContext, prevStack, stack, item));
                 }
@@ -628,7 +634,7 @@ public class EffectAPI {
          */
         public static void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
             if (stack.getItem() instanceof JewelerItemBase item) {
-                if(!ItemStackHelper.equalsIgnoreDamage(newStack, stack)){
+                if(!ItemStackHelper.equalsIgnoreTransient(newStack, stack)){
                     Arrays.stream(getEffects(stack)).filter(eff -> EffectAPI.getEffectValue(eff, stack) > 0).forEach(eff ->
                             eff.onUnequip(slotContext, newStack, stack, item));
                 }

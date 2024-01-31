@@ -1,5 +1,6 @@
 package com.walkercase.jeweler.entity.spectral_skeleton;
 
+import com.walkercase.jeweler.entity.SpectralEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -37,12 +38,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collections;
 import java.util.UUID;
 
-public class SpectralSkeleton extends TamableAnimal implements NeutralMob, RangedAttackMob {
+public class SpectralSkeleton extends SpectralEntity implements RangedAttackMob {
 
-    private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(SpectralSkeleton.class, EntityDataSerializers.INT);
-    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
-    @javax.annotation.Nullable
-    private UUID persistentAngerTarget;
 
     private final RangedBowAttackGoal<SpectralSkeleton> bowGoal = new RangedBowAttackGoal<>(this, 1.0D, 20, 15.0F);
     private final MeleeAttackGoal meleeGoal = new MeleeAttackGoal(this, 1.2D, false) {
@@ -55,24 +52,16 @@ public class SpectralSkeleton extends TamableAnimal implements NeutralMob, Range
             super.start();
             SpectralSkeleton.this.setAggressive(true);
         }
+
     };
 
-    public SpectralSkeleton(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
+    public SpectralSkeleton(EntityType<? extends SpectralEntity> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.setTame(false);
-        this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, -1.0F);
-        this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, -1.0F);
 
         this.reassessWeaponGoal();
     }
 
-    protected void registerGoals(){
-        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.5D, 10.0F, 2.0F, false));
-        this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
-    }
 
     public void reassessWeaponGoal() {
         if (this.level != null && !this.level.isClientSide) {
@@ -127,32 +116,19 @@ public class SpectralSkeleton extends TamableAnimal implements NeutralMob, Range
         return p_32144_ == Items.BOW;
     }
 
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
-    }
-
-    protected SoundEvent getHurtSound(DamageSource p_30424_) {
+    @Override
+    protected SoundEvent soundHurt() {
         return SoundEvents.SKELETON_HURT;
     }
 
-    protected SoundEvent getDeathSound() {
+    @Override
+    protected SoundEvent soundAmbient() {
+        return SoundEvents.SKELETON_AMBIENT;
+    }
+
+    @Override
+    protected SoundEvent soundDeath() {
         return SoundEvents.SKELETON_DEATH;
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.MOVEMENT_SPEED, 0.2d)
-                .add(Attributes.MAX_HEALTH, 8.0D)
-                .add(Attributes.ATTACK_DAMAGE, 3.0D);
-    }
-
-    public void aiStep() {
-        super.aiStep();
-
-        if (!this.level.isClientSide) {
-            this.updatePersistentAnger((ServerLevel)this.level, true);
-        }
     }
 
     public void setTame(boolean p_30443_) {
@@ -165,54 +141,5 @@ public class SpectralSkeleton extends TamableAnimal implements NeutralMob, Range
         }
 
         this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4.0D);
-    }
-
-    public boolean wantsToAttack(LivingEntity target, LivingEntity owner) {
-        if (target instanceof TamableAnimal) {
-            TamableAnimal tamable = (TamableAnimal) target;
-            return !tamable.isTame() || tamable.getOwner() != owner;
-        }
-        if(target instanceof Monster monster){
-            return monster.getTarget() == owner;
-        }
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
-        return null;
-    }
-
-    @Override
-    public int getRemainingPersistentAngerTime() {
-        return this.entityData.get(DATA_REMAINING_ANGER_TIME);
-    }
-
-    @Override
-    public void setRemainingPersistentAngerTime(int p_21673_) {
-        this.entityData.set(DATA_REMAINING_ANGER_TIME, p_21673_);
-    }
-
-    //Disable drops.
-    @Override
-    public java.util.Collection<ItemEntity> captureDrops() {
-        return null;
-    }
-
-    @Nullable
-    @Override
-    public UUID getPersistentAngerTarget() {
-        return this.persistentAngerTarget;
-    }
-
-    @Override
-    public void setPersistentAngerTarget(@Nullable UUID p_21672_) {
-        this.persistentAngerTarget = p_21672_;
-    }
-
-    @Override
-    public void startPersistentAngerTimer() {
-        this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
     }
 }
