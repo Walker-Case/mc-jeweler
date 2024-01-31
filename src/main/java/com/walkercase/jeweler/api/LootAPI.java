@@ -12,7 +12,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -61,7 +63,7 @@ public class LootAPI {
          */
         public static void drop(Player player, BlockPos pos, BlockState state, ResourceLocation lootTable) {
             getDrops(player, pos, state, lootTable).forEach(drop -> {
-                player.getLevel().addFreshEntity(new ItemEntity(player.getLevel(), pos.getX(), pos.getY(), pos.getZ(), drop));
+                player.level().addFreshEntity(new ItemEntity(player.level(), pos.getX(), pos.getY(), pos.getZ(), drop));
             });
         }
 
@@ -85,23 +87,23 @@ public class LootAPI {
          * @return
          */
         public static ObjectArrayList<ItemStack> getDrops(Player player, Vec3 origin, BlockState state, ResourceLocation lootTable) {
-            LootTable loottable = player.getLevel().getServer().getLootTables().get(lootTable);
-            LootContext.Builder lootcontext$builder = createBlockLootContext(player, origin, state);
-            LootContext ctx = lootcontext$builder.create(LootContextParamSets.BLOCK);
+            ServerLevel serverlevel = (ServerLevel)player.level();
+            LootTable loottable = serverlevel.getServer().getLootData().getLootTable(BuiltInLootTables.SNIFFER_DIGGING);
+            LootParams lootparams = createBlockLootContext(player, origin, state);
 
-            return new ObjectArrayList<>(loottable.getRandomItems(ctx));
+            return new ObjectArrayList<>(loottable.getRandomItems(lootparams));
         }
 
-        private static LootContext.Builder createBlockLootContext(Player player, Vec3 origin, BlockState state) {
-            Level level = player.getLevel();
+        private static LootParams createBlockLootContext(Player player, Vec3 origin, BlockState state) {
+            Level level = player.level();
 
-            return (new LootContext.Builder((ServerLevel) level))
-                    .withRandom(level.random)
+            return (new LootParams.Builder((ServerLevel) level))
                     .withLuck(player.getLuck())
                     .withParameter(LootContextParams.ORIGIN, origin)
                     .withParameter(LootContextParams.BLOCK_STATE, state)
                     .withParameter(LootContextParams.TOOL, player.getMainHandItem())
-                    .withParameter(LootContextParams.THIS_ENTITY, player);
+                    .withParameter(LootContextParams.THIS_ENTITY, player)
+                    .create(LootContextParamSets.BLOCK);
         }
     }
 
@@ -132,7 +134,7 @@ public class LootAPI {
          */
         public static void dropLiving(LivingEntity living, ResourceLocation lootTable) {
             getLivingDrops(living, lootTable).forEach(drop -> {
-                living.getLevel().addFreshEntity(new ItemEntity(living.getLevel(), living.getX(), living.getY(), living.getZ(), drop));
+                living.level().addFreshEntity(new ItemEntity(living.level(), living.getX(), living.getY(), living.getZ(), drop));
             });
         }
 
@@ -143,11 +145,20 @@ public class LootAPI {
          * @return
          */
         public static ObjectArrayList<ItemStack> getLivingDrops(LivingEntity living, ResourceLocation lootTable) {
-            LootTable loottable = living.getLevel().getServer().getLootTables().get(lootTable);
-            LootContext.Builder lootcontext$builder = new LootContext.Builder((ServerLevel) living.getLevel());
-            LootContext ctx = lootcontext$builder.create(LootContextParamSets.EMPTY);
+            ServerLevel serverlevel = (ServerLevel)living.level();
+            LootTable loottable = serverlevel.getServer().getLootData().getLootTable(BuiltInLootTables.SNIFFER_DIGGING);
+            LootParams lootparams = createLootParams(living);
 
-            return new ObjectArrayList<>(loottable.getRandomItems(ctx));
+            return new ObjectArrayList<>(loottable.getRandomItems(lootparams));
+        }
+
+        private static LootParams createLootParams(LivingEntity living) {
+            Level level = living.level();
+
+            return (new LootParams.Builder((ServerLevel) level))
+                    .withParameter(LootContextParams.TOOL, living.getMainHandItem())
+                    .withParameter(LootContextParams.THIS_ENTITY, living)
+                    .create(LootContextParamSets.ENTITY);
         }
     }
 }

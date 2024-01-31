@@ -142,10 +142,10 @@ public class SpectralCreeper extends SpectralEntity implements PowerableMob {
     }
 
     private void explodeCreeper() {
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             float f = getExplosionRadius();
             this.dead = true;
-            this.level.explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, Level.ExplosionInteraction.MOB);
+            this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, Level.ExplosionInteraction.MOB);
             this.discard();
             this.spawnExpandedExplosionParticles();
         }
@@ -162,7 +162,7 @@ public class SpectralCreeper extends SpectralEntity implements PowerableMob {
     }
 
     private void spawnExpandedExplosionParticles() {
-        if(!this.level.isClientSide){
+        if(!this.level().isClientSide){
             float f = getExplosionRadius();
 
             double d0 = this.random.nextGaussian() * 0.5d;
@@ -172,7 +172,7 @@ public class SpectralCreeper extends SpectralEntity implements PowerableMob {
             for(double x=this.getX() - f; x < this.getX() + f; x ++){
                 for(double y=this.getY() - f; y < this.getY() + f; y ++){
                     for(double z=this.getZ() - f; z < this.getZ() + f; z ++){
-                        this.level.addParticle(ParticleTypes.EXPLOSION, x, y, z, d0, d1, d2);
+                        this.level().addParticle(ParticleTypes.EXPLOSION, x, y, z, d0, d1, d2);
                     }
                 }
             }

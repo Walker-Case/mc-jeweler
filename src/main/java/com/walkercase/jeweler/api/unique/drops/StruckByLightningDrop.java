@@ -21,8 +21,8 @@ public class StruckByLightningDrop extends UniqueDrop{
 
     public void struck(EntityStruckByLightningEvent event){
         if(event.getEntity() instanceof Player player && this.rollCheck()){
-            if(!player.level.isClientSide()){
-                this.dropItem(player.getLevel(), player.getX(), player.getY(), player.getZ());
+            if(!player.level().isClientSide()){
+                this.dropItem(player.level(), player.getX(), player.getY(), player.getZ());
             }
         }
     }

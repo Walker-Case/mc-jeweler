@@ -3,8 +3,8 @@ package com.walkercase.jeweler.effect.positive;
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.effect.IBreakSpeedEffect;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 
 /**
  * Increases wooductting speed.
@@ -12,9 +12,9 @@ import net.minecraft.world.level.material.Material;
 public class WoodcutterEffect implements IBreakSpeedEffect {
     @Override
     public boolean isTarget(BlockState state) {
-        return state.getMaterial() == Material.BAMBOO
-                || state.getMaterial() == Material.LEAVES
-                || state.getMaterial() == Material.WOOD;
+        return state.getTags().anyMatch(tag-> tag == BlockTags.BAMBOO_BLOCKS
+                || tag == BlockTags.LEAVES
+                || tag == BlockTags.LOGS);
     }
 
     @Override

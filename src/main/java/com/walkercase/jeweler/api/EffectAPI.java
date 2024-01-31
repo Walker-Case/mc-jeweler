@@ -517,7 +517,7 @@ public class EffectAPI {
          * @param e
          */
         public static void onLivingHurtEvent(LivingHurtEvent e) {
-            if (!e.getEntity().level.isClientSide()) {
+            if (!e.getEntity().level().isClientSide()) {
                     CuriosApi.getCuriosHelper().getEquippedCurios(e.getEntity()).filter(x -> true).ifPresent(item -> {
                         for (int i = 0; i < item.getSlots(); i++) {
                             ItemStack is = item.getStackInSlot(i);

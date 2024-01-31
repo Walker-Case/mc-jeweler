@@ -73,7 +73,7 @@ public class JewelerItemBase extends Item implements ICurioItem {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if(!slotContext.entity().getLevel().isClientSide){
+        if(!slotContext.entity().level().isClientSide){
             if (!EffectAPI.Events.onCurioTick(slotContext, stack)) {
                 IJewelryEffect.damageStack((Player)slotContext.entity(), stack, IJewelryEffect.RANDOM, 1);
             }

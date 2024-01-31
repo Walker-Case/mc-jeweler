@@ -3,8 +3,9 @@ package com.walkercase.jeweler.effect.positive;
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.effect.IBreakSpeedEffect;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraftforge.common.Tags;
 
 /**
  * Increases mining speed.
@@ -12,10 +13,10 @@ import net.minecraft.world.level.material.Material;
 public class MinerEffect implements IBreakSpeedEffect {
     @Override
     public boolean isTarget(BlockState state) {
-        return state.getMaterial() == Material.STONE
-                || state.getMaterial() == Material.AMETHYST
-                || state.getMaterial() == Material.DIRT
-                || state.getMaterial() == Material.METAL;
+        return state.getTags().anyMatch(tag-> tag == Tags.Blocks.STONE
+                || tag == Tags.Blocks.STORAGE_BLOCKS_AMETHYST
+                || tag == Tags.Blocks.ORES
+                || tag == BlockTags.DIRT);
     }
 
     @Override

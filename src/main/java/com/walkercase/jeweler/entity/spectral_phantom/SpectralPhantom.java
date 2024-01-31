@@ -111,19 +111,19 @@ public class SpectralPhantom extends FlyingSpectralEntity {
 
     public void tick() {
         super.tick();
-        if (this.level.isClientSide) {
+        if (this.level().isClientSide) {
             float f = Mth.cos((float)(this.getUniqueFlapTickOffset() + this.tickCount) * 7.448451F * ((float)Math.PI / 180F) + (float)Math.PI);
             float f1 = Mth.cos((float)(this.getUniqueFlapTickOffset() + this.tickCount + 1) * 7.448451F * ((float)Math.PI / 180F) + (float)Math.PI);
             if (f > 0.0F && f1 <= 0.0F) {
-                this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.PHANTOM_FLAP, this.getSoundSource(), 0.95F + this.random.nextFloat() * 0.05F, 0.95F + this.random.nextFloat() * 0.05F, false);
+                this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.PHANTOM_FLAP, this.getSoundSource(), 0.95F + this.random.nextFloat() * 0.05F, 0.95F + this.random.nextFloat() * 0.05F, false);
             }
 
             int i = this.getPhantomSize();
             float f2 = Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * (1.3F + 0.21F * (float)i);
             float f3 = Mth.sin(this.getYRot() * ((float)Math.PI / 180F)) * (1.3F + 0.21F * (float)i);
             float f4 = (0.3F + f * 0.45F) * ((float)i * 0.2F + 1.0F);
-            this.level.addParticle(ParticleTypes.MYCELIUM, this.getX() + (double)f2, this.getY() + (double)f4, this.getZ() + (double)f3, 0.0D, 0.0D, 0.0D);
-            this.level.addParticle(ParticleTypes.MYCELIUM, this.getX() - (double)f2, this.getY() + (double)f4, this.getZ() - (double)f3, 0.0D, 0.0D, 0.0D);
+            this.level().addParticle(ParticleTypes.MYCELIUM, this.getX() + (double)f2, this.getY() + (double)f4, this.getZ() + (double)f3, 0.0D, 0.0D, 0.0D);
+            this.level().addParticle(ParticleTypes.MYCELIUM, this.getX() - (double)f2, this.getY() + (double)f4, this.getZ() - (double)f3, 0.0D, 0.0D, 0.0D);
         }
 
     }
@@ -194,7 +194,7 @@ public class SpectralPhantom extends FlyingSpectralEntity {
         }
 
         public void stop() {
-            SpectralPhantom.this.anchorPoint = SpectralPhantom.this.level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, SpectralPhantom.this.anchorPoint).above(10 + SpectralPhantom.this.random.nextInt(20));
+            SpectralPhantom.this.anchorPoint = SpectralPhantom.this.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, SpectralPhantom.this.anchorPoint).above(10 + SpectralPhantom.this.random.nextInt(20));
         }
 
         public void tick() {
@@ -212,8 +212,8 @@ public class SpectralPhantom extends FlyingSpectralEntity {
 
         private void setAnchorAboveTarget() {
             SpectralPhantom.this.anchorPoint = SpectralPhantom.this.getTarget().blockPosition().above(20 + SpectralPhantom.this.random.nextInt(20));
-            if (SpectralPhantom.this.anchorPoint.getY() < SpectralPhantom.this.level.getSeaLevel()) {
-                SpectralPhantom.this.anchorPoint = new BlockPos(SpectralPhantom.this.anchorPoint.getX(), SpectralPhantom.this.level.getSeaLevel() + 1, SpectralPhantom.this.anchorPoint.getZ());
+            if (SpectralPhantom.this.anchorPoint.getY() < SpectralPhantom.this.level().getSeaLevel()) {
+                SpectralPhantom.this.anchorPoint = new BlockPos(SpectralPhantom.this.anchorPoint.getX(), SpectralPhantom.this.level().getSeaLevel() + 1, SpectralPhantom.this.anchorPoint.getZ());
             }
 
         }
@@ -269,12 +269,12 @@ public class SpectralPhantom extends FlyingSpectralEntity {
                 this.selectNext();
             }
 
-            if (SpectralPhantom.this.moveTargetPoint.y < SpectralPhantom.this.getY() && !SpectralPhantom.this.level.isEmptyBlock(SpectralPhantom.this.blockPosition().below(1))) {
+            if (SpectralPhantom.this.moveTargetPoint.y < SpectralPhantom.this.getY() && !SpectralPhantom.this.level().isEmptyBlock(SpectralPhantom.this.blockPosition().below(1))) {
                 this.height = Math.max(1.0F, this.height);
                 this.selectNext();
             }
 
-            if (SpectralPhantom.this.moveTargetPoint.y > SpectralPhantom.this.getY() && !SpectralPhantom.this.level.isEmptyBlock(SpectralPhantom.this.blockPosition().above(1))) {
+            if (SpectralPhantom.this.moveTargetPoint.y > SpectralPhantom.this.getY() && !SpectralPhantom.this.level().isEmptyBlock(SpectralPhantom.this.blockPosition().above(1))) {
                 this.height = Math.min(-1.0F, this.height);
                 this.selectNext();
             }
@@ -386,7 +386,7 @@ public class SpectralPhantom extends FlyingSpectralEntity {
                 } else {
                     if (SpectralPhantom.this.tickCount > this.catSearchTick) {
                         this.catSearchTick = SpectralPhantom.this.tickCount + 20;
-                        List<Cat> list = SpectralPhantom.this.level.getEntitiesOfClass(Cat.class, SpectralPhantom.this.getBoundingBox().inflate(16.0D), EntitySelector.ENTITY_STILL_ALIVE);
+                        List<Cat> list = SpectralPhantom.this.level().getEntitiesOfClass(Cat.class, SpectralPhantom.this.getBoundingBox().inflate(16.0D), EntitySelector.ENTITY_STILL_ALIVE);
 
                         for(Cat cat : list) {
                             cat.hiss();
@@ -416,7 +416,7 @@ public class SpectralPhantom extends FlyingSpectralEntity {
                     SpectralPhantom.this.doHurtTarget(livingentity);
                     SpectralPhantom.this.attackPhase = SpectralPhantom.AttackPhase.CIRCLE;
                     if (!SpectralPhantom.this.isSilent()) {
-                        SpectralPhantom.this.level.levelEvent(1039, SpectralPhantom.this.blockPosition(), 0);
+                        SpectralPhantom.this.level().levelEvent(1039, SpectralPhantom.this.blockPosition(), 0);
                     }
                 } else if (SpectralPhantom.this.horizontalCollision || SpectralPhantom.this.hurtTime > 0) {
                     SpectralPhantom.this.attackPhase = SpectralPhantom.AttackPhase.CIRCLE;

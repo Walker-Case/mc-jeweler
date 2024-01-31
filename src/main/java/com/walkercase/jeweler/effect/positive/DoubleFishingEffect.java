@@ -55,7 +55,7 @@ public class DoubleFishingEffect implements IJewelryEffect {
                     });
                     MutableComponent mutablecomponent = JewelerMain.PLATFORM_UTIL.getTranslatedComponent("effect.jeweler.chat.double_fishing");
 
-                    this.playParticles(e.getEntity().getLevel(), e.getEntity(), PARTICLE, 20, 0.5d);
+                    this.playParticles(e.getEntity().level(), e.getEntity(), PARTICLE, 20, 0.5d);
                     e.getEntity().playSound(SoundEvents.FISHING_BOBBER_SPLASH);
 
                     e.getEntity().sendSystemMessage(mutablecomponent);

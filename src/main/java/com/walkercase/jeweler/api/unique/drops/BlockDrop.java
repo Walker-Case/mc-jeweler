@@ -30,7 +30,7 @@ public class BlockDrop extends UniqueDrop {
     public void blockBreakEvent(BlockEvent.BreakEvent event){
         if(!event.getLevel().isClientSide()){
             if(event.getState().getBlock() == block && this.rollCheck()){
-                dropItem(event.getPlayer().getLevel(), event.getPlayer().getX(), event.getPlayer().getY(), event.getPlayer().getZ());
+                dropItem(event.getPlayer().level(), event.getPlayer().getX(), event.getPlayer().getY(), event.getPlayer().getZ());
             }
         }
     }

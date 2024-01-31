@@ -67,7 +67,7 @@ public interface ISummonEffect extends IJewelryEffect {
     @Override
     default void curioTick(SlotContext slotContext, ItemStack stack, JewelerItemBase item){
         if(slotContext.entity() instanceof Player player){
-            Level level = slotContext.entity().level;
+            Level level = slotContext.entity().level();
             int effLevel = EffectAPI.getEffectValue(this, stack);
             if(!level.isClientSide){
                 CompoundTag nbt = EffectAPI.getEffectsDataNBT(stack, this);
@@ -184,7 +184,7 @@ public interface ISummonEffect extends IJewelryEffect {
      * @param stack ItemStack
      */
     default void killPets(Player player, ItemStack stack){
-        Level level = player.level;
+        Level level = player.level();
         if (!level.isClientSide) {
             CompoundTag nbt = EffectAPI.getEffectsDataNBT(stack, this);
             if (nbt.contains("pets")) {

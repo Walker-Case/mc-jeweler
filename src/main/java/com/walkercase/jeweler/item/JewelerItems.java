@@ -256,7 +256,7 @@ public class JewelerItems {
     }
 
     public static void anvilUpdate(AnvilUpdateEvent e) {
-        if (!e.getPlayer().level.isClientSide()) {
+        if (!e.getPlayer().level().isClientSide()) {
             if (e.getLeft().getItem() instanceof JewelerItemBase jewelery) {
                 e.setCost(10);
                 if (e.getRight().getItem() instanceof GemItemBase gem) {
@@ -342,7 +342,7 @@ public class JewelerItems {
     }
 
     public static void anvilRepair(@NotNull AnvilRepairEvent e) {
-        if (!e.getEntity().level.isClientSide) {
+        if (!e.getEntity().level().isClientSide) {
             //    if (e.getLeft().getItem() instanceof ForgeItem && e.getRight().getItem() instanceof MouldItemBase) {
             //      e.getRight().hurt(1, e.getEntity().getRandom(), (ServerPlayer) e.getEntity());
             //     e.getEntity().getInventory().add(e.getRight());
@@ -351,7 +351,7 @@ public class JewelerItems {
     }
 
     public static void itemCrafted(PlayerEvent.ItemCraftedEvent event) {
-        if (!event.getEntity().level.isClientSide()) {
+        if (!event.getEntity().level().isClientSide()) {
             
             if (event.getCrafting().getItem() instanceof ForgeItem forgeItem) {
                 for (int i = 0; i < event.getInventory().getContainerSize(); i++) {

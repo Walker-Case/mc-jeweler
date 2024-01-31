@@ -47,7 +47,7 @@ public class IgniteJewelryEffect implements IJewelryEffect {
 
         Objects.requireNonNull(event.getSource().getEntity()).setSecondsOnFire(4 * value);
 
-        Level level = event.getEntity().level;
+        Level level = event.getEntity().level();
         if(event.getSource().getEntity() instanceof LivingEntity entity)
             this.playParticles(level, entity, ParticleTypes.SMOKE, 20, 0.5d);
         event.getEntity().playSound(SoundEvents.FIRE_AMBIENT);

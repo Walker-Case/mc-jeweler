@@ -170,7 +170,7 @@ public interface IJewelryEffect {
      */
     default void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack, JewelerItemBase item){
         LivingEntity living = slotContext.entity();
-        Level level = living.level;
+        Level level = living.level();
         ParticleOptions particleType = getEquipParticle();
 
         playParticles(level, living, particleType, 20, 0.5d);

@@ -68,8 +68,8 @@ public abstract class SpectralEntity extends TamableAnimal implements NeutralMob
     public void aiStep() {
         super.aiStep();
 
-        if (!this.level.isClientSide) {
-            this.updatePersistentAnger((ServerLevel)this.level, true);
+        if (!this.level().isClientSide) {
+            this.updatePersistentAnger((ServerLevel)this.level(), true);
         }
     }
 

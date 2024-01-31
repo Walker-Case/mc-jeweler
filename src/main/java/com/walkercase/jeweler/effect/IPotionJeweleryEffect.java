@@ -39,7 +39,7 @@ public interface IPotionJeweleryEffect extends IJewelryEffect {
             slotContext.entity().addEffect(new MobEffectInstance(effect, duration, level-1));
 
             slotContext.entity().playSound(SoundEvents.BUBBLE_COLUMN_BUBBLE_POP);
-            this.playParticles(slotContext.entity().level, slotContext.entity(), getEquipParticle(), 20, 0.5d);
+            this.playParticles(slotContext.entity().level(), slotContext.entity(), getEquipParticle(), 20, 0.5d);
 
             IJewelryEffect.damageStack((Player)slotContext.entity(), stack, RANDOM, level * 3);
         }

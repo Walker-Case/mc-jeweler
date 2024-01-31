@@ -25,10 +25,10 @@ public class EntityDrop extends UniqueDrop{
         this.entityKey = entity;
     }
     public void entityDied(LivingDeathEvent livingDeathEvent){
-        if(!livingDeathEvent.getEntity().level.isClientSide()){
+        if(!livingDeathEvent.getEntity().level().isClientSide()){
             String entityKey = Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(livingDeathEvent.getEntity().getType())).toString();
             if(entityKey.equals(this.entityKey) && this.rollCheck()){
-                Level level = livingDeathEvent.getEntity().getLevel();
+                Level level = livingDeathEvent.getEntity().level();
                 dropItem(level, livingDeathEvent.getEntity().getX(), livingDeathEvent.getEntity().getY(), livingDeathEvent.getEntity().getZ());
             }
         }

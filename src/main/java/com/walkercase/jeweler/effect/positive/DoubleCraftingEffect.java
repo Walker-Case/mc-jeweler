@@ -52,7 +52,7 @@ public class DoubleCraftingEffect implements IJewelryEffect {
                 e.getEntity().getInventory().add(e.getCrafting().copy());
                 MutableComponent mutablecomponent = JewelerMain.PLATFORM_UTIL.getTranslatedComponent("effect.jeweler.chat.double_crafting");
 
-                this.playParticles(e.getEntity().getLevel(), e.getEntity(), PARTICLE, 20, 0.5d);
+                this.playParticles(e.getEntity().level(), e.getEntity(), PARTICLE, 20, 0.5d);
                 e.getEntity().playSound(SoundEvents.BAMBOO_BREAK);
 
                 e.getEntity().sendSystemMessage(mutablecomponent);

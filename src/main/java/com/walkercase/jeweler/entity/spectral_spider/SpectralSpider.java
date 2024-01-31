@@ -42,7 +42,7 @@ public class SpectralSpider extends SpectralEntity {
 
     public void tick() {
         super.tick();
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             this.setClimbing(this.horizontalCollision);
         }
     }
