@@ -49,8 +49,11 @@ public class ItemStackHelper {
                 CompoundTag t1 = is1.getTag().copy();
                 CompoundTag t2 = is2.getTag().copy();
 
-                t1.remove("transient");
-                t2.remove("transient");
+                t1.getCompound("jeweler").remove("transient");
+                t1.remove("Damage");
+                t2.getCompound("jeweler").remove("transient");
+                t2.remove("Damage");
+
                 if(t1.getAsString().equals(t2.getAsString()))
                     return true;
             }

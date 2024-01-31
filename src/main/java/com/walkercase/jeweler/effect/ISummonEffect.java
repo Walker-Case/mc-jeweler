@@ -122,7 +122,9 @@ public interface ISummonEffect extends IJewelryEffect {
 
                     IJewelryEffect.damageStack(player, stack, RANDOM, getSummonDamage(stack));
                 }
-                nbt.putInt("lastSummon", lastSummon + 1);
+                if(lastSummon <= 61){
+                    nbt.putInt("lastSummon", lastSummon + 1);
+                }
 
                 if(dirty.get()){
                     pets.removeAll(toRemove);
