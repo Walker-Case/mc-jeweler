@@ -23,12 +23,24 @@ public class ItemStackHelper {
     }
 
     /**
-     * Returns true if the ItemStacks are equal. This function ignores damage values.
+     * Returns the transient NBT tag. This is ignored in ItemStackHelper#equalsIgnoreTransient.
+     * @param tag
+     * @return
+     */
+    public static CompoundTag getTransientNBT(ItemStack is){
+        CompoundTag tag = getModNBT(is);
+        if(!tag.contains("transient"))
+            tag.put("transient", new CompoundTag());
+        return tag.getCompound("transient");
+    }
+
+    /**
+     * Returns true if the ItemStacks are equal. This function ignores transient nbt.
      * @param is1
      * @param is2
      * @return
      */
-    public static boolean equalsIgnoreDamage(ItemStack is1, ItemStack is2){
+    public static boolean equalsIgnoreTransient(ItemStack is1, ItemStack is2){
         if(is1 == null && is2 == null) {
             return true;
         }
@@ -36,8 +48,9 @@ public class ItemStackHelper {
             if(is1.getCount() == is2.getCount()){
                 CompoundTag t1 = is1.getTag().copy();
                 CompoundTag t2 = is2.getTag().copy();
-                t1.remove("Damage");
-                t2.remove("Damage");
+
+                t1.remove("transient");
+                t2.remove("transient");
                 if(t1.getAsString().equals(t2.getAsString()))
                     return true;
             }

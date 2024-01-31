@@ -88,7 +88,7 @@ public class ForgeItem extends Item {
      * @return
      */
     public static CompoundTag getForgeItemTag(ItemStack is) {
-        CompoundTag tag = ItemStackHelper.getModNBT(is);
+        CompoundTag tag = ItemStackHelper.getTransientNBT(is);
         if (!tag.contains("forge_item"))
             tag.put("forge_item", new CompoundTag());
         return tag.getCompound("forge_item");
