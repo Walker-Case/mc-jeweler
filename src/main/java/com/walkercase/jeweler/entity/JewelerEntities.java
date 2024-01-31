@@ -1,6 +1,8 @@
 package com.walkercase.jeweler.entity;
 
 import com.walkercase.jeweler.JewelerMain;
+import com.walkercase.jeweler.entity.spectral_blaze.SpectralBlaze;
+import com.walkercase.jeweler.entity.spectral_blaze.SpectralBlazeRenderer;
 import com.walkercase.jeweler.entity.spectral_creeper.SpectralCreeper;
 import com.walkercase.jeweler.entity.spectral_creeper.SpectralCreeperRenderer;
 import com.walkercase.jeweler.entity.spectral_phantom.SpectralPhantom;
@@ -38,6 +40,8 @@ public class JewelerEntities {
             EntityType.Builder.of(SpectralCreeper::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8));
     public static final RegistryObject<EntityType<SpectralPhantom>> SPECTRAL_PHANTOM = register("spectral_phantom",
             EntityType.Builder.of(SpectralPhantom::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8));
+    public static final RegistryObject<EntityType<SpectralBlaze>> SPECTRAL_BLAZE = register("spectral_blaze",
+            EntityType.Builder.of(SpectralBlaze::new, MobCategory.CREATURE).sized(0.6F, 1.99F).clientTrackingRange(8));
 
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(SPECTRAL_SKELETON.get(), SpectralSkeleton.createAttributes().build());
@@ -45,6 +49,7 @@ public class JewelerEntities {
         event.put(SPECTRAL_SPIDER.get(), SpectralSpider.createAttributes().build());
         event.put(SPECTRAL_CREEPER.get(), SpectralCreeper.createAttributes().build());
         event.put(SPECTRAL_PHANTOM.get(), SpectralPhantom.createAttributes().build());
+        event.put(SPECTRAL_BLAZE.get(), SpectralBlaze.createAttributes().build());
     }
 
     public static void registerEntityRenderers(){
@@ -53,6 +58,7 @@ public class JewelerEntities {
         EntityRenderers.register(SPECTRAL_SPIDER.get(), SpectralSpiderRenderer::new);
         EntityRenderers.register(SPECTRAL_CREEPER.get(), SpectralCreeperRenderer::new);
         EntityRenderers.register(SPECTRAL_PHANTOM.get(), SpectralPhantomRenderer::new);
+        EntityRenderers.register(SPECTRAL_BLAZE.get(), SpectralBlazeRenderer::new);
     }
 
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String p_20635_, EntityType.Builder<T> p_20636_) {

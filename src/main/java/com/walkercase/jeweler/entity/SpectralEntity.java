@@ -36,6 +36,8 @@ public abstract class SpectralEntity extends TamableAnimal implements NeutralMob
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
     @javax.annotation.Nullable
     private UUID persistentAngerTarget;
+    private int summonLevel = 1;
+
 
     protected SpectralEntity(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
@@ -56,7 +58,7 @@ public abstract class SpectralEntity extends TamableAnimal implements NeutralMob
         this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.5D, 10.0F, 2.0F, false));
 
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
     }
@@ -157,6 +159,22 @@ public abstract class SpectralEntity extends TamableAnimal implements NeutralMob
     @Override
     protected SoundEvent getDeathSound() {
         return soundDeath();
+    }
+
+    /**
+     * Sets this entities jewelery effect level.
+     * @param level
+     */
+    public void setSummonLevel(int level){
+        this.summonLevel = level;
+    }
+
+    /**
+     * Returns the jewelery effect level used to summon this entity.
+     * @return
+     */
+    public int getSummonLevel(){
+        return this.summonLevel;
     }
 
 }
