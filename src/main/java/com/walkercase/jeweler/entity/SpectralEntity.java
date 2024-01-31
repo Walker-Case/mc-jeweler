@@ -44,13 +44,6 @@ public abstract class SpectralEntity extends TamableAnimal implements NeutralMob
         this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, -1.0F);
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.MOVEMENT_SPEED, 0.2d)
-                .add(Attributes.MAX_HEALTH, 8.0D)
-                .add(Attributes.ATTACK_DAMAGE, 3.0D);
-    }
-
     protected void registerGoals(){
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.5D, 10.0F, 2.0F, false));
