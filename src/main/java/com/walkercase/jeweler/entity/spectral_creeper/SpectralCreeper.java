@@ -26,7 +26,6 @@ public class SpectralCreeper extends SpectralEntity implements PowerableMob {
     private int swell;
     private int maxSwell = 30;
     private int explosionRadius = 3;
-    private int summonLevel = 1;
 
     public SpectralCreeper(EntityType<? extends SpectralEntity> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
@@ -38,10 +37,6 @@ public class SpectralCreeper extends SpectralEntity implements PowerableMob {
 
     public int getMaxFallDistance() {
         return this.getTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
-    }
-
-    public void setSummonLevel(int level){
-        this.summonLevel = level;
     }
 
     public boolean causeFallDamage(float p_149687_, float p_149688_, DamageSource p_149689_) {
@@ -147,12 +142,12 @@ public class SpectralCreeper extends SpectralEntity implements PowerableMob {
     }
 
     public float getSoundVolume(){
-        return 1.0f * this.summonLevel;
+        return 1.0f * this.getSummonLevel();
     }
 
     public float getExplosionRadius(){
         float f = this.isPowered() ? 2.0F : 1.0F;
-        f += (float) (1+this.summonLevel)/3;
+        f += (float) (1+this.getSummonLevel())/3;
         return f;
     }
 

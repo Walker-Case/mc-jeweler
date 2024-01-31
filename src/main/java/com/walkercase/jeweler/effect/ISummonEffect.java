@@ -2,6 +2,7 @@ package com.walkercase.jeweler.effect;
 
 
 import com.walkercase.jeweler.api.EffectAPI;
+import com.walkercase.jeweler.entity.SpectralEntity;
 import com.walkercase.jeweler.item.ItemStackHelper;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.core.particles.ParticleTypes;
@@ -107,6 +108,9 @@ public interface ISummonEffect extends IJewelryEffect {
                     livingEntity.setHealth(livingEntity.getMaxHealth());
 
                     livingEntity.getPersistentData().putBoolean("jewelerSummon", true);
+
+                    if(livingEntity instanceof SpectralEntity spectral)
+                        spectral.setSummonLevel(effLevel);
 
                     level.addFreshEntity(livingEntity);
 

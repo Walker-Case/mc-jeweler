@@ -64,7 +64,6 @@ public class SpectralCreeperSummonEffect implements ISummonEffect {
     public LivingEntity createEntity(Level level, Player player, ItemStack stack) {
         int effLevel = EffectAPI.getEffectValue(this, stack);
         SpectralCreeper creeper = new SpectralCreeper(JewelerEntities.SPECTRAL_CREEPER.get(), level);
-        creeper.setSummonLevel(effLevel);
         creeper.tame(player);
         creeper.setPos(player.getX(), player.getY() + 1.5d, player.getZ());
 
