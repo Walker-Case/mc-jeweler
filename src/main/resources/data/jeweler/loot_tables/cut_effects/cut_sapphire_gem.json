@@ -28,11 +28,6 @@
         "chance": 0.2
       },
       {
-        "id": "jeweler:skeleton_spirit",
-        "maxLevel": 2,
-        "chance": 0.1
-      },
-      {
         "id": "jeweler:saving",
         "maxLevel": 1,
         "chance": 0.1
