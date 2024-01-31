@@ -190,12 +190,12 @@ public class SpectralBlaze extends SpectralEntity {
                     if (this.attackTime <= 0) {
                         ++this.attackStep;
                         if (this.attackStep == 1) {
-                            this.attackTime = 60;
+                            this.attackTime = 60 - (SpectralBlaze.this.getSummonLevel() * 2);
                             this.blaze.setCharged(true);
                         } else if (this.attackStep <= 4) {
                             this.attackTime = 6;
                         } else {
-                            this.attackTime = 100;
+                            this.attackTime = 100 - (SpectralBlaze.this.getSummonLevel() * 2);
                             this.attackStep = 0;
                             this.blaze.setCharged(false);
                         }
@@ -206,11 +206,9 @@ public class SpectralBlaze extends SpectralEntity {
                                 this.blaze.level.levelEvent((Player) null, 1018, this.blaze.blockPosition(), 0);
                             }
 
-                            for (int i = 0; i < SpectralBlaze.this.getSummonLevel(); ++i) {
-                                SmallFireball smallfireball = new SmallFireball(this.blaze.level, this.blaze, this.blaze.getRandom().triangle(d1, 2.297D * d4), d2, this.blaze.getRandom().triangle(d3, 2.297D * d4));
-                                smallfireball.setPos(smallfireball.getX(), this.blaze.getY(0.5D) + 0.5D, smallfireball.getZ());
-                                this.blaze.level.addFreshEntity(smallfireball);
-                            }
+                            SmallFireball smallfireball = new SmallFireball(this.blaze.level, this.blaze, this.blaze.getRandom().triangle(d1, 2.297D * d4), d2, this.blaze.getRandom().triangle(d3, 2.297D * d4));
+                            smallfireball.setPos(smallfireball.getX(), this.blaze.getY(0.5D) + 0.5D, smallfireball.getZ());
+                            this.blaze.level.addFreshEntity(smallfireball);
                         }
                     }
 
