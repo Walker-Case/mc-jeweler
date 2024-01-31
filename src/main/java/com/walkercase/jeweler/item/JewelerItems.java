@@ -19,6 +19,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.*;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.player.AnvilRepairEvent;
@@ -31,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 
 public class JewelerItems {
 
@@ -355,20 +357,17 @@ public class JewelerItems {
                     ItemStack is = event.getInventory().getItem(i);
 
                     if (is.getItem() instanceof MouldItemBase mould) {
-                        CompoundTag tag = ForgeItem.getForgeItemTag(event.getCrafting());
-                        if (tag.contains("result")) {
-                            event.setCanceled(true);
-                            return;
+                        setForgeItemTags(event.getCrafting(), mould);
+
+                        //Quick-craft fix
+                        Inventory inv = event.getEntity().getInventory();
+                        for(int x=0;x<inv.getContainerSize();x++){
+                            ItemStack gg = inv.getItem(x);
+                            if(gg.getItem() instanceof ForgeItem){
+                                setForgeItemTags(gg, mould);
+                            }
                         }
-
-                        JsonObject forgeitem = AssetAPI.readForgeItem(new ResourceLocation(JewelerMain.MODID, Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(mould.crafting)).getPath())).getAsJsonObject();
-
-                        tag.put("result", new ItemStack(mould.crafting).serializeNBT());
-                        event.getCrafting().setRepairCost(ForgeItem.getCost(event.getCrafting()));
-                        event.getCrafting().setDamageValue(9);
-                        ForgeItem.setItemMaxDamage(event.getCrafting(), forgeitem.get("max_damage").getAsInt());
-                        ForgeItem.setItemDamage(event.getCrafting(), 0);
-
+                        return;
                     }
                 }
             }
@@ -382,15 +381,44 @@ public class JewelerItems {
                     }
                 }
 
-                JsonObject obj = AssetAPI.readLootTable(new ResourceLocation(JewelerMain.MODID, "cut_effects/" + Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(gem)).getPath())).getAsJsonObject();
-                if (obj != null) {
-                    JsonObject entries = obj.getAsJsonObject("entries");
-                    addEffectsFor(event.getCrafting(), entries, "POSITIVE", gem.positiveRolls);
-                    addEffectsFor(event.getCrafting(), entries, "NEUTRAL", gem.negativeRolls);
-                    addEffectsFor(event.getCrafting(), entries, "NEGATIVE", gem.negativeRolls);
+                doCutGem(event.getCrafting(), gem);
+
+                //Quick-craft fix
+                Inventory inv = event.getEntity().getInventory();
+                for(int x=0;x<inv.getContainerSize();x++){
+                    ItemStack gg = inv.getItem(x);
+                    if(gg.getItem() instanceof ForgeItem){
+                        doCutGem(gg, gem);
+                    }
                 }
             }
         }
+    }
+
+    private static void doCutGem(ItemStack isToCut, GemItemBase gem){
+        JsonObject obj = AssetAPI.readLootTable(new ResourceLocation(JewelerMain.MODID, "cut_effects/" + Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(gem)).getPath())).getAsJsonObject();
+        if (obj != null) {
+            JsonObject entries = obj.getAsJsonObject("entries");
+            addEffectsFor(isToCut, entries, "POSITIVE", gem.positiveRolls);
+            addEffectsFor(isToCut, entries, "NEUTRAL", gem.negativeRolls);
+            addEffectsFor(isToCut, entries, "NEGATIVE", gem.negativeRolls);
+        }
+    }
+
+
+    private static void setForgeItemTags(ItemStack forgeItem, MouldItemBase mould){
+        CompoundTag tag = ForgeItem.getForgeItemTag(forgeItem);
+        if (tag.contains("result")) {
+            return;
+        }
+
+        JsonObject forgeitem = AssetAPI.readForgeItem(new ResourceLocation(JewelerMain.MODID, Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(mould.crafting)).getPath())).getAsJsonObject();
+
+        tag.put("result", new ItemStack(mould.crafting).serializeNBT());
+        forgeItem.setRepairCost(ForgeItem.getCost(forgeItem));
+        forgeItem.setDamageValue(9);
+        ForgeItem.setItemMaxDamage(forgeItem, forgeitem.get("max_damage").getAsInt());
+        ForgeItem.setItemDamage(forgeItem, 0);
     }
 
     private static final Random RANDOM = new Random();
