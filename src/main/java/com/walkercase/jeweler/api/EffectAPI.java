@@ -87,6 +87,7 @@ public class EffectAPI {
     public static final SpectralSpiderSummonEffect SPECTRAL_SPIDER_SUMMON_EFFECT = new SpectralSpiderSummonEffect();
     public static final SpectralCreeperSummonEffect SPECTRAL_CREEPER_SUMMON_EFFECT = new SpectralCreeperSummonEffect();
     public static final SpectralPhantomSummonEffect SPECTRAL_PHANTOM_SUMMON_EFFECT = new SpectralPhantomSummonEffect();
+    public static final SpectralBlazeSummonEffect SPECTRAL_BLAZE_SUMMON_EFFECT = new SpectralBlazeSummonEffect();
 
     /*
      * NEUTRAL
@@ -171,6 +172,7 @@ public class EffectAPI {
         register(SPECTRAL_SPIDER_SUMMON_EFFECT);
         register(SPECTRAL_CREEPER_SUMMON_EFFECT);
         register(SPECTRAL_PHANTOM_SUMMON_EFFECT);
+        register(SPECTRAL_BLAZE_SUMMON_EFFECT);
 
         /*
          * NEUTRAL
