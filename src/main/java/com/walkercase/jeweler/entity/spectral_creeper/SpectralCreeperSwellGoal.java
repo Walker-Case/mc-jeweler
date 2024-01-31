@@ -1,10 +1,10 @@
 package com.walkercase.jeweler.entity.spectral_creeper;
 
-import java.util.EnumSet;
-import javax.annotation.Nullable;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.monster.Creeper;
+
+import javax.annotation.Nullable;
+import java.util.EnumSet;
 
 public class SpectralCreeperSwellGoal extends Goal {
     private final SpectralCreeper creeper;

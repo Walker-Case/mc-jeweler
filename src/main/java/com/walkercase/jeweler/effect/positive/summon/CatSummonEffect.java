@@ -3,18 +3,11 @@ package com.walkercase.jeweler.effect.positive.summon;
 
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
-import com.walkercase.jeweler.effect.IJewelryEffect;
 import com.walkercase.jeweler.effect.ISummonEffect;
-import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Cat;
@@ -23,7 +16,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.Objects;
 

@@ -1,11 +1,9 @@
 package com.walkercase.jeweler.entity.spectral_phantom;
 
-import net.minecraft.client.model.PhantomModel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.monster.Phantom;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 

@@ -1,15 +1,11 @@
 package com.walkercase.jeweler.entity.spectral_zombie;
 
 import com.walkercase.jeweler.JewelerMain;
-import net.minecraft.client.model.AbstractZombieModel;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.SkeletonModel;
-import net.minecraft.client.model.ZombieModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 

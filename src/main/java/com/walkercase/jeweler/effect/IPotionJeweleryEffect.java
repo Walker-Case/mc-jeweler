@@ -4,7 +4,6 @@ import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;

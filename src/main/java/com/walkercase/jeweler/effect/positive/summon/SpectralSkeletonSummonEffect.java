@@ -3,20 +3,12 @@ package com.walkercase.jeweler.effect.positive.summon;
 
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.EffectAPI;
-import com.walkercase.jeweler.effect.IJewelryEffect;
 import com.walkercase.jeweler.effect.ISummonEffect;
 import com.walkercase.jeweler.entity.JewelerEntities;
 import com.walkercase.jeweler.entity.spectral_skeleton.SpectralSkeleton;
-import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -24,7 +16,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import top.theillusivec4.curios.api.SlotContext;
 
 public class SpectralSkeletonSummonEffect implements ISummonEffect {
     @Override

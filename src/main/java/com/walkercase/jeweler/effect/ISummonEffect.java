@@ -44,13 +44,13 @@ public interface ISummonEffect extends IJewelryEffect {
 
     /**
      * The list of potion effects to use for this summon.
-     * @return
+     * @return SummonPotionEffect[]
      */
     SummonPotionEffect[] getPotionEffects();
 
     /**
      * If the entity is this many blocks away from the player it will teleport them closer.
-     * @return
+     * @return int
      */
     default int getFollowTeleportDistance(){
         return 40;
@@ -58,7 +58,7 @@ public interface ISummonEffect extends IJewelryEffect {
 
     /**
      * Returns the number of summons to use.
-     * @return
+     * @return int
      */
     default int getMaxSummons(ItemStack is){
         return 1;
@@ -138,7 +138,7 @@ public interface ISummonEffect extends IJewelryEffect {
     /**
      * Returns the amount to damage the ItemStack when summoning this creature.
      * @param is
-     * @return
+     * @return int
      */
     default int getSummonDamage(ItemStack is){
         return 100 * EffectAPI.getEffectValue(this, is);
@@ -146,20 +146,21 @@ public interface ISummonEffect extends IJewelryEffect {
 
     /**
      * Called after the entity has been added to the world.
-     * @param level
-     * @param entity
+     * @param level Level
+     * @param entity LivingEntity
+     * @param stack ItemStack
      */
     void doPostEntitySpawn(Level level, LivingEntity entity, ItemStack stack);
 
     /**
      * Called to play sounds when the mob is summoned.
-     * @param entity
+     * @param entity LivingEntity
      */
     void playSummonSounds(LivingEntity entity);
 
     /**
      * Called when the entity is going to be created.
-     * @return
+     * @return LivingEntity
      */
     LivingEntity createEntity(Level level, Player player, ItemStack stack);
 
@@ -179,8 +180,8 @@ public interface ISummonEffect extends IJewelryEffect {
 
     /**
      * Called to kill this effects summons.
-     * @param player
-     * @param stack
+     * @param player Player
+     * @param stack ItemStack
      */
     default void killPets(Player player, ItemStack stack){
         Level level = player.level;
