@@ -1,11 +1,11 @@
 modLoader="javafml"
 loaderVersion="[45,)"
 license="Attribution-ShareAlike 4.0 International"
-logoFile="jeweler_logo.png"
 logoBlur=false
+logoFile="jeweler_logo.png"
 [[mods]]
 modId="jeweler"
-version="${file.jarVersion}"
+version="1.19.4-1.0.0a"
 displayName="Jeweler"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/jeweler"
 authors="Walker Case"

@@ -7,7 +7,7 @@ plugins {
 }
 
 
-version = '1.19.4-1.0.0'
+version = '1.19.4-1.0.0a'
 group = 'com.walkercase.jeweler' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'jeweler'
 
