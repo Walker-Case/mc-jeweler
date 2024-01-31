@@ -5,6 +5,7 @@ import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.AssetAPI;
 import com.walkercase.jeweler.api.EffectAPI;
 import com.walkercase.jeweler.effect.IJewelryEffect;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -161,8 +162,15 @@ public class ForgeItem extends Item {
         ItemStack result = getResult(is);
         if (result != null) {
             ResourceLocation rl = ForgeRegistries.ITEMS.getKey(result.getItem());
-            MutableComponent mutablecomponent = JewelerMain.PLATFORM_UTIL.getTranslatedComponent("item." + rl.getNamespace() + "." + rl.getPath());
-            list.add(mutablecomponent);
+            if(result.getItem() != Items.AIR){
+                MutableComponent mutablecomponent = JewelerMain.PLATFORM_UTIL.getTranslatedComponent("item." + rl.getNamespace() + "." + rl.getPath());
+                list.add(mutablecomponent);
+            }else{
+                MutableComponent mutablecomponent = JewelerMain.PLATFORM_UTIL.getTranslatedComponent("literal.none");
+                mutablecomponent.withStyle(ChatFormatting.OBFUSCATED);
+                list.add(mutablecomponent);
+            }
+
         }
         EffectAPI.addEffectTooltip(is, list);
         list.add(JewelerMain.PLATFORM_UTIL.getTranslatedComponent(getItemDamage(is) + " / " + getItemMaxDamage(is)));
