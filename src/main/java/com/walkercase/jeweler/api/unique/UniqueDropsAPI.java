@@ -34,7 +34,7 @@ public class UniqueDropsAPI {
      */
     public static synchronized ArrayList<ItemStack> getDisplayDrops(){
         ArrayList<ItemStack> isList = new ArrayList<>();
-        UNIQUE_DROPS.forEach(e->isList.add(e.getItemStackBuider().buildForDisplay()));
+        UNIQUE_DROPS.stream().filter(e->e.addToTab).forEach(e->isList.add(e.getItemStackBuider().buildForDisplay()));
         return isList;
     }
 
@@ -160,10 +160,10 @@ public class UniqueDropsAPI {
 
         registerUniqueDrop(new EntityDrop(new ItemStackBuilder(JewelerItems.JUNGLE_GEM.get())
                 .displayText("item.jeweler.jungle_gem", ChatFormatting.AQUA),
-                "minecraft:ocelot", 0.25f));
+                "minecraft:ocelot", 0.25f).setAddToTab(false));
         registerUniqueDrop(new EntityDrop(new ItemStackBuilder(JewelerItems.JUNGLE_GEM.get())
                 .displayText("item.jeweler.jungle_gem", ChatFormatting.AQUA),
-                "minecraft:parrot", 0.25f));
+                "minecraft:parrot", 0.25f).setAddToTab(false));
 
         registerUniqueDrop(new EntityDrop(new ItemStackBuilder(JewelerItems.DIAMOND_RING.get())
                 .displayText("jeweler.unique.wither_lost_diamond_ring", ChatFormatting.GOLD)

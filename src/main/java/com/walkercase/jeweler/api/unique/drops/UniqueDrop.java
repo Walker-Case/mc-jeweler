@@ -15,6 +15,8 @@ public class UniqueDrop{
     private ItemStackBuilder builder;
     private float chance;
 
+    public boolean addToTab = true;
+
     /**
      * Create a new Unique Drop. Note: This class does nothing on it's own.
      * @param builder
@@ -23,6 +25,17 @@ public class UniqueDrop{
     public UniqueDrop(ItemStackBuilder builder, float chance){
         this.builder = builder;
         this.chance = chance;
+    }
+
+    /**
+     * Set to true if this drop should be added to the creative tab.
+     * True by default.
+     * @param b True to add to creative tab.
+     * @return this
+     */
+    public UniqueDrop setAddToTab(boolean b){
+        this.addToTab = b;
+        return this;
     }
 
     /**
