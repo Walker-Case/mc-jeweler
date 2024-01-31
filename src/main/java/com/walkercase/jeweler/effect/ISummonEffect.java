@@ -2,10 +2,10 @@ package com.walkercase.jeweler.effect;
 
 
 import com.walkercase.jeweler.api.EffectAPI;
+import com.walkercase.jeweler.item.ItemStackHelper;
 import com.walkercase.jeweler.item.jewelry.JewelerItemBase;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,7 +16,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import top.theillusivec4.curios.api.SlotContext;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 /**
  * Jewelery effect that summons tamable mobs.
@@ -51,6 +55,14 @@ public interface ISummonEffect extends IJewelryEffect {
         return 40;
     }
 
+    /**
+     * Returns the number of summons to use.
+     * @return
+     */
+    default int getMaxSummons(ItemStack is){
+        return 1;
+    };
+
     @Override
     default void curioTick(SlotContext slotContext, ItemStack stack, JewelerItemBase item){
         if(slotContext.entity() instanceof Player player){
@@ -58,8 +70,17 @@ public interface ISummonEffect extends IJewelryEffect {
             int effLevel = EffectAPI.getEffectValue(this, stack);
             if(!level.isClientSide){
                 CompoundTag nbt = EffectAPI.getEffectsDataNBT(stack, this);
-                if(nbt.contains("pet")){
-                    Entity ent = level.getEntity(nbt.getInt("pet"));
+
+                if(!nbt.contains("pets")){
+                    nbt.putIntArray("pets", new int[0]);
+                }
+                List<Integer> pets = Arrays.stream( nbt.getIntArray("pets") ).filter(x->x!=0).boxed().collect( Collectors.toList() );
+                List<Integer> toRemove = new ArrayList<>();
+                AtomicBoolean dirty = new AtomicBoolean(false);
+
+                pets.forEach(id->{
+                    Entity ent = level.getEntity(id);
+
                     if(ent instanceof LivingEntity living){
                         if(!living.isDeadOrDying()){
                             Arrays.stream(getPotionEffects()).forEach(eff->{
@@ -71,24 +92,50 @@ public interface ISummonEffect extends IJewelryEffect {
                             if(!living.closerThan(player, getFollowTeleportDistance())){
                                 living.setPos(player.getX(), player.getY(), player.getZ());
                             }
-                            return;
                         }
+                    }else{
+                        dirty.set(true);
+                        toRemove.add(id);
                     }
+                });
+
+                int lastSummon = nbt.getInt("lastSummon");
+                if(pets.size() < getMaxSummons(stack) && lastSummon > 60){
+                    nbt.putInt("lastSummon", 0);
+                    LivingEntity livingEntity = createEntity(level, player, stack);
+                    this.playParticles(level, livingEntity, ParticleTypes.PORTAL, 50, 0.5d);
+                    livingEntity.setHealth(livingEntity.getMaxHealth());
+
+                    livingEntity.getPersistentData().putBoolean("jewelerSummon", true);
+
+                    level.addFreshEntity(livingEntity);
+
+                    pets.add(livingEntity.getId());
+                    dirty.set(true);
+
+                    playSummonSounds(livingEntity);
+                    doPostEntitySpawn(level, livingEntity, stack);
+
+                    IJewelryEffect.damageStack(player, stack, RANDOM, getSummonDamage(stack));
                 }
+                nbt.putInt("lastSummon", lastSummon + 1);
 
-
-                LivingEntity livingEntity = createEntity(level, player, stack);
-                this.playParticles(level, livingEntity, ParticleTypes.PORTAL, 50, 0.5d);
-                EffectAPI.getEffectsDataNBT(stack, this).putInt("pet", livingEntity.getId());
-                livingEntity.getPersistentData().putBoolean("jewelerSummon", true);
-
-                level.addFreshEntity(livingEntity);
-                playSummonSounds(livingEntity);
-                doPostEntitySpawn(level, livingEntity, stack);
-
-                IJewelryEffect.damageStack(player, stack, RANDOM, 100 * effLevel);
+                if(dirty.get()){
+                    pets.removeAll(toRemove);
+                    int[] unboxed = Arrays.stream(pets.toArray(new Integer[0])).mapToInt(Integer::intValue).toArray();
+                    EffectAPI.getEffectsDataNBT(stack, this).putIntArray("pets", unboxed);
+                }
             }
         }
+    }
+
+    /**
+     * Returns the amount to damage the ItemStack when summoning this creature.
+     * @param is
+     * @return
+     */
+    default int getSummonDamage(ItemStack is){
+        return 100 * EffectAPI.getEffectValue(this, is);
     }
 
     /**
@@ -112,32 +159,37 @@ public interface ISummonEffect extends IJewelryEffect {
 
     @Override
     default void curioBreak(Player player, ItemStack stack){
-        killPet(player, stack);
+        killPets(player, stack);
     }
 
     @Override
     default void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack, JewelerItemBase item){
         if(slotContext.entity() instanceof Player player) {
-            killPet(player, stack);
+            if(!ItemStackHelper.equalsIgnoreTransient(newStack, stack)){
+                killPets(player, stack);
+            }
         }
     }
 
     /**
-     * Called to kill this effects summon.
+     * Called to kill this effects summons.
      * @param player
      * @param stack
      */
-    default void killPet(Player player, ItemStack stack){
+    default void killPets(Player player, ItemStack stack){
         Level level = player.level;
         if (!level.isClientSide) {
             CompoundTag nbt = EffectAPI.getEffectsDataNBT(stack, this);
-            if (nbt.contains("pet")) {
-                Entity ent = level.getEntity(nbt.getInt("pet"));
-                if (ent instanceof LivingEntity living) {
-                    if (!living.isDeadOrDying()) {
-                        living.playSound(SoundEvents.PORTAL_TRIGGER);
-                        this.playParticles(level, living, ParticleTypes.SMOKE, 20, 0.5d);
-                        living.setHealth(0);
+            if (nbt.contains("pets")) {
+                int[] ids = nbt.getIntArray("pets");
+                for(int id : ids){
+                    Entity ent = level.getEntity(id);
+                    if (ent instanceof LivingEntity living) {
+                        if (!living.isDeadOrDying()) {
+                            living.playSound(SoundEvents.PORTAL_TRIGGER);
+                            this.playParticles(level, living, ParticleTypes.SMOKE, 20, 0.5d);
+                            living.setHealth(0);
+                        }
                     }
                 }
             }
