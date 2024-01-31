@@ -1,7 +1,7 @@
-<h2>Jeweler</h2>
 ![Jeweler BG](/image/jeweler_bg.png)
-Jeweler is a mod that adds a variety of powerful jewelry to aid in your adventures!
 
+<h2>Jeweler</h2>
+Jeweler is a mod that adds a variety of powerful jewelry to aid in your adventures!
 
 Instructions for producing and utilizing jewelry can be found in the in-game guidebook provided once you load into a world.
 
