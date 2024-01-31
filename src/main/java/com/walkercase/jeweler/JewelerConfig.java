@@ -15,12 +15,12 @@ public class JewelerConfig {
     public static final JewelerConfig.Common COMMON;
 
     public static class Common {
-        public final ForgeConfigSpec.ConfigValue<Integer> maxUnbreakingEffect;
+        public final ForgeConfigSpec.ConfigValue<String> serverLocale;
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("Common");
             {
-                this.maxUnbreakingEffect = builder.comment("Hard cap for unbreaking effect. default: 10").define("maxUnbreakingEffect", 10);
+                this.serverLocale = builder.comment("Lang file to use for items.").define("serverLocale", "jeweler:en_us");
             }
             builder.pop();
         }

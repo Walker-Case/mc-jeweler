@@ -3,6 +3,7 @@ package com.walkercase.jeweler.api;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.walkercase.jeweler.JewelerConfig;
 import com.walkercase.jeweler.JewelerMain;
 import net.minecraft.resources.ResourceLocation;
 
@@ -88,6 +89,21 @@ public class AssetAPI {
         return read("data/" + location.getNamespace() + "/" + location.getPath() + ".json");
     }
 
+    /**
+     * Reads a lang file using the server configuration.
+     * @return
+     */
+    public static JsonObject readServerLang(){
+        String[] s = JewelerConfig.COMMON.serverLocale.get().split(":");
+        return readLang(s[0], s[1]);
+    }
+
+    /**
+     * Reads a lang file from the disk.
+     * @param modid
+     * @param lang
+     * @return
+     */
     public static JsonObject readLang(String modid, String lang){
         return AssetAPI.readAsset(new ResourceLocation(modid, "lang/" + lang)).getAsJsonObject();
     }

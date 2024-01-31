@@ -442,7 +442,7 @@ public class EffectAPI {
      */
     private static MutableComponent getEffectComponent(IJewelryEffect effect, int level) {
         ResourceLocation location = effect.effectID();
-        JsonObject i18n = AssetAPI.readLang(JewelerMain.MODID, "en_us");
+        JsonObject i18n = AssetAPI.readServerLang();
 
         ChatFormatting effectFormat = effect.getEffectType() ==
                 IJewelryEffect.EffectType.POSITIVE ? ChatFormatting.GREEN

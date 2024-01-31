@@ -273,7 +273,7 @@ public class JewelerItems {
                         String I18nPrefix = "effect." + eff.effectID().getNamespace() + "." + eff.effectID().getPath() + ".displayPrefix";
                         String I18nSuffix = "effect." + eff.effectID().getNamespace() + "." + eff.effectID().getPath() + ".displaySuffix";
 
-                        JsonObject i18n = AssetAPI.readLang(JewelerMain.MODID, "en_us");
+                        JsonObject i18n = AssetAPI.readServerLang();
 
                         MutableComponent mutablecomponent = JewelerMain.PLATFORM_UTIL.getTranslatedComponent(i18n.has(I18nPrefix) ? i18n.get(I18nPrefix).getAsString() : "");
                         mutablecomponent.append(JewelerMain.PLATFORM_UTIL.getTranslatedComponent(result.getDisplayName().plainCopy().getString().replace("[", "").replace("]", "")));
