@@ -391,7 +391,7 @@ public class EffectAPI {
      */
     public static ItemStack setEffect(ItemStack is, IJewelryEffect effect, int level) {
         if (level > 0)
-            getEffectsNBT(is).putInt(effect.effectID().toString(), level);
+            getEffectsNBT(is).putInt(effect.effectID().toString(), Math.min(effect.getMaxLevel(), level));
         else
             getEffectsNBT(is).remove(effect.effectID().toString());
         return is;

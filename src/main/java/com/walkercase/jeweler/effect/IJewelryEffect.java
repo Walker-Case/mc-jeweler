@@ -36,6 +36,14 @@ public interface IJewelryEffect {
     Random RANDOM = new Random();
 
     /**
+     * The maximum level this effect can have.
+     * @return
+     */
+    default int getMaxLevel(){
+        return 10;
+    }
+
+    /**
      * Called to register specific events.
      * @param modEventBus
      * @param forgeEventBus
