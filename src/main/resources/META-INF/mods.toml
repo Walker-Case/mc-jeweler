@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="[46,)"
+loaderVersion="[47,)"
 license="Attribution-ShareAlike 4.0 International"
 logoBlur=false
 logoFile="jeweler_logo.png"
 [[mods]]
 modId="jeweler"
-version="1.20.0-1.0.0a"
+version="1.20.1-1.0.0a"
 displayName="Jeweler"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/jeweler"
 authors="Walker Case"
@@ -13,13 +13,13 @@ description='''Adds various types of jewelry and gems for your enjoyment!'''
 [[dependencies.jeweler]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20,)"
+    versionRange="[1.20.1,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.jeweler]]
     modId="curios"
     mandatory=true
-    versionRange="[1.20,)"
+    versionRange="[1.20.1,)"
     ordering="NONE"
     side="BOTH"
 [modproperties.jeweler]
