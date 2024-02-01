@@ -20,7 +20,7 @@
       {
         "id": "jeweler:luck",
         "maxLevel": 5,
-        "chance": 0.3
+        "chance": 0.1
       },
       {
         "id": "jeweler:reflect",
@@ -30,12 +30,12 @@
       {
         "id": "jeweler:saving",
         "maxLevel": 1,
-        "chance": 0.1
+        "chance": 0.05
       },
       {
         "id": "jeweler:unbreaking",
         "maxLevel": 5,
-        "chance": 0.4
+        "chance": 0.2
       },
       {
         "id": "jeweler:potion_regeneration",
@@ -85,32 +85,32 @@
       {
         "id": "jeweler:potion_confusion",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.15
       },
       {
         "id": "jeweler:potion_blindness",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.15
       },
       {
         "id": "jeweler:potion_poison",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.15
       },
       {
         "id": "jeweler:potion_wither",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.15
       },
       {
         "id": "jeweler:potion_unluck",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.15
       },
       {
         "id": "jeweler:xp_reduction",
         "maxLevel": 7,
-        "chance": 0.4
+        "chance": 0.15
       }
     ]
   }

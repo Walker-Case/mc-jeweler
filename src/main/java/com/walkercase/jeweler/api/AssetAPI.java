@@ -1,16 +1,24 @@
 package com.walkercase.jeweler.api;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.walkercase.jeweler.JewelerConfig;
 import com.walkercase.jeweler.JewelerMain;
+import com.walkercase.jeweler.api.record.Roll;
+import com.walkercase.jeweler.api.record.RollType;
+import com.walkercase.jeweler.effect.IJewelryEffect;
+import com.walkercase.jeweler.item.GemItemBase;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 /**
  * Contains various methods to assist with asset usage.
