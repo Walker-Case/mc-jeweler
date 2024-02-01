@@ -9,9 +9,7 @@ version="1.19.4-1.0.0a"
 displayName="Jeweler"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/jeweler"
 authors="Walker Case"
-description='''
-Adds various types of jewelry and gems for your enjoyment!
-'''
+description='''Adds various types of jewelry and gems for your enjoyment!'''
 [[dependencies.jeweler]]
     modId="minecraft"
     mandatory=true
