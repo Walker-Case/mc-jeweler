@@ -26,3 +26,6 @@ These effects can be found by cutting different types of gems.
 | ![Sapphire Gem](/image/sapphire_gem.png)   | Sapphire gems contain the more supernatural effects such as slow falling and night vision.                                                                    |
 | ![Amethyst Gem](/image/amethyst_gem.png)   | Amethyst gems contain more supernatural combat effects such as mob resistances.                                                                               |
 | ![Prismatic Gem](/image/prismatic_gem.png) | Prismatic gems are a combination of most gems and as such are able to provide almost every effect there is and in higher concentrations.                      |
+
+<h2>API</h2>
+There is currently a rudemnentary API to allow modders to add their own effects and gems. This API is expected to continue to evolve so any constructive feedback is greatly supported. Documentation can be found on the github wiki.
