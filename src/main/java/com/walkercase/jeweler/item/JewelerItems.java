@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.walkercase.jeweler.JewelerMain;
 import com.walkercase.jeweler.api.AssetAPI;
 import com.walkercase.jeweler.api.EffectAPI;
+import com.walkercase.jeweler.api.RollAPI;
+import com.walkercase.jeweler.api.record.RollType;
 import com.walkercase.jeweler.block.JewelerBlocks;
 import com.walkercase.jeweler.effect.IJewelryEffect;
 import com.walkercase.jeweler.generated.JewelerItemBaseModelProvider;
@@ -199,12 +201,12 @@ public class JewelerItems {
     public static final RegistryObject<Item> AMETHYST_GEM = ITEMS.register("amethyst_gem",
             () -> new Item(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).rarity(Rarity.RARE)));
     public static final RegistryObject<GemItemBase> CUT_AMETHYST_GEM = ITEMS.register("cut_amethyst_gem",
-            () -> new GemItemBase(Rarity.RARE, AMETHYST_GEM, 4, 4, 2));
+            () -> new GemItemBase(Rarity.RARE, AMETHYST_GEM, 2, 3, 2));
 
     public static final RegistryObject<Item> PRISMATIC_GEM = ITEMS.register("prismatic_gem",
             () -> new Item(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).rarity(Rarity.EPIC)));
     public static final RegistryObject<GemItemBase> CUT_PRISMATIC_GEM = ITEMS.register("cut_prismatic_gem",
-            () -> new GemItemBase(Rarity.EPIC, PRISMATIC_GEM, 8, 3, 2));
+            () -> new GemItemBase(Rarity.EPIC, PRISMATIC_GEM, 4, 2, 2));
 
     public static final RegistryObject<Item> JUNGLE_GEM = ITEMS.register("jungle_gem",
             () -> new Item(JewelerMain.PLATFORM_UTIL.getDefaultItemProperties().stacksTo(1).rarity(Rarity.RARE)));
@@ -401,13 +403,9 @@ public class JewelerItems {
     }
 
     private static void doCutGem(ItemStack isToCut, GemItemBase gem){
-        JsonObject obj = AssetAPI.readLootTable(new ResourceLocation(JewelerMain.MODID, "cut_effects/" + Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(gem)).getPath())).getAsJsonObject();
-        if (obj != null) {
-            JsonObject entries = obj.getAsJsonObject("entries");
-            addEffectsFor(isToCut, entries, "POSITIVE", gem.positiveRolls);
-            addEffectsFor(isToCut, entries, "NEUTRAL", gem.negativeRolls);
-            addEffectsFor(isToCut, entries, "NEGATIVE", gem.negativeRolls);
-        }
+        addEffectsFor(isToCut, gem, RollAPI.POSITIVE, gem.positiveRolls);
+        addEffectsFor(isToCut, gem, RollAPI.NEGATIVE, gem.negativeRolls);
+        addEffectsFor(isToCut, gem, RollAPI.NEUTRAL, gem.neutralRolls);
     }
 
 
@@ -427,30 +425,12 @@ public class JewelerItems {
     }
 
     private static final Random RANDOM = new Random();
-    private static void addEffectsFor(ItemStack is, JsonObject entries, String array, int rolls){
-        if(entries.has(array)){
-            JsonArray arr = entries.get(array).getAsJsonArray();
-
-            if(!arr.isEmpty()){
-                for(int i=0;i<rolls;i++){
-                    JsonObject entry = arr.get(RANDOM.nextInt(arr.size())).getAsJsonObject();
-
-                    JsonObject obj1 = entry.getAsJsonObject();
-                    Optional<IJewelryEffect> effect = EffectAPI.EFFECTS.stream().filter(x -> x.effectID().toString().equals(obj1.get("id").getAsString())).findAny();
-                    int maxValue = obj1.get("maxLevel").getAsInt();
-                    float chance = obj1.get("chance").getAsFloat();
-
-                    if (effect.isPresent()) {
-                        int level = RANDOM.nextInt(maxValue + 1);
-                        if (RANDOM.nextFloat() < chance)
-                            EffectAPI.setEffect(is, effect.get(), level);
-                    }
-                }
-            }else{
-                JewelerMain.LOGGER.debug("Unknown effect table entry: " + array);
-            }
+    private static void addEffectsFor(ItemStack is, Item gem, RollType type, int rolls){
+        for(int i=0;i<rolls;i++){
+            Arrays.stream(RollAPI.rollFor(gem, type)).forEach(x->{
+                EffectAPI.addEffect(is, x.getA(), x.getB());
+            });
         }
-
     }
 
 }

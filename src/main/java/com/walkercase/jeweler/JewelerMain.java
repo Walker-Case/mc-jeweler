@@ -10,6 +10,7 @@ import com.walkercase.jeweler.generated.*;
 import com.walkercase.jeweler.item.JewelerItems;
 import com.walkercase.jeweler.platform.MC19;
 import com.walkercase.jeweler.platform.PlatformAPI;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -26,6 +27,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import top.theillusivec4.curios.api.SlotTypeMessage;
 import top.theillusivec4.curios.api.SlotTypePreset;
+
+import static com.walkercase.jeweler.api.RollAPI.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(JewelerMain.MODID)
@@ -57,11 +60,28 @@ public class JewelerMain {
         MinecraftForge.EVENT_BUS.addListener(JewelerItems::anvilUpdate);
         MinecraftForge.EVENT_BUS.addListener(JewelerItems::anvilRepair);
 
+        registerRollTypes();
+
         EffectAPI.EFFECTS.forEach(eff->{
             eff.registerEvents(modEventBus, MinecraftForge.EVENT_BUS);
         });
 
         PLATFORM_UTIL.registerEvents(modEventBus, MinecraftForge.EVENT_BUS);
+    }
+
+    private static void registerRollTypes(){
+        registerRollType(POSITIVE);
+        registerRollType(NEUTRAL);
+        registerRollType(NEGATIVE);
+    }
+
+    private static void registerCutEffects(){
+        registerCutEffectRoll(JewelerItems.CUT_EMERALD_GEM.get(), readRollData(new ResourceLocation(JewelerMain.MODID, "cut_effects/cut_emerald_gem")));
+        registerCutEffectRoll(JewelerItems.CUT_RUBY_GEM.get(), readRollData(new ResourceLocation(JewelerMain.MODID, "cut_effects/cut_ruby_gem")));
+        registerCutEffectRoll(JewelerItems.CUT_SAPPHIRE_GEM.get(), readRollData(new ResourceLocation(JewelerMain.MODID, "cut_effects/cut_sapphire_gem")));
+        registerCutEffectRoll(JewelerItems.CUT_AMETHYST_GEM.get(), readRollData(new ResourceLocation(JewelerMain.MODID, "cut_effects/cut_amethyst_gem")));
+        registerCutEffectRoll(JewelerItems.CUT_PRISMATIC_GEM.get(), readRollData(new ResourceLocation(JewelerMain.MODID, "cut_effects/cut_prismatic_gem")));
+        registerCutEffectRoll(JewelerItems.CUT_JUNGLE_GEM.get(), readRollData(new ResourceLocation(JewelerMain.MODID, "cut_effects/cut_jungle_gem")));
     }
 
     private void gatherDataEvent(GatherDataEvent event) {
@@ -88,6 +108,8 @@ public class JewelerMain {
             UniqueDropsAPI.generateUniqueDrops();
             UniqueDropsAPI.registerUniqueDropEvents(FMLJavaModLoadingContext.get().getModEventBus(), MinecraftForge.EVENT_BUS);
         });
+
+        registerCutEffects();
 
         DistExecutor.safeRunWhenOn(Dist.CLIENT, ()->JewelerEntities::registerEntityRenderers);
     }
