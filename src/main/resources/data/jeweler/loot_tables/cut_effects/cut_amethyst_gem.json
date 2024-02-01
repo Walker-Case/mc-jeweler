@@ -9,58 +9,58 @@
       },
       {
         "id": "jeweler:luck",
-        "maxLevel": 10,
-        "chance": 0.6
+        "maxLevel": 5,
+        "chance": 0.15
       },
       {
         "id": "jeweler:skeleton_spirit",
         "maxLevel": 5,
-        "chance": 0.4
+        "chance": 0.1
       },
       {
         "id": "jeweler:saving",
         "maxLevel": 5,
-        "chance": 0.2
+        "chance": 0.1
       },
       {
         "id": "jeweler:unbreaking",
         "maxLevel": 5,
-        "chance": 0.5
+        "chance": 0.15
       },
       {
         "id": "jeweler:potion_regeneration",
         "maxLevel": 3,
-        "chance": 0.2
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_water_breathing",
         "maxLevel": 3,
-        "chance": 0.2
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_night_vision",
         "maxLevel": 3,
-        "chance": 0.2
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_saturation",
         "maxLevel": 3,
-        "chance": 0.2
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_slow_falling",
         "maxLevel": 3,
-        "chance": 0.2
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_dig_speed",
         "maxLevel": 3,
-        "chance": 0.2
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_absorption",
         "maxLevel": 3,
-        "chance": 0.2
+        "chance": 0.1
       }
     ],
 
@@ -68,62 +68,62 @@
       {
         "id": "jeweler:undying",
         "maxLevel": 2,
-        "chance": 0.1
+        "chance": 0.01
       },
       {
         "id": "jeweler:zombie_resist",
         "maxLevel": 1,
-        "chance": 0.5
+        "chance": 0.1
       },
       {
         "id": "jeweler:skeleton_resist",
         "maxLevel": 1,
-        "chance": 0.5
+        "chance": 0.1
       },
       {
         "id": "jeweler:skeleton_resist",
         "maxLevel": 1,
-        "chance": 0.5
+        "chance": 0.1
       },
       {
         "id": "jeweler:pillager_resist",
         "maxLevel": 1,
-        "chance": 0.4
+        "chance": 0.1
       },
       {
         "id": "jeweler:vindicator_resist",
         "maxLevel": 1,
-        "chance": 0.4
+        "chance": 0.1
       },
       {
         "id": "jeweler:evoker_resist",
         "maxLevel": 1,
-        "chance": 0.4
+        "chance": 0.1
       },
       {
         "id": "jeweler:vex_resist",
         "maxLevel": 1,
-        "chance": 0.4
+        "chance": 0.1
       },
       {
         "id": "jeweler:blaze_resist",
         "maxLevel": 1,
-        "chance": 0.3
+        "chance": 0.15
       },
       {
         "id": "jeweler:ghast_resist",
         "maxLevel": 1,
-        "chance": 0.3
+        "chance": 0.1
       },
       {
         "id": "jeweler:phantom_resist",
         "maxLevel": 1,
-        "chance": 0.3
+        "chance": 0.1
       },
       {
         "id": "jeweler:silverfish_resist",
         "maxLevel": 1,
-        "chance": 0.3
+        "chance": 0.1
       }
     ],
 
@@ -131,47 +131,47 @@
       {
         "id": "jeweler:frail",
         "maxLevel": 5,
-        "chance": 0.4
+        "chance": 0.1
       },
       {
         "id": "jeweler:health_reduction",
         "maxLevel": 5,
-        "chance": 0.4
+        "chance": 0.1
       },
       {
         "id": "jeweler:slowness",
         "maxLevel": 5,
-        "chance": 0.4
+        "chance": 0.1
       },
       {
         "id": "jeweler:weakened",
         "maxLevel": 5,
-        "chance": 0.4
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_confusion",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_blindness",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_poison",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_wither",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.1
       },
       {
         "id": "jeweler:potion_unluck",
         "maxLevel": 3,
-        "chance": 0.3
+        "chance": 0.1
       }
     ]
   }
