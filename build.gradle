@@ -185,7 +185,7 @@ jar {
         attributes([
                 "Specification-Title"     : "Jeweler",
                 "Specification-Vendor"    : "Jeweler",
-                "Specification-Version"   : "1.19.4-1.0.0", // We are version 1 of ourselves
+                "Specification-Version"   : "1.19.4-1.0.0a", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "jeweler",
